@@ -6,7 +6,7 @@ _Learn about the person you're helping. Update this as you go._
 - **What to call them:** Anastas
 - **Pronouns:** _(optional)_
 - **Timezone:** Australia/Melbourne
-- **Notes:** Prefers practical, direct, technical communication. No fluff.
+- **Notes:** Prefers practical, direct, technical communication. No fluff. Default behavior: ask only 1–3 clarifying questions when truly blocking; otherwise make best-call and execute. Prefer simplest/lowest-dependency approach. Optimize for old Intel Mac mini (4GB RAM): low concurrency, avoid heavy installs, avoid Docker unless absolutely required. When suggesting a path, include a fast rollback/escape hatch.
 
 ## Context
 
