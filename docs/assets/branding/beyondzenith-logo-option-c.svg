@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="320" viewBox="0 0 1400 320" fill="none">
+  <defs>
+    <linearGradient id="c1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4F7CFF"/>
+      <stop offset="1" stop-color="#7DF9FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="320" rx="28" fill="#0B1020"/>
+  <g transform="translate(48 48)">
+    <rect width="224" height="224" rx="44" fill="#121A33" stroke="#24345F"/>
+    <path d="M56 154L94 84L122 122L168 70" stroke="#2B4573" stroke-width="14" stroke-linecap="round"/>
+    <path d="M58 154L96 86L124 124L170 72" stroke="url(#c1)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M48 182H176" stroke="#24345F" stroke-width="6" stroke-linecap="round"/>
+    <text x="62" y="62" fill="#7DF9FF" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="700">BZ</text>
+  </g>
+  <text x="320" y="150" fill="#EAF0FF" font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="800" font-size="88" letter-spacing="-1">BeyondZenith</text>
+  <text x="322" y="205" fill="#8FA6DD" font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="600" font-size="30">Melbourne-first. Australia-wide impact.</text>
+</svg>
