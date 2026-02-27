@@ -280,6 +280,35 @@ summary:focus-visible {
   color: var(--muted);
 }
 
+.article-meta {
+  margin-top: -0.35rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.mini-faq {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.mini-faq h2 {
+  font-size: 1.2rem;
+  margin: 0.2rem 0;
+}
+
+.mini-faq details {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 0.72rem 0.9rem;
+}
+
+.mini-faq p {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+}
+
 .contact { text-align: left; }
 
 .site-footer {
