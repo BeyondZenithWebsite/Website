@@ -27,7 +27,7 @@ body {
   margin-inline: auto;
 }
 
-.section { padding: 5rem 0; }
+.section { padding: 5.25rem 0; }
 .section-muted { background: var(--bg-soft); }
 
 .site-header {
@@ -200,6 +200,25 @@ h3 { font-size: 1.1rem; margin-bottom: 0.45rem; }
 
 a { color: var(--accent-strong); }
 
+.floating-cta {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 30;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 12px 28px rgba(33, 70, 216, 0.28);
+}
+
+.floating-cta:hover,
+.floating-cta:focus {
+  background: var(--accent-strong);
+}
+
 .price {
   font-weight: 800;
   color: var(--text) !important;
@@ -239,4 +258,10 @@ a { color: var(--accent-strong); }
   }
 
   .nav a { font-size: 0.88rem; }
+
+  .floating-cta {
+    left: 1rem;
+    right: 1rem;
+    text-align: center;
+  }
 }
