@@ -125,6 +125,8 @@ h1 { font-size: clamp(2.1rem, 4.4vw, 3.35rem); margin-bottom: 1rem; }
 h2 { font-size: clamp(1.55rem, 2.8vw, 2.1rem); margin-bottom: 1rem; }
 h3 { font-size: 1.1rem; margin-bottom: 0.45rem; }
 
+p { max-width: 72ch; }
+
 .lead {
   color: var(--muted);
   max-width: 66ch;
@@ -259,27 +261,6 @@ summary:focus-visible {
   z-index: 40;
 }
 
-.section-progress {
-  position: fixed;
-  left: 1rem;
-  bottom: 1rem;
-  z-index: 28;
-  display: none;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-  max-width: 48ch;
-  opacity: 0.88;
-}
-
-.section-progress a {
-  text-decoration: none;
-  color: var(--muted);
-  background: rgba(255,255,255,0.9);
-  border: 1px solid var(--line);
-  padding: 0.28rem 0.55rem;
-  border-radius: 999px;
-  font-size: 0.78rem;
-}
 
 .floating-cta {
   position: fixed;
@@ -488,9 +469,6 @@ summary:focus-visible {
     grid-template-columns: 1.2fr 1fr 0.8fr;
   }
 
-  .section-progress {
-    display: none;
-  }
 }
 
 @media (max-width: 680px) {
