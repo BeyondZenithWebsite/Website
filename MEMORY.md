@@ -10,3 +10,4 @@
 - User explicitly asked the assistant to remember operational details like URLs, hosting setup, and domain/provider info so they do not need to repeat them.
 - User preference: Do **not** use Zapier MCP for email tasks; use `gog` from now on.
 - User wants the assistant to actively maintain memory and remember actions taken + preferences by default.
+- User wants website code changes pushed to GitHub and deployed promptly so they can review updates quickly.
