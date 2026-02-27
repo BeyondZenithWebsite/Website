@@ -6,6 +6,9 @@
 - Push and deploy website changes promptly so user can review quickly.
 - Send progress updates via WhatsApp during active website iteration work.
 - Publish cadence preference: 3 posts per week.
+- Contact email preference for website CTA: `hello@beyondzenith.org`.
+- Social publishing preference: autopost after setup (rather than draft-only review loops).
+- Website authority assets preference: use user's LinkedIn photo and bio.
 
 ## Strategic Goals
 - Position BeyondZenith as a market-leading consultancy in Melbourne.
