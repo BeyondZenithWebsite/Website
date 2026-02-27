@@ -200,6 +200,36 @@ h3 { font-size: 1.1rem; margin-bottom: 0.45rem; }
 
 a { color: var(--accent-strong); }
 
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid rgba(47, 91, 255, 0.35);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 0.75rem;
+  width: auto;
+  height: auto;
+  background: #fff;
+  color: var(--text);
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  z-index: 40;
+}
+
 .floating-cta {
   position: fixed;
   right: 1rem;
@@ -226,6 +256,30 @@ a { color: var(--accent-strong); }
 }
 
 .note { color: var(--muted); margin-top: 0.85rem; }
+
+.faq-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.faq-list details {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 0.8rem 0.9rem;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.faq-list p {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+}
+
 .contact { text-align: left; }
 
 .site-footer {
