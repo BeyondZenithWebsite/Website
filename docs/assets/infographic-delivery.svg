@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520" fill="none">
+  <rect width="900" height="520" rx="24" fill="#F8FAFF"/>
+  <text x="40" y="62" font-family="Inter, Arial" font-size="30" font-weight="800" fill="#101828">Delivery Acceleration Framework</text>
+  <text x="40" y="92" font-family="Inter, Arial" font-size="16" fill="#475467">How BeyondZenith turns missed timelines into predictable delivery.</text>
+  <g font-family="Inter, Arial" font-size="14" fill="#101828" font-weight="700">
+    <rect x="40" y="130" width="190" height="120" rx="14" fill="#EAF0FF"/><text x="58" y="165">1. Assess</text><text x="58" y="192" font-weight="500" fill="#475467">Map bottlenecks</text><text x="58" y="213" font-weight="500" fill="#475467">Risk hotspots</text>
+    <rect x="255" y="130" width="190" height="120" rx="14" fill="#EAF0FF"/><text x="273" y="165">2. Plan</text><text x="273" y="192" font-weight="500" fill="#475467">Re-sequence roadmap</text><text x="273" y="213" font-weight="500" fill="#475467">Assign ownership</text>
+    <rect x="470" y="130" width="190" height="120" rx="14" fill="#EAF0FF"/><text x="488" y="165">3. Execute</text><text x="488" y="192" font-weight="500" fill="#475467">Dependency reduction</text><text x="488" y="213" font-weight="500" fill="#475467">Cadence reset</text>
+    <rect x="685" y="130" width="175" height="120" rx="14" fill="#EAF0FF"/><text x="703" y="165">4. Transfer</text><text x="703" y="192" font-weight="500" fill="#475467">Runbooks</text><text x="703" y="213" font-weight="500" fill="#475467">Team enablement</text>
+  </g>
+  <path d="M230 190H248M445 190H463M660 190H678" stroke="#2F5BFF" stroke-width="4" stroke-linecap="round"/>
+  <rect x="40" y="290" width="820" height="170" rx="16" fill="#FFFFFF" stroke="#D9E2F2"/>
+  <text x="60" y="330" font-family="Inter, Arial" font-size="22" font-weight="700" fill="#101828">Core Metrics</text>
+  <text x="60" y="365" font-family="Inter, Arial" font-size="16" fill="#475467">• Cycle Time ↓    • On-time Delivery ↑    • Rework ↓    • Incident-driven Disruption ↓</text>
+  <text x="60" y="398" font-family="Inter, Arial" font-size="16" fill="#475467">Target: Restore release confidence in 30–90 days.</text>
+</svg>

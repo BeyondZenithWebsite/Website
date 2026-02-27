@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520" fill="none">
+  <rect width="900" height="520" rx="24" fill="#F8FAFF"/>
+  <text x="40" y="62" font-family="Inter, Arial" font-size="30" font-weight="800" fill="#101828">AI ROI Ladder</text>
+  <text x="40" y="92" font-family="Inter, Arial" font-size="16" fill="#475467">Start with practical automation tied to measurable business outcomes.</text>
+  <g font-family="Inter, Arial" fill="#101828">
+    <rect x="60" y="140" width="180" height="300" rx="14" fill="#EAF0FF"/>
+    <text x="84" y="178" font-size="18" font-weight="700">Level 1</text>
+    <text x="84" y="206" font-size="15" fill="#475467">Task Automation</text>
+    <text x="84" y="240" font-size="14" fill="#475467">Save hours/week</text>
+    <rect x="260" y="110" width="180" height="330" rx="14" fill="#DCE7FF"/>
+    <text x="284" y="148" font-size="18" font-weight="700">Level 2</text>
+    <text x="284" y="176" font-size="15" fill="#475467">Workflow Ops</text>
+    <text x="284" y="210" font-size="14" fill="#475467">Reduce errors</text>
+    <rect x="460" y="80" width="180" height="360" rx="14" fill="#C8D8FF"/>
+    <text x="484" y="118" font-size="18" font-weight="700">Level 3</text>
+    <text x="484" y="146" font-size="15" fill="#475467">Decision Support</text>
+    <text x="484" y="180" font-size="14" fill="#475467">Increase velocity</text>
+    <rect x="660" y="50" width="180" height="390" rx="14" fill="#B1C7FF"/>
+    <text x="684" y="88" font-size="18" font-weight="700">Level 4</text>
+    <text x="684" y="116" font-size="15" fill="#475467">Revenue Engine</text>
+    <text x="684" y="150" font-size="14" fill="#475467">Scale outcomes</text>
+  </g>
+</svg>
