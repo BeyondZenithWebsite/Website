@@ -309,6 +309,31 @@ summary:focus-visible {
   color: var(--muted);
 }
 
+
+.author-box {
+  margin-top: 1rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.answer-snippets {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.answer-snippets .snippet {
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 0.7rem 0.85rem;
+}
+
+.answer-snippets h2 { font-size: 1.2rem; margin: 0.2rem 0; }
+.answer-snippets p { margin: 0.35rem 0 0; color: var(--muted); }
+
 .contact { text-align: left; }
 
 .site-footer {
