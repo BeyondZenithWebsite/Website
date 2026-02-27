@@ -24,4 +24,5 @@
 - Active website/project: BeyondZenith (`www.beyondzenith.org`) with GitHub Pages origin at `BeyondZenithWebsite/Website`.
 - Primary booking link: `https://calendar.app.google/mU9KbzGJ7LMYyo6N6`
 - Connected Google account in gog: `hello@beyondzenith.org`
+- User LinkedIn profile: `https://au.linkedin.com/in/anastasm`
 - Available tool classes in this session include file ops, shell, web fetch/search, browser automation, messaging, memory tools, sessions/subagents, and node/canvas controls (subject to runtime policy/tool availability).
