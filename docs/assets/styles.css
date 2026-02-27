@@ -28,7 +28,7 @@ body {
 }
 
 .section { padding: 5.25rem 0; }
-.section-muted { background: var(--bg-soft); }
+.section-muted { background: linear-gradient(180deg, #eff4ff 0%, #eaf1ff 100%); }
 
 .site-header {
   position: sticky;
@@ -74,12 +74,33 @@ body {
 .nav a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 0.94rem;
-  font-weight: 500;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
 }
 
 .nav a:hover,
-.nav a:focus { color: var(--text); }
+.nav a:focus {
+  color: var(--text);
+  background: #eaf0ff;
+}
+
+.hero {
+  position: relative;
+  overflow: clip;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  right: -140px;
+  top: -220px;
+  background: radial-gradient(circle, rgba(47,91,255,0.16) 0%, rgba(47,91,255,0) 68%);
+  pointer-events: none;
+}
 
 .hero-grid {
   display: grid;
@@ -118,6 +139,13 @@ h3 { font-size: 1.1rem; margin-bottom: 0.45rem; }
   border-radius: 16px;
   padding: 1.15rem;
   box-shadow: 0 6px 24px rgba(16, 24, 40, 0.04);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(16, 24, 40, 0.1);
+  border-color: #c9d8ff;
 }
 
 .hero-card ul { margin: 0.5rem 0 0; padding-left: 1.1rem; color: var(--muted); }
@@ -240,6 +268,7 @@ summary:focus-visible {
   gap: 0.4rem;
   flex-wrap: wrap;
   max-width: 48ch;
+  opacity: 0.88;
 }
 
 .section-progress a {
@@ -321,9 +350,24 @@ summary:focus-visible {
   margin-top: 0.7rem;
 }
 
+.quote-card {
+  position: relative;
+}
+
+.quote-card::before {
+  content: "“";
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  font-size: 2rem;
+  color: #9bb6ff;
+  font-weight: 800;
+}
+
 .quote-card p {
   font-style: italic;
   color: var(--text);
+  padding-top: 0.55rem;
 }
 
 .article-meta {
@@ -445,7 +489,7 @@ summary:focus-visible {
   }
 
   .section-progress {
-    display: flex;
+    display: none;
   }
 }
 
