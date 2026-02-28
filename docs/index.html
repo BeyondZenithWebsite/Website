@@ -38,6 +38,7 @@
         <ul class="nav">
           <li><a href="#services">Services</a></li>
           <li><a href="#process">Process</a></li>
+          <li><a href="how-we-work-30-90.html">How We Work</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#insights">Insights</a></li>
@@ -52,14 +53,14 @@
     <section class="hero section">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Technical advisory for execution-focused teams</p>
-          <h1>Turn delivery chaos into measurable growth outcomes.</h1>
+          <p class="eyebrow">For 10–100 person product and engineering teams under delivery pressure</p>
+          <h1>Recover delivery predictability in 30–90 days.</h1>
           <p class="lead">
-            BeyondZenith helps growing businesses ship faster, reduce operational risk, and deploy practical AI
-            through fractional CTO leadership, architecture advisory, and integration delivery.
+            BeyondZenith helps growth-stage teams remove delivery drag, reduce technical risk, and implement practical AI
+            with fractional CTO leadership and execution-focused advisory.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Discovery Call</a>
+            <a class="btn btn-primary" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Discovery Call</a>
             <a class="btn btn-secondary" href="#services">See Services</a>
           </div>
           <div class="trust-row" aria-label="Representative outcomes">
@@ -123,6 +124,7 @@
           </article>
         </div>
         <p class="note">Experience informed by production engagements in logistics, healthcare operations, and cloud platform delivery.</p>
+        <p class="note"><a href="case-studies/delivery-recovery-30-90.html">See anonymised case outcomes with baseline → intervention → result →</a></p>
 
         <h3 class="subheading">What clients value most</h3>
         <div class="testimonial-grid">
@@ -283,14 +285,14 @@
         <p>Ready to scope your next technical milestone?</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Discovery Call</a>
-          <a class="btn btn-secondary" href="mailto:hello@beyondzenith.com?subject=BeyondZenith%20Consulting%20Inquiry">Email BeyondZenith</a>
+          <a class="btn btn-secondary" data-track="email_click" href="mailto:hello@beyondzenith.com?subject=BeyondZenith%20Consulting%20Inquiry">Email BeyondZenith</a>
         </div>
 
         <section class="lead-magnet" aria-label="Free download">
           <h3>Free CTO scorecard template</h3>
           <p>Use our practical weekly scorecard to improve delivery predictability and decision clarity.</p>
           <div class="cta-row">
-            <a class="btn btn-secondary" href="insights/cto-scorecard-template.html">Get the free template</a>
+            <a class="btn btn-secondary" data-track="template_click" href="insights/cto-scorecard-template.html">Get the free template</a>
           </div>
         </section>
       </div>
@@ -354,6 +356,11 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('[data-track]').forEach(el => {
+      el.addEventListener('click', () => {
+        if (window.gtag) gtag('event', el.dataset.track);
+      });
+    });
   </script>
 </body>
 </html>
