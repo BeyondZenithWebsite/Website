@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Delivery ROI Calculator | BeyondZenith</title>
+<meta name="description" content="Estimate ROI from delivery acceleration improvements across cycle time, rework, and team cost." />
+<link rel="canonical" href="https://www.beyondzenith.org/roi-calculator.html" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EN8SF9CL6M');</script>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+<link rel="stylesheet" href="assets/styles.css" /></head>
+<body>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="BeyondZenith home"><img src="assets/logo-beyondzenith.png" alt="BeyondZenith" class="brand-logo" /></a></div></header>
+<main class="section"><div class="container">
+  <p class="eyebrow">Tool</p><h1>Delivery ROI calculator</h1>
+  <p class="lead">Quick estimate for annual ROI from delivery improvements. Use conservative numbers.</p>
+  <div class="cards">
+    <article class="card"><h3>Inputs</h3>
+      <p><label>Engineering monthly cost (AUD)<br><input id="cost" type="number" value="150000" style="width:100%;padding:.5rem;margin-top:.3rem"></label></p>
+      <p><label>Cycle-time improvement (%)<br><input id="cycle" type="number" value="20" style="width:100%;padding:.5rem;margin-top:.3rem"></label></p>
+      <p><label>Rework reduction (%)<br><input id="rework" type="number" value="15" style="width:100%;padding:.5rem;margin-top:.3rem"></label></p>
+      <p><label>Engagement investment (AUD)<br><input id="invest" type="number" value="18000" style="width:100%;padding:.5rem;margin-top:.3rem"></label></p>
+      <p><button class="btn btn-primary" id="calc">Calculate ROI</button></p>
+    </article>
+    <article class="card"><h3>Estimated annual impact</h3>
+      <p id="out1">Potential annual value: —</p>
+      <p id="out2">Net value after investment: —</p>
+      <p id="out3" class="metric">ROI multiple: —</p>
+    </article>
+    <article class="card"><h3>Notes</h3><p>This is directional, not financial advice. We use this to scope practical opportunities before implementation.</p>
+      <p class="note"><a data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book a discovery call to model your numbers →</a></p>
+    </article>
+  </div>
+</div></main>
+<script>
+const $=id=>document.getElementById(id);
+$('calc').addEventListener('click',()=>{
+  const cost=+$('cost').value||0, cycle=(+$('cycle').value||0)/100, rework=(+$('rework').value||0)/100, invest=+$('invest').value||0;
+  const annual=cost*12*(cycle*0.6 + rework*0.4);
+  const net=annual-invest;
+  const roi=invest>0? (annual/invest).toFixed(2):'—';
+  $('out1').textContent='Potential annual value: AUD '+annual.toLocaleString();
+  $('out2').textContent='Net value after investment: AUD '+net.toLocaleString();
+  $('out3').textContent='ROI multiple: '+roi+'x';
+  if(window.gtag) gtag('event','roi_calculator_used');
+});
+document.querySelectorAll('[data-track]').forEach(el=>el.addEventListener('click',()=>window.gtag&&gtag('event',el.dataset.track)));
+</script>
+</body></html>
