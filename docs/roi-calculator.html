@@ -13,12 +13,17 @@
 <main class="section"><div class="container">
   <p class="eyebrow">Tool</p><h1>Delivery ROI calculator</h1>
   <p class="lead">Quick estimate for annual ROI from delivery improvements. Use conservative numbers.</p>
+  <div class="proof-strip" aria-label="Calculator guidance">
+    <div class="proof-chip"><strong>Use conservative inputs</strong><span>for decision-quality estimates</span></div>
+    <div class="proof-chip"><strong>Directional, not accounting</strong><span>used for opportunity scoping</span></div>
+    <div class="proof-chip"><strong>Refine with discovery</strong><span>before budget commitment</span></div>
+  </div>
   <div class="cards">
     <article class="card"><h3>Inputs</h3>
-      <p><label>Engineering monthly cost (AUD)<br><input id="cost" type="number" value="150000" style="width:100%;padding:.5rem;margin-top:.3rem"></label></p>
-      <p><label>Cycle-time improvement (%)<br><input id="cycle" type="number" value="20" style="width:100%;padding:.5rem;margin-top:.3rem"></label></p>
-      <p><label>Rework reduction (%)<br><input id="rework" type="number" value="15" style="width:100%;padding:.5rem;margin-top:.3rem"></label></p>
-      <p><label>Engagement investment (AUD)<br><input id="invest" type="number" value="18000" style="width:100%;padding:.5rem;margin-top:.3rem"></label></p>
+      <p><label>Engineering monthly cost (AUD)<br><input class="form-input" id="cost" type="number" value="150000"></label></p>
+      <p><label>Cycle-time improvement (%)<br><input class="form-input" id="cycle" type="number" value="20"></label></p>
+      <p><label>Rework reduction (%)<br><input class="form-input" id="rework" type="number" value="15"></label></p>
+      <p><label>Engagement investment (AUD)<br><input class="form-input" id="invest" type="number" value="18000"></label></p>
       <p><button class="btn btn-primary" id="calc">Calculate ROI</button></p>
     </article>
     <article class="card"><h3>Estimated annual impact</h3>
