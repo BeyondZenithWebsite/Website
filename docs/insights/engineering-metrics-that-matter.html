@@ -20,8 +20,38 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
 </head><body><header class="site-header"><div class="container nav-wrap"><a class="brand" href="../index.html" aria-label="BeyondZenith home"><img src="../assets/logo-beyondzenith.png" alt="BeyondZenith" class="brand-logo" /></a></div></header>
-<main class="section"><div class="container"><p class="eyebrow">Insight</p><h1>Engineering metrics that matter (and which to ignore)</h1><p class="article-meta">By BeyondZenith • Updated 27 Feb 2026 • 5 min read</p>
+<main class="section"><div class="container"><p class="eyebrow">Insight</p><h1>Engineering metrics that matter (and which to ignore)</h1><p class="article-meta">By BeyondZenith • Updated 1 Mar 2026 • 5 min read</p>
 <p class="lead">Most teams track too much and improve too little. Focus on cycle time, throughput, and escaped defects first.</p>
+<section class="article-expanded">
+<h2>Engineering metrics that avoid vanity traps</h2>
+<p>Updated with current benchmarks and practical implementation guidance for 10–100 person teams.</p>
+<h3>What is working now</h3>
+<ul>
+<li>Balanced scorecards combining speed, stability, quality, and DevEx are outperforming single-metric dashboards.</li>
+<li>AI-assisted development raises output, but quality controls must keep pace.</li>
+<li>Teams are adopting rolling medians and trend windows to reduce sprint noise.</li>
+</ul>
+<h3>Evidence and benchmarks</h3>
+<ol>
+<li><strong>59%</strong> of professional developers use Docker (Stack Overflow, 2024). <a href="https://survey.stackoverflow.co/2024/technology" target="_blank" rel="noopener noreferrer">Source</a></li>
+<li><strong>62%</strong> currently use AI tools in workflow (Stack Overflow, 2024). <a href="https://survey.stackoverflow.co/2024/ai" target="_blank" rel="noopener noreferrer">Source</a></li>
+<li><strong>72%</strong> favorable sentiment toward AI tools (Stack Overflow, 2024). <a href="https://survey.stackoverflow.co/2024/ai" target="_blank" rel="noopener noreferrer">Source</a></li>
+<li><strong>5.2B</strong> GitHub contributions recorded in 2024 (Octoverse). <a href="https://github.blog/news-insights/octoverse/octoverse-2024/" target="_blank" rel="noopener noreferrer">Source</a></li>
+</ol>
+<h3>Execution playbook (next 30 days)</h3>
+<ul>
+<li>Track DORA-style flow + reliability metrics with one DevEx and one quality indicator.</li>
+<li>Separate platform-team and product-team baselines.</li>
+<li>Use 4–8 week rolling medians for decisions.</li>
+</ul>
+<img class="infographic" src="../assets/insight-engineering-metrics-that-matter-data.svg" alt="Engineering metrics that avoid vanity traps data infographic"/>
+<h3>Citations</h3>
+<ul>
+<li><a href="https://dora.dev/research/" target="_blank" rel="noopener noreferrer">https://dora.dev/research/</a></li>
+<li><a href="https://survey.stackoverflow.co/2024/" target="_blank" rel="noopener noreferrer">https://survey.stackoverflow.co/2024/</a></li>
+<li><a href="https://github.blog/news-insights/octoverse/octoverse-2024/" target="_blank" rel="noopener noreferrer">https://github.blog/news-insights/octoverse/octoverse-2024/</a></li>
+</ul>
+</section>
 <div class="cards"><article class="card"><h3>Track</h3><p>Cycle time, deployment frequency, incident recovery, escaped defects.</p></article><article class="card"><h3>Avoid vanity</h3><p>Story points closed and utilization targets as performance proxies.</p></article><article class="card"><h3>Use weekly</h3><p>Run one weekly review with actions assigned per metric movement.</p></article></div>
 <section class="mini-faq"><h2>Quick FAQ</h2><details><summary>Should we adopt DORA immediately?</summary><p>Use DORA where helpful, but keep the dashboard lean and action-oriented.</p></details><details><summary>How many metrics are enough?</summary><p>Three to five lead metrics is enough for most teams.</p></details></section>
 <p class="note">Related: <a href="why-delivery-timelines-slip.html">Why Delivery Timelines Slip</a></p>
