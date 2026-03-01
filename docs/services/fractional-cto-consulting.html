@@ -62,7 +62,7 @@
     </section>
 
     <div class="cta-row" style="margin-top:1rem;">
-      <a class="btn btn-primary" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
+      <a class="btn btn-primary" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
       <a class="btn btn-secondary" href="../index.html#pricing">View pricing bands</a>
     </div>
 
@@ -79,5 +79,13 @@
 
 </main>
 
-  <a class="floating-cta" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer" aria-label="Book strategy call">Book Strategy Call</a>
+  <a class="floating-cta" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer" aria-label="Book strategy call">Book Strategy Call</a>
+
+  <script>
+    document.querySelectorAll('[data-track]').forEach(el => {
+      el.addEventListener('click', () => {
+        if (window.gtag) gtag('event', el.dataset.track);
+      });
+    });
+  </script>
 </body></html>
