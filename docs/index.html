@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Fractional CTO and technical advisory for Australian growth-stage teams. Improve delivery predictability, reduce technical risk, and implement AI tied to measurable outcomes." />
+  <meta name="description" content="Fractional CTO consulting, AI integration consulting, and technical due diligence for Australian growth-stage teams. Improve delivery recovery, reduce technical risk, and convert strategy into measurable outcomes." />
   <meta property="og:title" content="BeyondZenith | Fractional CTO for Delivery-Critical Teams" />
   <meta property="og:description" content="CTO-level technical leadership for 10–100 person teams that need measurable delivery and risk outcomes." />
   <meta property="og:type" content="website" />
@@ -13,19 +13,21 @@
   <meta name="twitter:title" content="BeyondZenith | Fractional CTO for Delivery-Critical Teams" />
   <meta name="twitter:description" content="CTO-level technical leadership for Australian growth-stage teams." />
   <link rel="canonical" href="https://www.beyondzenith.org/" />
-  <title>BeyondZenith | Fractional CTO for Delivery-Critical Teams</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M"></script>
+  <title>BeyondZenith | Fractional CTO Consulting, AI Integration & Technical Due Diligence</title>
+  <link rel="stylesheet" href="assets/styles.css?v=d751084" />
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-EN8SF9CL6M');
+    function gtag(){dataLayer.push(arguments);} 
+    const loadAnalytics = () => {
+      const s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M';
+      s.async = true;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-EN8SF9CL6M');
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(loadAnalytics, { timeout: 2500 });
+    else window.addEventListener('load', loadAnalytics, { once: true });
   </script>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
@@ -52,10 +54,16 @@
   <main id="top">
     <section class="hero section section-divider" data-animate>
       <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-grid-overlay" aria-hidden="true"></div>
+      <div class="hero-trajectory" aria-hidden="true">
+        <svg viewBox="0 0 600 240" role="presentation" focusable="false">
+          <path d="M10 220 C 170 210, 220 80, 340 95 C 440 108, 505 52, 590 28" />
+        </svg>
+      </div>
       <div class="container hero-grid">
         <div class="hero-copy" data-animate>
           <p class="eyebrow">For 10–100 person product and engineering teams under delivery pressure</p>
-          <h1>Recover delivery predictability in 30–90 days.</h1>
+          <h1><span class="headline-glow">Recover delivery predictability in 30–90 days.</span></h1>
           <p class="lead">
             BeyondZenith helps growth-stage teams remove delivery drag, reduce technical risk, and implement practical AI
             with fractional CTO leadership and execution-focused advisory.
@@ -64,17 +72,16 @@
             <a class="btn btn-primary" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
             <a class="btn btn-secondary" href="#services">See Services</a>
           </div>
-          <div class="proof-strip kpi-row" aria-label="Proof points" data-animate>
-            <div class="proof-chip"><strong class="kpi-value" data-count="90">90</strong><span>day delivery recovery horizon</span></div>
-            <div class="proof-chip"><strong class="kpi-value" data-count="1">1</strong><span>CTO-level operating partner</span></div>
-            <div class="proof-chip"><strong class="kpi-value" data-count="30">30</strong><span>day ROI signal target</span></div>
+          <div class="proof-strip kpi-row" aria-label="Proof points" data-animate data-stagger=".08">
+            <div class="proof-chip metric-card"><strong class="kpi-value" data-count="90">90</strong><span>day delivery recovery horizon</span></div>
+            <div class="proof-chip metric-card"><strong class="kpi-value" data-count="1">1</strong><span>CTO-level operating partner</span></div>
+            <div class="proof-chip metric-card"><strong class="kpi-value" data-count="30">30</strong><span>day ROI signal target</span></div>
           </div>
           <div class="trust-row" aria-label="Representative outcomes">
             <span>Logistics automation</span>
             <span>Healthcare operations</span>
             <span>Cloud delivery acceleration</span>
           </div>
-          <div class="hero-signal" aria-hidden="true"><span></span></div>
         </div>
         <aside class="hero-card" aria-label="Quick stats" data-animate>
           <h2>What you get</h2>
@@ -83,28 +90,69 @@
             <li>Lean architecture choices that hold under growth</li>
             <li>AI implementation tied to ROI, not hype</li>
           </ul>
+          <div class="ops-diagram" aria-hidden="true">
+            <svg viewBox="0 0 360 120" role="presentation" focusable="false">
+              <circle cx="30" cy="60" r="7"></circle><circle cx="115" cy="25" r="6"></circle><circle cx="115" cy="95" r="6"></circle><circle cx="210" cy="60" r="7"></circle><circle cx="330" cy="60" r="8"></circle>
+              <path d="M37 60 L108 25"></path><path d="M37 60 L108 95"></path><path d="M122 25 L203 60"></path><path d="M122 95 L203 60"></path><path d="M217 60 L322 60"></path>
+            </svg>
+          </div>
         </aside>
+      </div>
+    </section>
+
+    <section id="authority" class="section section-divider" data-animate>
+      <div class="container">
+        <h2>Companies trust operators, not slide decks.</h2>
+        <p class="lead">Our operating model focuses on delivery systems, technical decision quality, and measurable execution outcomes.</p>
+        <div class="cards" data-stagger=".08">
+          <article class="card"><h3>Delivery recovery</h3><p>Stabilise delivery cadence and unblock execution bottlenecks.</p><p class="note"><a href="insights/why-delivery-timelines-slip.html">Delivery recovery playbook →</a></p></article>
+          <article class="card"><h3>AI execution</h3><p>Implement practical AI opportunities linked to commercial outcomes.</p><p class="note"><a href="services/ai-integration-consulting.html">AI integration consulting →</a></p></article>
+          <article class="card"><h3>Technical due diligence</h3><p>Reduce technical risk before scale, hiring, or major platform shifts.</p><p class="note"><a href="services/technical-due-diligence.html">Technical due diligence advisory →</a></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof-layer" class="section section-divider" data-animate>
+      <div class="container">
+        <h2>Proof</h2>
+        <div class="cards proof-metrics" data-stagger=".08">
+          <article class="card metric-dominant"><strong class="big-metric">45 days</strong><p>Delivery recovery timeline</p></article>
+          <article class="card metric-dominant"><strong class="big-metric">32%</strong><p>Cloud cost reduction</p></article>
+          <article class="card metric-dominant"><strong class="big-metric">18 hrs/week</strong><p>Automation savings</p></article>
+        </div>
+        <div class="logo-row" aria-label="Industry experience" data-stagger=".06">
+          <span>HealthTech</span><span>FinTech</span><span>Logistics</span><span>AI Platforms</span><span>SaaS</span>
+        </div>
+        <article class="card founder-cred" data-animate>
+          <h3>Founder credibility</h3>
+          <p>Operator experience across growth-stage environments, CTO-level technical leadership, and a delivery recovery track record focused on measurable outcomes.</p>
+        </article>
+        <div class="cards mini-case-grid" data-stagger=".08">
+          <article class="card"><h3>Case: Delivery recovery</h3><p>Restored predictability by installing weekly governance and dependency controls.</p></article>
+          <article class="card"><h3>Case: AI workflow pilot</h3><p>Moved from experimentation to measurable automation outcomes with guardrails.</p></article>
+          <article class="card"><h3>Case: Platform simplification</h3><p>Reduced technical drag through targeted architecture decisions and sequencing.</p></article>
+        </div>
       </div>
     </section>
 
     <section id="services" class="section section-divider" data-animate>
       <div class="container">
         <h2>Services</h2>
-        <div class="cards">
+        <div class="cards service-grid" data-stagger=".09">
           <article class="card service-card" data-animate>
-            <h3><span class="service-icon" aria-hidden="true">◎</span> Fractional CTO</h3>
+            <h3><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="8.5" y="14" width="7" height="7" rx="1.5"/><path d="M10 7.5h4M7 11v3M17 11v3"/></svg></span> Fractional CTO</h3>
             <p>Part-time technical leadership for roadmap, architecture, delivery governance, and hiring decisions.</p>
-            <p class="note"><a class="learn-link" href="services/fractional-cto-consulting.html">Learn more <span aria-hidden="true">→</span></a></p>
+            <p class="note"><a class="learn-link card-arrow" href="services/fractional-cto-consulting.html">Learn more <span aria-hidden="true">→</span></a></p>
           </article>
           <article class="card service-card" data-animate>
-            <h3><span class="service-icon" aria-hidden="true">◌</span> AI Integration Consulting</h3>
+            <h3><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="4" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="20" cy="12" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6 11l4-4M14 7l4 4M18 13l-4 4M10 17l-4-4"/></svg></span> AI Integration Consulting</h3>
             <p>Identify high-impact automation opportunities and implement practical pilots with guardrails.</p>
-            <p class="note"><a class="learn-link" href="services/ai-integration-consulting.html">Learn more <span aria-hidden="true">→</span></a></p>
+            <p class="note"><a class="learn-link card-arrow" href="services/ai-integration-consulting.html">Learn more <span aria-hidden="true">→</span></a></p>
           </article>
           <article class="card service-card" data-animate>
-            <h3><span class="service-icon" aria-hidden="true">◍</span> Technical Advisory</h3>
+            <h3><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 12l4-4"/><circle cx="12" cy="12" r="1.5"/></svg></span> Technical Advisory</h3>
             <p>Architecture reviews and decision support for scale, performance, reliability, and engineering velocity.</p>
-            <p class="note"><a class="learn-link" href="services/technical-due-diligence.html">Learn more <span aria-hidden="true">→</span></a></p>
+            <p class="note"><a class="learn-link card-arrow" href="services/technical-due-diligence.html">Learn more <span aria-hidden="true">→</span></a></p>
           </article>
         </div>
       </div>
@@ -113,18 +161,18 @@
     <section id="proof" class="section section-muted section-divider" data-animate>
       <div class="container">
         <h2>Outcomes: Baseline → Intervention → Result</h2>
-        <div class="cards outcome-cards">
+        <div class="cards outcome-cards" data-flow>
           <span class="outcome-line" aria-hidden="true"></span>
-          <article class="card outcome-card" data-animate>
-            <h3>Baseline</h3>
+          <article class="card outcome-card tone-baseline" data-animate>
+            <h3><span class="flow-icon" aria-hidden="true">⚠</span> Baseline</h3>
             <p>Roadmap churn, delivery dates slipping, and technical decisions made reactively.</p>
           </article>
-          <article class="card outcome-card" data-animate>
-            <h3>Intervention</h3>
+          <article class="card outcome-card tone-intervention" data-animate>
+            <h3><span class="flow-icon" aria-hidden="true">🛠</span> Intervention</h3>
             <p>Install weekly delivery governance, tighten architecture decisions, and sequence work by commercial impact.</p>
           </article>
-          <article class="card outcome-card" data-animate>
-            <h3>Result</h3>
+          <article class="card outcome-card tone-result" data-animate>
+            <h3><span class="flow-icon" aria-hidden="true">↗</span> Result</h3>
             <p>Higher delivery predictability, clearer ownership, and fewer high-cost fire drills within a 30–90 day horizon.</p>
           </article>
         </div>
@@ -132,41 +180,59 @@
       </div>
     </section>
 
+    <section class="section mid-cta" data-animate>
+      <div class="container card">
+        <h2>Operators fix delivery. Not slide decks.</h2>
+        <p>Get a practical recovery plan tied to delivery bottlenecks, technical risks, and measurable outcomes.</p>
+        <a class="btn btn-primary" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Schedule a strategy call</a>
+      </div>
+    </section>
+
     <section id="process" class="section section-divider" data-animate>
       <div class="container">
         <h2>Process</h2>
-        <ol class="process-list process-timeline" data-progress>
-          <li data-step><strong>Assess:</strong> audit systems, delivery bottlenecks, and business constraints.</li>
-          <li data-step><strong>Plan:</strong> define a scoped technical plan with measurable outcomes.</li>
-          <li data-step><strong>Implement:</strong> execute high-leverage changes fast, with minimal dependencies.</li>
-          <li data-step><strong>Transfer:</strong> document and hand over so your team can sustain momentum.</li>
+        <ol class="process-timeline" data-progress>
+          <li data-step class="step-assess"><strong>Assess:</strong> audit systems, delivery bottlenecks, and business constraints.</li>
+          <li data-step class="step-plan"><strong>Plan:</strong> define a scoped technical plan with measurable outcomes.</li>
+          <li data-step class="step-implement"><strong>Implement:</strong> execute high-leverage changes fast, with minimal dependencies.</li>
+          <li data-step class="step-transfer"><strong>Transfer:</strong> document and hand over so your team can sustain momentum.</li>
         </ol>
         <p class="note"><a href="how-we-work-30-90.html">See the 30–90 day execution model →</a> · <a href="roi-calculator.html">Estimate impact with the ROI calculator →</a></p>
+      </div>
+    </section>
+
+    <section id="strategy-call" class="section section-divider" data-animate>
+      <div class="container">
+        <h2>Start with a strategy call.</h2>
+        <div class="card">
+          <p>30 minute call · review current delivery issues · identify operational bottlenecks · outline potential recovery plan.</p>
+          <a class="btn btn-primary" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
+        </div>
       </div>
     </section>
 
     <section id="pricing" class="section section-muted section-divider" data-animate>
       <div class="container">
         <h2>Pricing</h2>
-        <div class="table-wrap">
-          <table class="pricing-table" aria-label="Pricing comparison">
-            <thead><tr><th>Plan</th><th>Typical investment</th><th>Best for</th><th>Timeframe</th></tr></thead>
-            <tbody>
-              <tr><td>Advisory Sprint</td><td>AUD 3,500–6,500</td><td>Architecture and delivery diagnosis</td><td>2 weeks</td></tr>
-              <tr><td>AI Integration Accelerator</td><td>AUD 8,000–18,000</td><td>Targeted AI opportunity + pilot</td><td>4–6 weeks</td></tr>
-              <tr><td>Fractional CTO Retainer</td><td>AUD 6,000–15,000 / month</td><td>Ongoing technical leadership</td><td>Monthly</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="pricing-hints" data-animate>
-          <details>
-            <summary>Best for: Advisory Sprint</summary>
-            <p>Best when you need fast diagnosis, architecture clarity, and a 30-day execution plan.</p>
-          </details>
-          <details>
-            <summary>Best for: AI Integration Accelerator</summary>
-            <p>Best when one workflow can produce measurable ROI quickly with strong operational ownership.</p>
-          </details>
+        <div class="cards pricing-cards" data-stagger=".1">
+          <article class="card pricing-card">
+            <p class="eyebrow">Advisory Sprint</p>
+            <p class="price">AUD 3,500–6,500</p>
+            <p>Architecture and delivery diagnosis.</p>
+            <p class="metric">Best for: fast diagnosis + 30-day execution plan.</p>
+          </article>
+          <article class="card pricing-card is-featured">
+            <p class="eyebrow">AI Integration Accelerator</p>
+            <p class="price">AUD 8,000–18,000</p>
+            <p>Targeted AI opportunity + pilot.</p>
+            <p class="metric">Best for: measurable workflow ROI with clear ownership.</p>
+          </article>
+          <article class="card pricing-card">
+            <p class="eyebrow">Fractional CTO Retainer</p>
+            <p class="price">AUD 6,000–15,000 / month</p>
+            <p>Ongoing technical leadership.</p>
+            <p class="metric">Best for: sustained technical direction and delivery confidence.</p>
+          </article>
         </div>
         <p class="note">Final scope and fees are set against measurable outcomes after discovery.</p>
       </div>
@@ -179,6 +245,7 @@
           BeyondZenith is a consulting practice focused on pragmatic technical leadership for growing businesses.
           The approach is simple: choose the smallest set of changes that creates measurable operational and revenue impact.
         </p>
+        <p class="note">Explore <a href="services/fractional-cto-consulting.html">fractional CTO consulting</a>, <a href="services/ai-integration-consulting.html">AI integration consulting</a>, and <a href="services/technical-due-diligence.html">technical due diligence</a>. If delivery is already slipping, start with our <a href="insights/why-delivery-timelines-slip.html">delivery recovery guide</a>.</p>
       </div>
     </section>
 
@@ -196,39 +263,44 @@
     <section id="insights" class="section section-muted">
       <div class="container">
         <h2>Insights</h2>
-        <div class="cards">
-          <article class="card">
+        <div class="insight-layout" data-stagger=".08">
+          <article class="card insight-featured" data-animate>
+            <p class="eyebrow">Featured Insight</p>
             <h3>Why Delivery Timelines Slip</h3>
+            <p class="insight-meta">10 min read · Delivery recovery</p>
             <p>System-level fixes to restore predictable delivery in 30 days.</p>
-            <p class="note"><a href="insights/why-delivery-timelines-slip.html">Read article →</a></p>
+            <p class="note"><a class="learn-link" href="insights/why-delivery-timelines-slip.html">Read article <span aria-hidden="true">→</span></a></p>
           </article>
-          <article class="card">
-            <h3>Fractional CTO vs Full-Time CTO</h3>
-            <p>A practical cost/impact comparison for growing businesses.</p>
-            <p class="note"><a href="insights/fractional-cto-vs-full-time.html">Read article →</a></p>
-          </article>
-          <article class="card">
-            <h3>AI Projects That Produce ROI</h3>
-            <p>Where to start if you want measurable outcomes, not AI theatre.</p>
-            <p class="note"><a href="insights/ai-roi-projects.html">Read article →</a></p>
-          </article>
-          <article class="card">
-            <h3>Technical Due Diligence Checklist</h3>
-            <p>A practical pre-scale checklist to avoid hidden technical risk.</p>
-            <p class="note"><a href="insights/technical-due-diligence-checklist.html">Read article →</a></p>
-          </article>
-          <article class="card">
-            <h3>Engineering Metrics That Matter</h3>
-            <p>The few delivery metrics worth tracking weekly.</p>
-            <p class="note"><a href="insights/engineering-metrics-that-matter.html">Read article →</a></p>
-          </article>
-          <article class="card">
-            <h3>Cloud Cost Optimization Playbook</h3>
-            <p>Cut waste without slowing product delivery.</p>
-            <p class="note"><a href="insights/cloud-cost-optimization-playbook.html">Read article →</a></p>
-          </article>
+          <div class="insight-support-grid">
+            <article class="card" data-animate>
+              <h3>Fractional CTO vs Full-Time CTO</h3>
+              <p class="insight-meta">8 min read · Fractional CTO</p>
+              <p>A practical cost/impact comparison for growing businesses.</p>
+              <p class="note"><a href="insights/fractional-cto-vs-full-time.html">Read article →</a></p>
+            </article>
+            <article class="card" data-animate>
+              <h3>AI Projects That Produce ROI</h3>
+              <p class="insight-meta">9 min read · AI integration consulting</p>
+              <p>Where to start if you want measurable outcomes, not AI theatre.</p>
+              <p class="note"><a href="insights/ai-roi-projects.html">Read article →</a></p>
+            </article>
+            <article class="card" data-animate>
+              <h3>Technical Due Diligence Checklist</h3>
+              <p class="insight-meta">7 min read · Technical due diligence</p>
+              <p>A practical pre-scale checklist to avoid hidden technical risk.</p>
+              <p class="note"><a href="insights/technical-due-diligence-checklist.html">Read article →</a></p>
+            </article>
+          </div>
         </div>
         <p class="note"><a href="insights/geo-for-consulting-firms.html">GEO Playbook: rank in AI answers →</a> · <a href="insights/cto-scorecard-template.html">Free CTO Delivery Scorecard Template →</a></p>
+        <section class="lead-magnet newsletter-box" aria-label="Newsletter signup">
+          <h3>Occasional insights on delivery recovery, AI adoption and technical leadership.</h3>
+          <form class="newsletter-form" action="mailto:hello@beyondzenith.org" method="post" enctype="text/plain">
+            <label for="newsletter-email">Email</label>
+            <input id="newsletter-email" name="email" type="email" class="form-input" placeholder="you@company.com" required />
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+          </form>
+        </section>
       </div>
     </section>
 
@@ -291,7 +363,7 @@
 
 </main>
 
-  <a class="floating-cta" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer" aria-label="Book strategy call">Book Strategy Call</a>
+  <a id="sticky-cta" class="floating-cta" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer" aria-label="Book strategy call">Book Strategy Call</a>
 
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -355,11 +427,12 @@
       });
     });
   </script>
-  <script defer src="assets/motion.js"></script>
+  <script defer src="assets/motion.js?v=d751084"></script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BeyondZenith","url":"https://www.beyondzenith.org/","logo":"https://www.beyondzenith.org/assets/logo-beyondzenith.png","email":"hello@beyondzenith.org","sameAs":["https://au.linkedin.com/in/anastasm"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"BeyondZenith","url":"https://www.beyondzenith.org/"}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Fractional CTO and Technical Advisory","provider":{"@type":"Organization","name":"BeyondZenith"},"areaServed":"Australia","url":"https://www.beyondzenith.org/services/fractional-cto-consulting.html"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"BeyondZenith","url":"https://www.beyondzenith.org/","areaServed":"Australia","description":"Fractional CTO consulting, AI integration consulting, and technical due diligence for growth-stage teams.","serviceType":["Fractional CTO consulting","AI integration consulting","Technical due diligence","Delivery recovery advisory"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Why Delivery Timelines Slip","author":{"@type":"Organization","name":"BeyondZenith"},"publisher":{"@type":"Organization","name":"BeyondZenith"},"url":"https://www.beyondzenith.org/insights/why-delivery-timelines-slip.html"}</script>
 
 </body>
 </html>
