@@ -35,7 +35,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a href="#top" class="brand" aria-label="BeyondZenith home">
-        <img src="assets/site-logo.png" alt="BeyondZenith" class="brand-logo" / loading="eager" decoding="async" width="900" height="320">
+        <img src="assets/site-logo.png" alt="BeyondZenith" class="brand-logo" loading="eager" decoding="async" width="900" height="320">
       </a>
       <nav aria-label="Main navigation">
         <ul class="nav">
@@ -50,9 +50,10 @@
   </header>
 
   <main id="top">
-    <section class="hero section">
+    <section class="hero section section-divider" data-animate>
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-grid">
-        <div>
+        <div class="hero-copy" data-animate>
           <p class="eyebrow">For 10–100 person product and engineering teams under delivery pressure</p>
           <h1>Recover delivery predictability in 30–90 days.</h1>
           <p class="lead">
@@ -63,18 +64,19 @@
             <a class="btn btn-primary" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
             <a class="btn btn-secondary" href="#services">See Services</a>
           </div>
-          <div class="proof-strip" aria-label="Proof points">
-            <div class="proof-chip"><strong>30–90 days</strong><span>typical delivery recovery horizon</span></div>
-            <div class="proof-chip"><strong>CTO-level guidance</strong><span>without full-time executive overhead</span></div>
-            <div class="proof-chip"><strong>ROI-led AI</strong><span>focused on measurable operational impact</span></div>
+          <div class="proof-strip kpi-row" aria-label="Proof points" data-animate>
+            <div class="proof-chip"><strong class="kpi-value" data-count="90">90</strong><span>day delivery recovery horizon</span></div>
+            <div class="proof-chip"><strong class="kpi-value" data-count="1">1</strong><span>CTO-level operating partner</span></div>
+            <div class="proof-chip"><strong class="kpi-value" data-count="30">30</strong><span>day ROI signal target</span></div>
           </div>
           <div class="trust-row" aria-label="Representative outcomes">
             <span>Logistics automation</span>
             <span>Healthcare operations</span>
             <span>Cloud delivery acceleration</span>
           </div>
+          <div class="hero-signal" aria-hidden="true"><span></span></div>
         </div>
-        <aside class="hero-card" aria-label="Quick stats">
+        <aside class="hero-card" aria-label="Quick stats" data-animate>
           <h2>What you get</h2>
           <ul>
             <li>CTO-level decision support without full-time overhead</li>
@@ -85,42 +87,43 @@
       </div>
     </section>
 
-    <section id="services" class="section">
+    <section id="services" class="section section-divider" data-animate>
       <div class="container">
         <h2>Services</h2>
         <div class="cards">
-          <article class="card">
-            <h3>◈ Fractional CTO</h3>
+          <article class="card service-card" data-animate>
+            <h3><span class="service-icon" aria-hidden="true">◎</span> Fractional CTO</h3>
             <p>Part-time technical leadership for roadmap, architecture, delivery governance, and hiring decisions.</p>
-            <p class="note"><a href="services/fractional-cto-consulting.html">Learn more →</a></p>
+            <p class="note"><a class="learn-link" href="services/fractional-cto-consulting.html">Learn more <span aria-hidden="true">→</span></a></p>
           </article>
-          <article class="card">
-            <h3>◈ AI Integration Consulting</h3>
+          <article class="card service-card" data-animate>
+            <h3><span class="service-icon" aria-hidden="true">◌</span> AI Integration Consulting</h3>
             <p>Identify high-impact automation opportunities and implement practical pilots with guardrails.</p>
-            <p class="note"><a href="services/ai-integration-consulting.html">Learn more →</a></p>
+            <p class="note"><a class="learn-link" href="services/ai-integration-consulting.html">Learn more <span aria-hidden="true">→</span></a></p>
           </article>
-          <article class="card">
-            <h3>◈ Technical Advisory</h3>
+          <article class="card service-card" data-animate>
+            <h3><span class="service-icon" aria-hidden="true">◍</span> Technical Advisory</h3>
             <p>Architecture reviews and decision support for scale, performance, reliability, and engineering velocity.</p>
-            <p class="note"><a href="services/technical-due-diligence.html">Learn more →</a></p>
+            <p class="note"><a class="learn-link" href="services/technical-due-diligence.html">Learn more <span aria-hidden="true">→</span></a></p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="proof" class="section section-muted">
+    <section id="proof" class="section section-muted section-divider" data-animate>
       <div class="container">
         <h2>Outcomes: Baseline → Intervention → Result</h2>
-        <div class="cards">
-          <article class="card">
+        <div class="cards outcome-cards">
+          <span class="outcome-line" aria-hidden="true"></span>
+          <article class="card outcome-card" data-animate>
             <h3>Baseline</h3>
             <p>Roadmap churn, delivery dates slipping, and technical decisions made reactively.</p>
           </article>
-          <article class="card">
+          <article class="card outcome-card" data-animate>
             <h3>Intervention</h3>
             <p>Install weekly delivery governance, tighten architecture decisions, and sequence work by commercial impact.</p>
           </article>
-          <article class="card">
+          <article class="card outcome-card" data-animate>
             <h3>Result</h3>
             <p>Higher delivery predictability, clearer ownership, and fewer high-cost fire drills within a 30–90 day horizon.</p>
           </article>
@@ -129,20 +132,20 @@
       </div>
     </section>
 
-    <section id="process" class="section">
+    <section id="process" class="section section-divider" data-animate>
       <div class="container">
         <h2>Process</h2>
-        <ol class="process-list">
-          <li><strong>Assess:</strong> audit systems, delivery bottlenecks, and business constraints.</li>
-          <li><strong>Plan:</strong> define a scoped technical plan with measurable outcomes.</li>
-          <li><strong>Implement:</strong> execute high-leverage changes fast, with minimal dependencies.</li>
-          <li><strong>Transfer:</strong> document and hand over so your team can sustain momentum.</li>
+        <ol class="process-list process-timeline" data-progress>
+          <li data-step><strong>Assess:</strong> audit systems, delivery bottlenecks, and business constraints.</li>
+          <li data-step><strong>Plan:</strong> define a scoped technical plan with measurable outcomes.</li>
+          <li data-step><strong>Implement:</strong> execute high-leverage changes fast, with minimal dependencies.</li>
+          <li data-step><strong>Transfer:</strong> document and hand over so your team can sustain momentum.</li>
         </ol>
         <p class="note"><a href="how-we-work-30-90.html">See the 30–90 day execution model →</a> · <a href="roi-calculator.html">Estimate impact with the ROI calculator →</a></p>
       </div>
     </section>
 
-    <section id="pricing" class="section section-muted">
+    <section id="pricing" class="section section-muted section-divider" data-animate>
       <div class="container">
         <h2>Pricing</h2>
         <div class="table-wrap">
@@ -154,6 +157,16 @@
               <tr><td>Fractional CTO Retainer</td><td>AUD 6,000–15,000 / month</td><td>Ongoing technical leadership</td><td>Monthly</td></tr>
             </tbody>
           </table>
+        </div>
+        <div class="pricing-hints" data-animate>
+          <details>
+            <summary>Best for: Advisory Sprint</summary>
+            <p>Best when you need fast diagnosis, architecture clarity, and a 30-day execution plan.</p>
+          </details>
+          <details>
+            <summary>Best for: AI Integration Accelerator</summary>
+            <p>Best when one workflow can produce measurable ROI quickly with strong operational ownership.</p>
+          </details>
         </div>
         <p class="note">Final scope and fees are set against measurable outcomes after discovery.</p>
       </div>
@@ -226,11 +239,11 @@
         <div class="infographic-grid">
           <article class="card">
             <h3>Delivery Acceleration Framework</h3>
-            <img class="infographic" src="assets/infographic-delivery.svg" alt="Delivery acceleration framework infographic" loading="lazy" decoding="async" / width="900" height="520">
+            <img class="infographic" src="assets/infographic-delivery.svg" alt="Delivery acceleration framework infographic" loading="lazy" decoding="async"  width="900" height="520">
           </article>
           <article class="card">
             <h3>AI ROI Ladder</h3>
-            <img class="infographic" src="assets/infographic-ai-roi.svg" alt="AI ROI ladder infographic" loading="lazy" decoding="async" / width="900" height="520">
+            <img class="infographic" src="assets/infographic-ai-roi.svg" alt="AI ROI ladder infographic" loading="lazy" decoding="async"  width="900" height="520">
           </article>
         </div>
       </div>
@@ -342,6 +355,7 @@
       });
     });
   </script>
+  <script defer src="assets/motion.js"></script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BeyondZenith","url":"https://www.beyondzenith.org/","logo":"https://www.beyondzenith.org/assets/logo-beyondzenith.png","email":"hello@beyondzenith.org","sameAs":["https://au.linkedin.com/in/anastasm"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"BeyondZenith","url":"https://www.beyondzenith.org/","potentialAction":{"@type":"SearchAction","target":"https://www.beyondzenith.org/insights/{search_term_string}","query-input":"required name=search_term_string"}}</script>
