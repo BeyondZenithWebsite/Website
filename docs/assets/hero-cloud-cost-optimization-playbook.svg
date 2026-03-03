@@ -1,1 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="700" viewBox="0 0 1600 700" role="img" aria-label="Hero image for Cloud Cost Optimization"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#0284c7"/></linearGradient><filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity="0.35"/></filter></defs><rect width="1600" height="700" fill="url(#g)"/><rect x="180" y="380" width="96" height="180" rx="12" fill="#22c55e" opacity="0.8"/><rect x="350" y="260" width="96" height="300" rx="12" fill="#22c55e" opacity="0.8"/><rect x="520" y="320" width="96" height="240" rx="12" fill="#22c55e" opacity="0.8"/><rect x="690" y="200" width="96" height="360" rx="12" fill="#22c55e" opacity="0.8"/><rect x="860" y="300" width="96" height="260" rx="12" fill="#22c55e" opacity="0.8"/><rect x="1030" y="230" width="96" height="330" rx="12" fill="#22c55e" opacity="0.8"/><rect x="1200" y="170" width="96" height="390" rx="12" fill="#22c55e" opacity="0.8"/><rect x="0" y="470" width="1600" height="230" fill="#000" opacity="0.30"/><text x="88" y="560" font-family="Inter,Arial,sans-serif" font-size="62" font-weight="800" fill="#f8fafc" filter="url(#shadow)">Cloud Cost Optimization</text><text x="92" y="612" font-family="Inter,Arial,sans-serif" font-size="28" fill="#cbd5e1">Cut waste. Protect delivery speed.</text><text x="92" y="655" font-family="Inter,Arial,sans-serif" font-size="20" fill="#93c5fd">BeyondZenith Insights</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="700" viewBox="0 0 1600 700" role="img" aria-label="Cloud Cost hero visual">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1020"/>
+      <stop offset="100%" stop-color="#152544"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2F5BFF"/>
+      <stop offset="100%" stop-color="#7DD3FC"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="1600" height="700" fill="url(#bg)"/>
+  <circle cx="1340" cy="90" r="180" fill="#2F5BFF" opacity="0.14" filter="url(#blur)"/>
+  <circle cx="220" cy="640" r="220" fill="#22D3EE" opacity="0.08" filter="url(#blur)"/>
+  <rect x="72" y="72" width="150" height="38" rx="19" fill="#111B35" stroke="#38579B"/>
+  <text x="96" y="98" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700" fill="#CFE0FF">INSIGHT</text>
+  <rect x="240" y="72" width="220" height="38" rx="19" fill="#0f1c35" stroke="#2c467d"/>
+  <text x="262" y="98" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600" fill="#9FC4FF">Cloud Cost</text>
+
+  <g>
+    <path d="M120 520 C 320 420, 470 520, 640 430 C 850 310, 980 470, 1200 350 C 1310 300, 1400 290, 1480 260" stroke="url(#acc)" stroke-width="4" fill="none"/>
+    <path d="M120 560 C 320 460, 470 560, 640 470 C 850 350, 980 510, 1200 390 C 1310 340, 1400 330, 1480 300" stroke="#4569BF" stroke-width="2" fill="none" opacity="0.75"/>
+  </g>
+  <g fill="#9FC2FF">
+    <rect x="220" y="340" width="60" height="220" rx="10" opacity="0.65"/>
+    <rect x="380" y="300" width="60" height="260" rx="10" opacity="0.75"/>
+    <rect x="540" y="250" width="60" height="310" rx="10" opacity="0.85"/>
+    <rect x="700" y="280" width="60" height="280" rx="10" opacity="0.75"/>
+    <rect x="860" y="220" width="60" height="340" rx="10" opacity="0.9"/>
+  </g>
+  <g stroke="#2F457D" opacity="0.42">
+    <path d="M120 200H1500"/><path d="M120 300H1500"/><path d="M120 400H1500"/><path d="M120 500H1500"/>
+  </g>
+
+</svg>
