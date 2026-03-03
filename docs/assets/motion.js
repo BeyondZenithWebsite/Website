@@ -1,6 +1,6 @@
 (() => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealTargets = Array.from(document.querySelectorAll('[data-animate], .section, .card, .proof-chip, .faq-list details, .mini-faq details'));
+  const revealTargets = Array.from(document.querySelectorAll('[data-animate], .faq-list details, .mini-faq details, .pricing-hints details'));
 
   if (!reduce) {
     revealTargets.forEach((el) => el.classList.add('reveal'));
@@ -20,13 +20,12 @@
   if (!reduce && kpis.length) {
     const animateCount = (el) => {
       const target = Number(el.dataset.count || 0);
-      const suffix = target === 90 ? 'd' : target === 30 ? 'd' : '×';
       const duration = 900;
       const start = performance.now();
       const tick = (now) => {
         const p = Math.min((now - start) / duration, 1);
         const val = Math.max(1, Math.round(target * p));
-        el.textContent = `${val}${suffix}`;
+        el.textContent = `${val}`;
         if (p < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
