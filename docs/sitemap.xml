@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.beyondzenith.org/</loc><lastmod>2026-03-04</lastmod></url>
+  <url><loc>https://www.beyondzenith.org/</loc></url>
+  <url><loc>https://www.beyondzenith.org/delivery-recovery.html</loc></url>
   <url><loc>https://www.beyondzenith.org/services/fractional-cto-consulting.html</loc></url>
   <url><loc>https://www.beyondzenith.org/services/ai-integration-consulting.html</loc></url>
   <url><loc>https://www.beyondzenith.org/services/technical-due-diligence.html</loc></url>
   <url><loc>https://www.beyondzenith.org/services/delivery-acceleration-advisory.html</loc></url>
+  <url><loc>https://www.beyondzenith.org/insights/index.html</loc></url>
   <url><loc>https://www.beyondzenith.org/insights/why-delivery-timelines-slip.html</loc></url>
   <url><loc>https://www.beyondzenith.org/insights/fractional-cto-vs-full-time.html</loc></url>
   <url><loc>https://www.beyondzenith.org/insights/ai-roi-projects.html</loc></url>
@@ -13,6 +15,13 @@
   <url><loc>https://www.beyondzenith.org/insights/cloud-cost-optimization-playbook.html</loc></url>
   <url><loc>https://www.beyondzenith.org/insights/geo-for-consulting-firms.html</loc></url>
   <url><loc>https://www.beyondzenith.org/insights/cto-scorecard-template.html</loc></url>
+  <url><loc>https://www.beyondzenith.org/insights/why-engineering-teams-miss-deadlines.html</loc></url>
+  <url><loc>https://www.beyondzenith.org/insights/how-to-diagnose-software-delivery-problems.html</loc></url>
+  <url><loc>https://www.beyondzenith.org/insights/what-a-fractional-cto-actually-does.html</loc></url>
+  <url><loc>https://www.beyondzenith.org/insights/how-to-evaluate-technical-leadership-in-startups.html</loc></url>
+  <url><loc>https://www.beyondzenith.org/insights/ai-implementation-mistakes-companies-make.html</loc></url>
+  <url><loc>https://www.beyondzenith.org/insights/signs-your-architecture-is-slowing-delivery.html</loc></url>
+  <url><loc>https://www.beyondzenith.org/insights/how-to-run-technical-due-diligence-on-a-saas-company.html</loc></url>
   <url><loc>https://www.beyondzenith.org/how-we-work-30-90.html</loc></url>
   <url><loc>https://www.beyondzenith.org/case-studies/delivery-recovery-30-90.html</loc></url>
   <url><loc>https://www.beyondzenith.org/roi-calculator.html</loc></url>
