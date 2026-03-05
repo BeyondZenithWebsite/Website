@@ -17,8 +17,20 @@
   <link rel="stylesheet" href="../assets/styles.css?v=2538509" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Fractional CTO Consulting", "provider": {"@type": "Organization", "name": "BeyondZenith"}, "serviceType": "fractional CTO services", "areaServed": "Australia", "url": "https://www.beyondzenith.org/services/fractional-cto-consulting.html"}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a fractional CTO do?", "acceptedAnswer": {"@type": "Answer", "text": "A fractional CTO provides senior technical leadership across architecture, roadmap sequencing, delivery governance, and risk management without full-time executive overhead."}}, {"@type": "Question", "name": "When should a company hire a fractional CTO?", "acceptedAnswer": {"@type": "Answer", "text": "You should hire a fractional CTO when delivery risk is rising, strategic technical decisions are delayed, and the business cannot justify or wait for a full-time CTO hire."}}, {"@type": "Question", "name": "How long does a delivery recovery engagement take?", "acceptedAnswer": {"@type": "Answer", "text": "Most engagements run in 30, 60, or 90-day phases, with early signals in the first 2\u20134 weeks and more durable improvements by day 90."}}, {"@type": "Question", "name": "How is fractional CTO consulting different from advisory workshops?", "acceptedAnswer": {"@type": "Answer", "text": "Consulting combines strategy with operating execution. It includes cadence setup, accountability mechanisms, and weekly intervention, not just recommendations."}}]}</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EN8SF9CL6M');</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    const loadAnalytics = () => {
+      const s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M';
+      s.async = true;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-EN8SF9CL6M');
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(loadAnalytics, { timeout: 2500 });
+    else window.addEventListener('load', loadAnalytics, { once: true });
+  </script>
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
 </head>

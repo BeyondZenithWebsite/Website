@@ -12,14 +12,19 @@
   <meta property="article:modified_time" content="2026-03-01"/>
 <link rel="stylesheet" href="../assets/styles.css?v=7ec2f68"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Fractional CTO vs Full-Time CTO","description":"Practical cost and impact framework for growing businesses.","author":{"@type":"Organization","name":"BeyondZenith"},"publisher":{"@type":"Organization","name":"BeyondZenith"},"datePublished":"2026-03-01","dateModified":"2026-03-01","mainEntityOfPage":"https://www.beyondzenith.org/insights/fractional-cto-vs-full-time.html"}</script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-EN8SF9CL6M');
+    function gtag(){dataLayer.push(arguments);} 
+    const loadAnalytics = () => {
+      const s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M';
+      s.async = true;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-EN8SF9CL6M');
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(loadAnalytics, { timeout: 2500 });
+    else window.addEventListener('load', loadAnalytics, { once: true });
   </script>
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
