@@ -64,8 +64,9 @@
       for (let y = -r; y <= r; y++) {
         for (let x = -r; x <= r; x++) {
           const dx = cx + x, dy = cy + y;
-          if (dx > 1 && dx < WORLD_W - 1 && dy > 1 && dy < WORLD_H - 1) {
-            if (x * x + y * y <= r * r * rnd(0.6, 1.2)) world[dy][dx] = AIR;
+          const ix = Math.floor(dx), iy = Math.floor(dy);
+          if (ix > 1 && ix < WORLD_W - 1 && iy > 1 && iy < WORLD_H - 1) {
+            if (x * x + y * y <= r * r * rnd(0.6, 1.2)) world[iy][ix] = AIR;
           }
         }
       }
