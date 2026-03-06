@@ -3,96 +3,117 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Anonymised representative outcomes from 30–90 day technical advisory and delivery recovery engagements." />
-  <title>Case Studies: 30–90 Day Delivery Recovery Outcomes | BeyondZenith</title>
+  <meta name="description" content="Software delivery recovery case studies from 30-90 day interventions: baseline diagnosis, leadership actions, and measurable outcomes." />
+  <title>Software Delivery Recovery Case Studies (30-90 Days) | BeyondZenith</title>
   <link rel="canonical" href="https://www.beyondzenith.org/case-studies/delivery-recovery-30-90.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Case Studies: 30–90 Day Delivery Recovery Outcomes" />
-  <meta property="og:description" content="Baseline → intervention → measurable outcome across delivery, quality, and decision cadence." />
+  <meta property="og:title" content="Software Delivery Recovery Case Studies (30-90 Days)" />
+  <meta property="og:description" content="Real delivery recovery outcomes across SaaS, healthtech, and cloud product teams." />
   <meta property="og:url" content="https://www.beyondzenith.org/case-studies/delivery-recovery-30-90.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:image" content="https://www.beyondzenith.org/assets/logo-beyondzenith.png" />
-  <meta name="twitter:title" content="Case Studies: 30–90 Day Delivery Recovery Outcomes | BeyondZenith" />
-  <meta name="twitter:description" content="Anonymised representative outcomes from 30–90 day technical advisory and delivery recovery engagements." />
-  <meta name="twitter:image" content="https://www.beyondzenith.org/assets/logo-beyondzenith.png" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M"></script>
+  <meta name="twitter:title" content="Software Delivery Recovery Case Studies (30-90 Days) | BeyondZenith" />
+  <meta name="twitter:description" content="Anonymised outcomes from delivery recovery interventions for execution-critical teams." />
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-EN8SF9CL6M');
+    function gtag(){dataLayer.push(arguments);} 
+    const loadAnalytics = () => {
+      const s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M';
+      s.async = true;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-EN8SF9CL6M');
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(loadAnalytics, { timeout: 2500 });
+    else window.addEventListener('load', loadAnalytics, { once: true });
   </script>
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
   <link rel="stylesheet" href="../assets/styles.css?v=7ec2f68" />
 </head>
 <body>
-  <header class="site-header"><div class="container nav-wrap"><a class="brand" href="../index.html" aria-label="BeyondZenith home"><img src="../assets/logo-header.svg" alt="BeyondZenith" class="brand-logo" loading="eager" decoding="async" width="320" height="64"></a></div></header>
-  <main class="section"><div class="container">
-    <p class="eyebrow">Case Studies</p>
-  <div class="proof-strip" aria-label="Case study highlights">
-    <div class="proof-chip"><strong>Baseline → Intervention → Result</strong><span>clear transformation narrative</span></div>
-    <div class="proof-chip"><strong>30–90 day horizon</strong><span>for measurable delivery recovery</span></div>
-    <div class="proof-chip"><strong>Repeatable model</strong><span>documented for handover</span></div>
-  </div>
-    <h1>30–90 day delivery recovery outcomes</h1>
-    <p class="lead">These anonymised examples show the operating pattern: baseline diagnosis, focused intervention, measurable change.</p>
-
-    <div class="cards">
-      <article class="card">
-        <h3>Logistics quoting workflow</h3>
-        <p><strong>Baseline:</strong> Quote turnaround averaged ~2 business days with frequent reconciliation errors.</p>
-        <p><strong>Intervention:</strong> Workflow redesign, automation checkpoints, owner-based exception handling.</p>
-        <p class="metric"><strong>Outcome:</strong> Quote turnaround reduced to under 4 hours; pricing/reconciliation errors reduced by 35%.</p>
-      </article>
-      <article class="card">
-        <h3>Healthcare platform delivery</h3>
-        <p><strong>Baseline:</strong> Delivery unpredictability and unstable release cadence across teams.</p>
-        <p><strong>Intervention:</strong> Delivery governance reset, dependency sequencing, weekly decision cadence.</p>
-        <p class="metric"><strong>Outcome:</strong> Release predictability improved from ~58% to ~84% within 8 weeks.</p>
-      </article>
-      <article class="card">
-        <h3>Cloud product team acceleration</h3>
-        <p><strong>Baseline:</strong> Incident-driven rework and high-priority deadlines repeatedly slipping.</p>
-        <p><strong>Intervention:</strong> Architecture guardrails, WIP limits, and execution-focused leadership rhythm.</p>
-        <p class="metric"><strong>Outcome:</strong> Incident rework reduced by 32%; release cycle time improved by 29% in 6 weeks.</p>
-      </article>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html" aria-label="BeyondZenith home">
+        <img src="../assets/logo-header.svg" alt="BeyondZenith" class="brand-logo" loading="eager" decoding="async" width="320" height="64">
+      </a>
     </div>
+  </header>
 
-    
-<section>
-  <h2>Detailed case narrative: logistics SaaS delivery recovery</h2>
-  <p><strong>Context:</strong> The company was a scale-up logistics SaaS provider with a 22-engineer product and platform team. Leadership had strong market demand but weak delivery confidence. Major customer requests were delayed, and internal trust between product and engineering was deteriorating.</p>
-  <p><strong>Initial problems:</strong> Release planning slipped repeatedly because dependencies were hidden until late in the cycle. Architecture complexity increased integration risk, and incident response consumed capacity intended for roadmap work. Product priorities changed frequently without explicit trade-off decisions.</p>
-  <p><strong>Diagnostic findings:</strong> Baseline review identified four systemic constraints: replan frequency above target, unclear ownership of cross-team dependencies, high variance in cycle time for priority work, and limited visibility of architecture risk in weekly planning forums. Leadership was making decisions with incomplete execution data.</p>
-  <p><strong>Interventions implemented:</strong> We introduced a weekly delivery governance model with explicit risk review and escalation. Roadmap sequencing was adjusted around dependency risk and business impact. Architecture simplification focused on two high-friction service boundaries that caused repeated release contention. Teams implemented WIP limits and clearer ownership for integration tasks.</p>
-  <p><strong>Measurable outcomes:</strong> Within 45 days, planning confidence improved and release cadence shifted from quarterly batching toward biweekly increments for high-priority streams. Incident-driven rework dropped materially, and leadership could make faster decisions using a concise operating dashboard. Customer-facing delivery reliability improved and internal forecast quality increased.</p>
-  <p><strong>Why this mattered:</strong> The engagement did not rely on a full rewrite or large headcount increase. It restored delivery predictability through operating discipline, architecture pragmatism, and explicit decision pathways. This pattern is repeatable for companies facing similar software project rescue conditions.</p>
-</section>
-<section>
-  <h2>How to apply this case to your environment</h2>
-  <p>If your team faces engineering delivery problems, start by quantifying risk and identifying the top two constraints that repeatedly delay outcomes. Pair this with a clear intervention sequence and weekly decision cadence. Use the <a href="../delivery-recovery-playbook.html">Delivery Recovery Playbook</a> and <a href="../cto-delivery-scorecard.html">CTO Delivery Scorecard</a> to establish baseline clarity before execution changes.</p>
-</section>
-<div class="cta-row" style="margin-top:1rem">
-      <a class="btn btn-primary" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
-      <a class="btn btn-secondary" href="../services/delivery-acceleration-advisory.html">See Delivery Advisory</a>
+  <main class="section">
+    <div class="container">
+      <p class="eyebrow">Case Studies</p>
+      <h1>Software delivery recovery outcomes in 30-90 days</h1>
+      <p class="lead">Anonymised examples showing baseline constraints, intervention choices, and measurable outcomes for delivery-critical teams.</p>
+
+      <section class="card">
+        <h2>Need a similar intervention?</h2>
+        <p>If your roadmap is slipping, we can run a practical diagnosis and produce an execution plan for the next 30-90 days.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
+          <a class="btn btn-secondary" href="../services/delivery-acceleration-advisory.html">See Delivery Advisory</a>
+        </div>
+      </section>
+
+      <div class="proof-strip" aria-label="Case study highlights">
+        <div class="proof-chip"><strong>Baseline → Intervention → Result</strong><span>clear transformation narrative</span></div>
+        <div class="proof-chip"><strong>30-90 day horizon</strong><span>measurable recovery window</span></div>
+        <div class="proof-chip"><strong>Repeatable operating model</strong><span>designed for handover</span></div>
+      </div>
+
+      <section>
+        <h2>Representative outcomes</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Logistics quoting workflow</h3>
+            <p><strong>Baseline:</strong> Quote turnaround averaged ~2 business days with frequent reconciliation errors.</p>
+            <p><strong>Intervention:</strong> Workflow redesign, automation checkpoints, owner-based exception handling.</p>
+            <p class="metric"><strong>Outcome:</strong> Quote turnaround reduced to under 4 hours; reconciliation errors down 35%.</p>
+          </article>
+          <article class="card">
+            <h3>Healthcare platform delivery</h3>
+            <p><strong>Baseline:</strong> Delivery predictability was unstable across platform and product streams.</p>
+            <p><strong>Intervention:</strong> Governance reset, dependency sequencing, weekly leadership cadence.</p>
+            <p class="metric"><strong>Outcome:</strong> Release predictability improved from ~58% to ~84% within 8 weeks.</p>
+          </article>
+          <article class="card">
+            <h3>Cloud product acceleration</h3>
+            <p><strong>Baseline:</strong> Incident-driven rework and repeated slippage on high-priority releases.</p>
+            <p><strong>Intervention:</strong> Architecture guardrails, WIP limits, execution-focused operating rhythm.</p>
+            <p class="metric"><strong>Outcome:</strong> Incident rework down 32%; release cycle time improved 29% in 6 weeks.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Detailed case: logistics SaaS delivery recovery</h2>
+        <p><strong>Context:</strong> Scale-up logistics SaaS, 22-engineer team, strong demand but weak delivery confidence.</p>
+        <p><strong>Problem:</strong> Hidden cross-team dependencies, late integration failures, and frequent priority churn.</p>
+        <p><strong>Diagnosis:</strong> High replan frequency, unclear ownership of dependency risk, and low visibility on architecture constraints.</p>
+        <p><strong>Intervention:</strong> Weekly delivery governance, roadmap resequencing by risk/impact, and architecture simplification on two high-friction service boundaries.</p>
+        <p><strong>Outcome:</strong> Within 45 days, planning confidence improved and releases moved from quarterly batching toward biweekly increments on priority streams.</p>
+      </section>
+
+      <section class="answer-snippets">
+        <h2>Apply this in your environment</h2>
+        <div class="snippet">
+          <p>Start by quantifying top delivery constraints and assigning explicit owners. Then run one weekly operating review focused on blocker movement and decision latency.</p>
+          <p><a href="../delivery-recovery-playbook.html">Delivery Recovery Playbook</a> · <a href="../cto-delivery-scorecard.html">CTO Delivery Scorecard</a> · <a href="../insights/why-delivery-timelines-slip.html">Why delivery timelines slip</a></p>
+        </div>
+      </section>
+
+      <div class="cta-row" style="margin-top:1rem">
+        <a class="btn btn-primary" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book a similar engagement</a>
+        <a class="btn btn-secondary" href="../services/fractional-cto-consulting.html">See Fractional CTO service</a>
+      </div>
     </div>
-    
-<section>
-  <h2>Detailed case narrative: logistics SaaS delivery recovery</h2>
-  <p><strong>Context:</strong> The company was a scale-up logistics SaaS provider with a 22-engineer product and platform team. Leadership had strong market demand but weak delivery confidence. Major customer requests were delayed, and internal trust between product and engineering was deteriorating.</p>
-  <p><strong>Initial problems:</strong> Release planning slipped repeatedly because dependencies were hidden until late in the cycle. Architecture complexity increased integration risk, and incident response consumed capacity intended for roadmap work. Product priorities changed frequently without explicit trade-off decisions.</p>
-  <p><strong>Diagnostic findings:</strong> Baseline review identified four systemic constraints: replan frequency above target, unclear ownership of cross-team dependencies, high variance in cycle time for priority work, and limited visibility of architecture risk in weekly planning forums. Leadership was making decisions with incomplete execution data.</p>
-  <p><strong>Interventions implemented:</strong> We introduced a weekly delivery governance model with explicit risk review and escalation. Roadmap sequencing was adjusted around dependency risk and business impact. Architecture simplification focused on two high-friction service boundaries that caused repeated release contention. Teams implemented WIP limits and clearer ownership for integration tasks.</p>
-  <p><strong>Measurable outcomes:</strong> Within 45 days, planning confidence improved and release cadence shifted from quarterly batching toward biweekly increments for high-priority streams. Incident-driven rework dropped materially, and leadership could make faster decisions using a concise operating dashboard. Customer-facing delivery reliability improved and internal forecast quality increased.</p>
-  <p><strong>Why this mattered:</strong> The engagement did not rely on a full rewrite or large headcount increase. It restored delivery predictability through operating discipline, architecture pragmatism, and explicit decision pathways. This pattern is repeatable for companies facing similar software project rescue conditions.</p>
-</section>
-<section>
-  <h2>How to apply this case to your environment</h2>
-  <p>If your team faces engineering delivery problems, start by quantifying risk and identifying the top two constraints that repeatedly delay outcomes. Pair this with a clear intervention sequence and weekly decision cadence. Use the <a href="../delivery-recovery-playbook.html">Delivery Recovery Playbook</a> and <a href="../cto-delivery-scorecard.html">CTO Delivery Scorecard</a> to establish baseline clarity before execution changes.</p>
-</section>
-<div class="cta-row" style="margin-top:1rem"><a class="btn btn-primary" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book a similar engagement</a><a class="btn btn-secondary" href="../services/delivery-acceleration-advisory.html">View delivery service</a></div>
-</div></main>
+  </main>
+
   <script>
-    document.querySelectorAll('[data-track]').forEach(el=>el.addEventListener('click',()=>window.gtag&&gtag('event',el.dataset.track)));
+    document.querySelectorAll('[data-track]').forEach(el => el.addEventListener('click', () => {
+      if (window.gtag) gtag('event', el.dataset.track);
+    }));
   </script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BeyondZenith","url":"https://www.beyondzenith.org/","logo":"https://www.beyondzenith.org/assets/logo-beyondzenith.png","email":"hello@beyondzenith.org"}</script>
