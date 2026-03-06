@@ -60,7 +60,7 @@
     for (let i = 0; i < 110; i++) {
       let cx = Math.floor(rnd(5, WORLD_W - 5));
       let cy = Math.floor(rnd(45, WORLD_H - 10));
-      const r = rnd(2, 6);
+      const r = Math.floor(rnd(2, 6));
       for (let y = -r; y <= r; y++) {
         for (let x = -r; x <= r; x++) {
           const dx = cx + x, dy = cy + y;
