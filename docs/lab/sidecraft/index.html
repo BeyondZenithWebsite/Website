@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zenith Sidecraft — 2D Pixel Sandbox Experiment</title>
+  <meta name="description" content="2D side-scrolling pixel sandbox experiment inspired by Terraria-style gameplay." />
+  <link rel="canonical" href="https://www.beyondzenith.org/lab/sidecraft/" />
+  <link rel="stylesheet" href="../../assets/lab/lab.css" />
+</head>
+<body class="lab">
+  <main class="lab-wrap">
+    <div class="lab-top">
+      <a href="/lab/">← Back to Zenith Lab</a>
+      <span class="small">experiment_002</span>
+    </div>
+
+    <h1 class="lab-title">Zenith Sidecraft</h1>
+    <p class="lab-sub">2D pixel side-scrolling sandbox experiment (Terraria-inspired)</p>
+
+    <section class="dungeon-layout">
+      <div class="panel game-wrap">
+        <div class="controls">
+          <button id="startRun" class="btn-lab">Start World</button>
+          <button id="restartRun" class="btn-lab" hidden>New World</button>
+          <span id="runStatus" class="meta">Waiting to generate world</span>
+        </div>
+
+        <canvas id="game" width="960" height="540" aria-label="Sidecraft game canvas"></canvas>
+        <p id="runStats" class="meta">Seed pending...</p>
+      </div>
+
+      <aside class="panel">
+        <h2 class="lab-title" style="font-size:1.05rem; margin-top:0">Controls</h2>
+        <ul class="small">
+          <li><strong>A / D</strong> or <strong>← / →</strong>: move</li>
+          <li><strong>W / Space / ↑</strong>: jump</li>
+          <li><strong>Left click</strong>: mine block</li>
+          <li><strong>Right click</strong>: place dirt block</li>
+        </ul>
+        <p class="small">Procedural features: terrain, caves, ore pockets, trees, and random world seed each run.</p>
+      </aside>
+    </section>
+  </main>
+
+  <script src="../../assets/lab/sidecraft.js" defer></script>
+</body>
+</html>
