@@ -31,6 +31,11 @@
   function makeWorld(seed) {
     const world = Array.from({ length: WORLD_H }, () => Array(WORLD_W).fill(AIR));
     const heights = [];
+    const setTile = (x, y, v) => {
+      const ix = Math.floor(x), iy = Math.floor(y);
+      if (ix < 0 || ix >= WORLD_W || iy < 0 || iy >= WORLD_H) return;
+      world[iy][ix] = v;
+    };
 
     let h = 58 + Math.floor(Math.sin(seed * 0.02) * 4);
     for (let x = 0; x < WORLD_W; x++) {
@@ -39,18 +44,18 @@
       heights[x] = h;
 
       for (let y = h; y < WORLD_H; y++) {
-        if (y === h) world[y][x] = GRASS;
-        else if (y < h + 5) world[y][x] = DIRT;
-        else world[y][x] = Math.random() > 0.93 ? ORE : STONE;
+        if (y === h) setTile(x, y, GRASS);
+        else if (y < h + 5) setTile(x, y, DIRT);
+        else setTile(x, y, Math.random() > 0.93 ? ORE : STONE);
       }
 
       if (x % 17 === 0 && Math.random() > 0.55 && h > 38 && h < 70) {
-        for (let t = 1; t <= 4; t++) world[h - t][x] = WOOD;
+        for (let t = 1; t <= 4; t++) setTile(x, h - t, WOOD);
         for (let lx = -2; lx <= 2; lx++) {
           for (let ly = -6; ly <= -3; ly++) {
             if (Math.abs(lx) + Math.abs(ly + 4) < 5) {
               const tx = x + lx, ty = h + ly;
-              if (tx > 1 && tx < WORLD_W - 1 && ty > 2) world[ty][tx] = LEAF;
+              if (tx > 1 && tx < WORLD_W - 1 && ty > 2) setTile(tx, ty, LEAF);
             }
           }
         }
@@ -66,7 +71,7 @@
           const dx = cx + x, dy = cy + y;
           const ix = Math.floor(dx), iy = Math.floor(dy);
           if (ix > 1 && ix < WORLD_W - 1 && iy > 1 && iy < WORLD_H - 1) {
-            if (x * x + y * y <= r * r * rnd(0.6, 1.2)) world[iy][ix] = AIR;
+            if (x * x + y * y <= r * r * rnd(0.6, 1.2)) setTile(ix, iy, AIR);
           }
         }
       }
