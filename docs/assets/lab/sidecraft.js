@@ -97,14 +97,16 @@
   function resetWorld() {
     const seed = Math.floor(Math.random() * 999999);
     const { world, heights } = makeWorld(seed);
-    const sx = 20, sy = (heights[sx] - 4) * TILE;
+    const sx = Math.floor(WORLD_W / 2);
+    const sy = (heights[sx] - 4) * TILE;
+    const startX = sx * TILE;
     game = {
       seed,
       world,
-      cameraX: 0,
+      cameraX: clamp(startX - VIEW_W / 2, 0, WORLD_W * TILE - VIEW_W),
       keys: {},
       inv: { dirt: 0, stone: 0, ore: 0, wood: 0 },
-      player: { x: sx * TILE, y: sy, w: 12, h: 24, vx: 0, vy: 0, speed: 150, jump: 330, onGround: false }
+      player: { x: startX, y: sy, w: 12, h: 24, vx: 0, vy: 0, speed: 150, jump: 330, onGround: false }
     };
     statusEl.textContent = 'World active';
     restartBtn.hidden = false;
@@ -208,10 +210,26 @@
     }
 
     const p = game.player;
-    ctx.fillStyle = '#2d2d39';
-    ctx.fillRect(p.x - game.cameraX, p.y, p.w, p.h);
+    const px = p.x - game.cameraX;
+    ctx.strokeStyle = '#0a1022';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(px - 1, p.y - 1, p.w + 2, p.h + 2);
+    ctx.fillStyle = '#2f5bff';
+    ctx.fillRect(px, p.y, p.w, p.h);
     ctx.fillStyle = '#ffe2bd';
-    ctx.fillRect(p.x - game.cameraX + 2, p.y + 2, p.w - 4, 8);
+    ctx.fillRect(px + 2, p.y + 2, p.w - 4, 8);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(px + 4, p.y + 5, 1, 1);
+    ctx.fillRect(px + 7, p.y + 5, 1, 1);
+
+    // spawn marker to make character instantly findable
+    ctx.fillStyle = '#ffffffcc';
+    ctx.beginPath();
+    ctx.moveTo(px + p.w / 2, p.y - 12);
+    ctx.lineTo(px + p.w / 2 - 5, p.y - 4);
+    ctx.lineTo(px + p.w / 2 + 5, p.y - 4);
+    ctx.closePath();
+    ctx.fill();
 
     ctx.fillStyle = '#1118';
     ctx.fillRect(12, 12, 190, 44);
