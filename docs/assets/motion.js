@@ -131,6 +131,18 @@
     }
   }
 
+  function injectLabSymbol() {
+    const footer = document.querySelector('.site-footer .footer-grid');
+    if (!footer || footer.querySelector('.lab-symbol-link')) return;
+    const a = document.createElement('a');
+    a.href = '/lab/';
+    a.className = 'lab-symbol-link';
+    a.title = 'Zenith Lab';
+    a.setAttribute('aria-label', 'Zenith Lab');
+    a.textContent = '∆';
+    footer.appendChild(a);
+  }
+
   SectionReveal();
   CardHover();
   ButtonHover();
@@ -138,4 +150,5 @@
   timelineAndFlow();
   stickyCTA();
   insightEnhancements();
+  injectLabSymbol();
 })();

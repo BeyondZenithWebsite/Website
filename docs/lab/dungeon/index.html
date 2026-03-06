@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zenith Dungeon — Procedural Roguelite Experiment</title>
+  <meta name="description" content="Zenith Dungeon: a procedural roguelite dungeon crawler experiment built in HTML5 Canvas." />
+  <link rel="canonical" href="https://www.beyondzenith.org/lab/dungeon/" />
+  <link rel="stylesheet" href="../../assets/lab/lab.css" />
+</head>
+<body class="lab">
+  <main class="lab-wrap">
+    <div class="lab-top">
+      <a href="/lab/">← Back to Zenith Lab</a>
+      <span class="small">experiment_001</span>
+    </div>
+
+    <h1 class="lab-title">Zenith Dungeon</h1>
+    <p class="lab-sub">Procedural Roguelite Experiment</p>
+
+    <section class="dungeon-layout">
+      <div class="panel game-wrap">
+        <div class="controls">
+          <button id="startRun" class="btn-lab">Start Run</button>
+          <button id="restartRun" class="btn-lab" hidden>Restart Run</button>
+          <span id="runStatus" class="meta">Waiting to start</span>
+        </div>
+
+        <canvas id="game" width="900" height="560" aria-label="Zenith Dungeon game canvas"></canvas>
+        <p id="runStats" class="meta">Stage 0 · Kills 0 · Time 0s</p>
+
+        <div id="upgradeOverlay" aria-live="polite">
+          <div class="upgrade-box">
+            <strong>Choose an upgrade</strong>
+            <div id="upgradeChoices" class="upgrade-grid"></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <h2 class="lab-title" style="font-size:1.05rem; margin-top:0">Run Notes</h2>
+        <p class="small">Controls: <strong>WASD</strong> or <strong>Arrow keys</strong> to move. Weapons auto-fire at nearest enemies.</p>
+        <ul class="small">
+          <li>Every run generates a new room/corridor layout.</li>
+          <li>Enemy waves scale over time with random archetypes.</li>
+          <li>Weapon base stats and effects are random each run.</li>
+          <li>Each stage-up presents 3 random upgrades.</li>
+        </ul>
+        <p class="small">Build paths include poison, chain lightning, explosions, lifesteal, piercing shots, and orbit blades.</p>
+      </aside>
+    </section>
+  </main>
+
+  <script src="../../assets/lab/dungeon.js" defer></script>
+</body>
+</html>
