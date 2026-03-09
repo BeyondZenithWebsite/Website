@@ -23,6 +23,7 @@ export class MissionSystem {
     const p = this.world.randomRoadPoint();
     if (this.marker) this.marker.destroy();
     this.marker = this.scene.add.image(p.x, p.y, 'missionMarker').setDepth(5);
+    this.scene.tweens.add({ targets: this.marker, scale: 1.35, alpha: 0.45, duration: 700, yoyo: true, repeat: -1 });
 
     if (type === 'steal_car') this.current.label = 'Mission: Steal any parked car';
     if (type === 'escape_police') this.current.label = 'Mission: Lose all wanted stars';

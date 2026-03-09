@@ -9,8 +9,10 @@ export class NPCSystem {
 
   create(count = 40) {
     const g = this.scene.add.graphics();
-    g.fillStyle(0xf7d87b, 1).fillRect(0, 0, 12, 12);
-    g.generateTexture('npcTex', 12, 12);
+    g.fillStyle(0x000000, 0.25).fillEllipse(8, 14, 10, 4);
+    g.fillStyle(0xf7d87b, 1).fillCircle(8, 6, 4);
+    g.fillStyle(0x6dd3ff, 1).fillRoundedRect(4, 9, 8, 7, 2);
+    g.generateTexture('npcTex', 16, 18);
     g.destroy();
 
     this.pedestrians = this.scene.physics.add.group();

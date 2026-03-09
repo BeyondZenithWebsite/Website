@@ -10,8 +10,11 @@ export class PlayerSystem {
 
   create(spawn) {
     const g = this.scene.add.graphics();
-    g.fillStyle(0x00d8ff, 1).fillRect(0, 0, 16, 16);
-    g.generateTexture('playerTex', 16, 16);
+    g.fillStyle(0x000000, 0.35).fillEllipse(10, 14, 14, 6);
+    g.fillStyle(0x3be6ff, 1).fillRoundedRect(4, 2, 12, 14, 3);
+    g.fillStyle(0x0b1d30, 0.6).fillRect(7, 4, 6, 4);
+    g.fillStyle(0xb7f6ff, 1).fillRect(8, 10, 4, 4);
+    g.generateTexture('playerTex', 20, 20);
     g.destroy();
 
     this.sprite = this.scene.physics.add.sprite(spawn.x, spawn.y, 'playerTex');

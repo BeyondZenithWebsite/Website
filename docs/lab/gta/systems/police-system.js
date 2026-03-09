@@ -9,8 +9,12 @@ export class PoliceSystem {
 
   create() {
     const g = this.scene.add.graphics();
-    g.fillStyle(0x2e75ff, 1).fillRect(0, 0, 14, 14);
-    g.generateTexture('copTex', 14, 14);
+    g.fillStyle(0x000000, 0.25).fillEllipse(8, 14, 10, 4);
+    g.fillStyle(0x5aa1ff, 1).fillCircle(8, 6, 4);
+    g.fillStyle(0x27457a, 1).fillRoundedRect(4, 9, 8, 7, 2);
+    g.fillStyle(0xff4862, 0.9).fillRect(5, 9, 2, 2);
+    g.fillStyle(0x63c0ff, 0.9).fillRect(9, 9, 2, 2);
+    g.generateTexture('copTex', 16, 18);
     g.destroy();
     this.cops = this.scene.physics.add.group();
   }
@@ -29,6 +33,8 @@ export class PoliceSystem {
       const angle = Phaser.Math.Angle.Between(cop.x, cop.y, target.x, target.y);
       const speed = 95 + wanted * 35;
       cop.setVelocity(Math.cos(angle) * speed, Math.sin(angle) * speed);
+      cop.rotation = angle;
+      cop.setTint(((now >> 7) % 2 === 0) ? 0xff8aa0 : 0x7ec3ff);
     });
   }
 

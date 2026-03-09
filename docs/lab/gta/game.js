@@ -73,9 +73,14 @@ class SandboxScene extends Phaser.Scene {
 
     this.setupDevMode();
 
-    this.cameras.main.startFollow(this.player.sprite, true, 0.14, 0.14);
-    this.cameras.main.setZoom(1.35);
+    this.cameras.main.startFollow(this.player.sprite, true, 0.12, 0.12);
+    this.cameras.main.setZoom(1.42);
+    this.cameras.main.setRotation(-0.02);
     this.cameras.main.setBounds(0, 0, cfg.worldWidth, cfg.worldHeight);
+
+    this.vignette = this.add.rectangle(cfg.worldWidth / 2, cfg.worldHeight / 2, cfg.worldWidth, cfg.worldHeight, 0x03070f, 0.12)
+      .setDepth(40)
+      .setScrollFactor(1);
 
     this.time.addEvent({
       delay: 14000,

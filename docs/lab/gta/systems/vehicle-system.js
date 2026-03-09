@@ -8,8 +8,12 @@ export class VehicleSystem {
 
   create(count = 26) {
     const g = this.scene.add.graphics();
-    g.fillStyle(0xe64f4f, 1).fillRect(0, 0, 24, 12);
-    g.generateTexture('carTex', 24, 12);
+    g.fillStyle(0x000000, 0.3).fillEllipse(17, 20, 26, 10);
+    g.fillStyle(0xe64f4f, 1).fillRoundedRect(3, 6, 28, 12, 4);
+    g.fillStyle(0xb8e8ff, 0.8).fillRoundedRect(8, 8, 18, 5, 2);
+    g.fillStyle(0x1a1f2c, 1).fillRect(5, 5, 4, 14);
+    g.fillStyle(0x1a1f2c, 1).fillRect(25, 5, 4, 14);
+    g.generateTexture('carTex', 34, 24);
     g.destroy();
 
     this.vehicles = this.scene.physics.add.group();
