@@ -47,6 +47,13 @@ export class WorldGenerator {
             line.position.set(x, 0.08, z);
             this.scene.add(line);
           }
+
+          // curb strips
+          const curbMat = new THREE.MeshStandardMaterial({ color: 0x636d7a, roughness: 0.9 });
+          const curb1 = new THREE.Mesh(new THREE.BoxGeometry(block - 2, 0.25, 0.35), curbMat);
+          curb1.position.set(x, 0.13, z - block / 2 + 0.2);
+          this.scene.add(curb1);
+          const curb2 = curb1.clone(); curb2.position.z = z + block / 2 - 0.2; this.scene.add(curb2);
         } else {
           if (Math.random() < 0.22) {
             const park = new THREE.Mesh(
@@ -83,6 +90,22 @@ export class WorldGenerator {
           }
         }
       }
+    }
+
+    // streetlights
+    for (let i = 0; i < 36; i++) {
+      const pole = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.18, 0.22, 9, 8),
+        new THREE.MeshStandardMaterial({ color: 0x4b5564, metalness: 0.35, roughness: 0.7 })
+      );
+      pole.position.set((Math.random() - 0.5) * worldSize * 0.86, 4.5, (Math.random() - 0.5) * worldSize * 0.86);
+      this.scene.add(pole);
+      const lamp = new THREE.Mesh(
+        new THREE.SphereGeometry(0.4, 10, 10),
+        new THREE.MeshBasicMaterial({ color: 0xfff1b1 })
+      );
+      lamp.position.set(pole.position.x, 9.1, pole.position.z);
+      this.scene.add(lamp);
     }
 
     // Neon accents

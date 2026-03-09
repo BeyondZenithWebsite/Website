@@ -17,7 +17,16 @@ export class VehicleSystem {
 
   spawnVehicle(x, z, locked = false) {
     const g = new THREE.Group();
-    const body = new THREE.Mesh(new THREE.BoxGeometry(4.5, 1.6, 8.2), new THREE.MeshStandardMaterial({ color: new THREE.Color().setHSL(Math.random(), 0.72, 0.5) }));
+    const body = new THREE.Mesh(
+      new THREE.BoxGeometry(4.5, 1.6, 8.2),
+      new THREE.MeshPhysicalMaterial({
+        color: new THREE.Color().setHSL(Math.random(), 0.72, 0.5),
+        roughness: 0.32,
+        metalness: 0.55,
+        clearcoat: 0.7,
+        clearcoatRoughness: 0.4
+      })
+    );
     body.position.y = 1.6;
     body.castShadow = true;
     g.add(body);
@@ -35,7 +44,10 @@ export class VehicleSystem {
       g.add(w);
       return w;
     });
-    const top = new THREE.Mesh(new THREE.BoxGeometry(3.8, 1.2, 3.4), new THREE.MeshStandardMaterial({ color: 0x98c9ea, transparent: true, opacity: 0.82 }));
+    const top = new THREE.Mesh(
+      new THREE.BoxGeometry(3.8, 1.2, 3.4),
+      new THREE.MeshPhysicalMaterial({ color: 0x98c9ea, transparent: true, opacity: 0.72, transmission: 0.3, roughness: 0.2 })
+    );
     top.position.set(0, 2.6, -0.5);
     g.add(top);
     g.position.set(x, 0, z);

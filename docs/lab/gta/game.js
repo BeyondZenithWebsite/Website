@@ -65,7 +65,7 @@ function boot() {
       requestAnimationFrame(tick);
       const dt = Math.min(0.035, clock.getDelta());
       const now = performance.now();
-      if (paused) return engine.render();
+      if (paused) return engine.render(now);
 
       player.update(keys, dt);
       const pos = player.inVehicle ? player.inVehicle.mesh.position : player.mesh.position;
@@ -110,7 +110,7 @@ function boot() {
 
       engine.follow(player.inVehicle ? player.inVehicle.mesh : player.mesh);
       hud.render();
-      engine.render();
+      engine.render(now);
     };
 
     function toggleDevPanel(on) {

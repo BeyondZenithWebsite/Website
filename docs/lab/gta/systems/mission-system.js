@@ -49,6 +49,22 @@ export class MissionSystem {
 
   complete() {
     this.player.addCash(this.current.reward);
+    if (this.marker) {
+      const burst = new THREE.Mesh(
+        new THREE.TorusGeometry(1.4, 0.25, 8, 24),
+        new THREE.MeshBasicMaterial({ color: 0x49ffaf, transparent: true, opacity: 0.9 })
+      );
+      burst.position.copy(this.marker.position);
+      burst.rotation.x = Math.PI / 2;
+      this.scene.add(burst);
+      let ttl = 0.35;
+      const timer = setInterval(() => {
+        ttl -= 0.016;
+        burst.scale.multiplyScalar(1.12);
+        burst.material.opacity = Math.max(0, ttl * 2.8);
+        if (ttl <= 0) { clearInterval(timer); this.scene.remove(burst); }
+      }, 16);
+    }
     this.current = null;
     setTimeout(() => this.newMission(), 900);
   }

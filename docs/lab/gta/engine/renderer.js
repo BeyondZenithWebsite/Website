@@ -13,6 +13,8 @@ export class RendererEngine {
     this.renderer.setSize(cfg.width, cfg.height);
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    this.renderer.toneMappingExposure = 1.12;
     mountEl.innerHTML = '';
     mountEl.appendChild(this.renderer.domElement);
 
@@ -35,6 +37,14 @@ export class RendererEngine {
     const ambient = new THREE.AmbientLight(0x546580, 0.45);
     this.scene.add(ambient);
 
+    // subtle neon bloom fake (cheap)
+    this.neonOrb = new THREE.Mesh(
+      new THREE.SphereGeometry(22, 16, 16),
+      new THREE.MeshBasicMaterial({ color: 0x4cc8ff, transparent: true, opacity: 0.045 })
+    );
+    this.neonOrb.position.set(-120, 36, -110);
+    this.scene.add(this.neonOrb);
+
     window.addEventListener('resize', () => this.onResize());
   }
 
@@ -54,7 +64,10 @@ export class RendererEngine {
     this.camera.lookAt(tx, 0, tz);
   }
 
-  render() {
+  render(now = performance.now()) {
+    if (this.neonOrb) {
+      this.neonOrb.material.opacity = 0.03 + (Math.sin(now * 0.0012) + 1) * 0.012;
+    }
     this.renderer.render(this.scene, this.camera);
   }
 }
