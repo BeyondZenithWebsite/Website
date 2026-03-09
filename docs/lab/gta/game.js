@@ -99,58 +99,15 @@ function boot() {
       police.update(dt, now);
       missions.update(dt, now);
 
-      // projectile simulation + impacts
+      // projectile simulation (visual only, no hit collision)
       for (let i = projectiles.length - 1; i >= 0; i--) {
         const pr = projectiles[i];
         pr.ttl -= dt;
         pr.mesh.position.addScaledVector(pr.vel, dt);
 
-        let hit = false;
-
-        for (const n of npcs.npcs) {
-          if (!n.alive) continue;
-          if (n.mesh.position.distanceTo(pr.mesh.position) < 2.2) {
-            n.alive = false;
-            n.mesh.visible = false;
-            player.addCash(25);
-            player.increaseWanted(1);
-            hit = true;
-            const decal = new THREE.Mesh(
-              new THREE.CircleGeometry(0.7, 10),
-              new THREE.MeshBasicMaterial({ color: 0x2b0f12, transparent: true, opacity: 0.65 })
-            );
-            decal.rotation.x = -Math.PI / 2;
-            decal.position.set(pr.mesh.position.x, 0.07, pr.mesh.position.z);
-            engine.scene.add(decal);
-            setTimeout(() => engine.scene.remove(decal), 5000);
-            break;
-          }
-        }
-
-        if (!hit) {
-          for (const c of police.cops) {
-            if (c.mesh.position.distanceTo(pr.mesh.position) < 2.8) {
-              c.vel.multiplyScalar(0.3);
-              c.mesh.material.emissive.setHex(0x5c0f0f);
-              hit = true;
-              player.increaseWanted(1);
-              break;
-            }
-          }
-        }
-
-        if (pr.ttl <= 0 || hit) {
+        if (pr.ttl <= 0) {
           engine.scene.remove(pr.mesh);
           projectiles.splice(i, 1);
-          if (hit) {
-            const spark = new THREE.Mesh(
-              new THREE.SphereGeometry(0.5, 8, 8),
-              new THREE.MeshBasicMaterial({ color: 0xffcc80, transparent: true, opacity: 0.8 })
-            );
-            spark.position.copy(pr.mesh.position);
-            engine.scene.add(spark);
-            fxBursts.push({ mesh: spark, ttl: 0.14 });
-          }
         }
       }
 
@@ -294,8 +251,8 @@ function boot() {
         projectiles.push({ mesh: bullet, vel: dir.multiplyScalar(95), ttl: 0.9 });
 
         // recoil kick
-        if (player.inVehicle) player.inVehicle.vel.addScaledVector(dir, -1.4);
-        else player.mesh.position.addScaledVector(dir, -0.24);
+        if (player.inVehicle) player.inVehicle.vel.addScaledVector(dir, -0.14);
+        else player.mesh.position.addScaledVector(dir, -0.024);
 
         if (hit) {
           const flash = new THREE.Mesh(
