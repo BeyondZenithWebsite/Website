@@ -57,6 +57,11 @@ class SandboxScene extends Phaser.Scene {
         this.player.increaseWanted(1);
         this.player.health = Math.max(0, this.player.health - 2);
       }
+      if (impact > 170) {
+        const spark = this.add.circle((a.x + b.x) / 2, (a.y + b.y) / 2, 5, 0xffb463, 0.9).setDepth(25);
+        this.tweens.add({ targets: spark, alpha: 0, scale: 4.5, duration: 300, onComplete: () => spark.destroy() });
+        this.cameras.main.shake(80, 0.0045);
+      }
     });
 
     this.input.keyboard.on('keydown-E', () => this.vehicles.tryEnterOrExit());
@@ -81,6 +86,12 @@ class SandboxScene extends Phaser.Scene {
     this.vignette = this.add.rectangle(cfg.worldWidth / 2, cfg.worldHeight / 2, cfg.worldWidth, cfg.worldHeight, 0x03070f, 0.12)
       .setDepth(40)
       .setScrollFactor(1);
+
+    this.neonSweep = this.add.rectangle(cfg.worldWidth * 0.2, cfg.worldHeight * 0.15, 420, 120, 0x4fd0ff, 0.05)
+      .setDepth(39)
+      .setScrollFactor(1)
+      .setRotation(-0.4);
+    this.tweens.add({ targets: this.neonSweep, x: cfg.worldWidth * 0.85, y: cfg.worldHeight * 0.75, alpha: 0.02, duration: 7000, yoyo: true, repeat: -1 });
 
     this.time.addEvent({
       delay: 14000,

@@ -12,7 +12,8 @@ body.gta-page { margin: 0; font-family: Inter, system-ui, sans-serif; background
 .back { color: #88b6ff; text-decoration: none; }
 .play-btn { background: linear-gradient(90deg, #2ca6ff, #31e2ff); border: 0; color: #00151f; padding: 10px 20px; border-radius: 10px; font-weight: 700; cursor: pointer; }
 .game-wrap { margin-top: 14px; border: 1px solid rgba(75, 142, 255, 0.4); border-radius: 14px; overflow: hidden; position: relative; background: #06090f; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
-.game-canvas { width: 100%; min-height: 680px; }
+.game-canvas { width: 100%; min-height: 680px; position: relative; }
+.game-canvas::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at center, transparent 45%, rgba(0,0,0,.32) 100%); mix-blend-mode: multiply; }
 .game-canvas canvas { width: 100%; display: block; }
 .hud { position: absolute; top: 12px; left: 12px; z-index: 20; background: var(--panel); border: 1px solid rgba(98,180,255,.35); border-radius: 12px; padding: 10px 12px; min-width: 240px; font-size: 14px; line-height: 1.45; }
 .pause-overlay { position: absolute; inset: 0; background: rgba(1, 5, 16, 0.78); display: grid; place-items: center; font-size: 38px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }

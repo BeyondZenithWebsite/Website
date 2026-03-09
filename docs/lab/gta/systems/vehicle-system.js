@@ -17,6 +17,7 @@ export class VehicleSystem {
     g.destroy();
 
     this.vehicles = this.scene.physics.add.group();
+    this.trails = this.scene.add.group();
     for (let i = 0; i < count; i++) {
       const p = this.world.randomRoadPoint();
       const car = this.vehicles.create(p.x, p.y, 'carTex');
@@ -74,6 +75,11 @@ export class VehicleSystem {
     const vy = car.body.velocity.y;
     const mag = Math.hypot(vx, vy);
     if (mag > 8) car.rotation = Math.atan2(vy, vx);
+
+    if (mag > 120 && (Math.abs(accelX) > 0 || Math.abs(accelY) > 0) && Math.random() < 0.28) {
+      const skid = this.scene.add.circle(car.x - vx * 0.02, car.y - vy * 0.02, 2, 0xe6f4ff, 0.45).setDepth(4);
+      this.scene.tweens.add({ targets: skid, alpha: 0, scale: 2.2, duration: 420, onComplete: () => skid.destroy() });
+    }
   }
 
   spawnVehicle(x, y) {

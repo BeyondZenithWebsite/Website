@@ -18,6 +18,7 @@ export class PlayerSystem {
     g.destroy();
 
     this.sprite = this.scene.physics.add.sprite(spawn.x, spawn.y, 'playerTex');
+    this.sprite.setScale(1.05);
     this.sprite.setCollideWorldBounds(true);
     this.sprite.setDepth(8);
 
