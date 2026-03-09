@@ -11,8 +11,8 @@ export class PoliceSystem {
 
   spawnNear(targetPos) {
     const p = targetPos.clone();
-    p.x += (Math.random() - 0.5) * 80;
-    p.z += (Math.random() - 0.5) * 80;
+    p.x += (Math.random() - 0.5) * 92;
+    p.z += (Math.random() - 0.5) * 92;
 
     const mesh = new THREE.Mesh(
       new THREE.BoxGeometry(4.6, 1.7, 8.6),
@@ -32,8 +32,10 @@ export class PoliceSystem {
     }
 
     this.cops.forEach((c, i) => {
-      const dir = target.clone().sub(c.mesh.position).setY(0);
-      if (dir.lengthSq() > 0) dir.normalize();
+      const toTarget = target.clone().sub(c.mesh.position).setY(0);
+      const tangent = new THREE.Vector3(-toTarget.z, 0, toTarget.x).normalize();
+      const flank = (i % 2 === 0 ? 1 : -1) * Math.min(0.35, this.player.wanted * 0.08);
+      const dir = toTarget.lengthSq() > 0 ? toTarget.normalize().addScaledVector(tangent, flank).normalize() : new THREE.Vector3();
       c.vel.lerp(dir.multiplyScalar(14 + this.player.wanted * 4), 0.14);
       c.mesh.position.addScaledVector(c.vel, dt);
       c.mesh.rotation.y = Math.atan2(c.vel.x, c.vel.z);

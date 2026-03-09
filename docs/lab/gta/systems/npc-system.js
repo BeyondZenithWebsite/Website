@@ -9,7 +9,7 @@ export class NPCSystem {
     this.lastCrimeAt = 0;
   }
 
-  create(count = 44) {
+  create(count = 62) {
     for (let i = 0; i < count; i++) {
       const p = this.world.randomSpawn();
       const mesh = new THREE.Mesh(
@@ -19,7 +19,7 @@ export class NPCSystem {
       mesh.position.set(p.x + (Math.random() - 0.5) * 14, 1.8, p.z + (Math.random() - 0.5) * 14);
       mesh.castShadow = true;
       this.scene.add(mesh);
-      this.npcs.push({ mesh, vel: new THREE.Vector3((Math.random() - 0.5) * 6, 0, (Math.random() - 0.5) * 6), alive: true, t: 0 });
+      this.npcs.push({ mesh, vel: new THREE.Vector3((Math.random() - 0.5) * 6, 0, (Math.random() - 0.5) * 6), alive: true, t: 0, panic: 0 });
     }
   }
 
@@ -28,13 +28,17 @@ export class NPCSystem {
       if (!n.alive) return;
       const target = this.player.inVehicle ? this.player.inVehicle.mesh.position : this.player.mesh.position;
       const d = n.mesh.position.distanceTo(target);
-      if (d < 20 && now - this.lastCrimeAt < 2400) {
-        n.vel.copy(n.mesh.position.clone().sub(target).setY(0).normalize().multiplyScalar(12));
-      } else if (Math.random() < 0.01) {
+      if (d < 24 && now - this.lastCrimeAt < 3200) {
+        n.panic = 1;
+        n.vel.copy(n.mesh.position.clone().sub(target).setY(0).normalize().multiplyScalar(14));
+      } else if (Math.random() < 0.014) {
         n.vel.set((Math.random() - 0.5) * 7, 0, (Math.random() - 0.5) * 7);
       }
+      n.panic = Math.max(0, n.panic - dt * 0.6);
       n.mesh.position.addScaledVector(n.vel, dt);
       n.mesh.rotation.y = Math.atan2(n.vel.x, n.vel.z);
+      const s = 1 + n.panic * 0.08;
+      n.mesh.scale.set(s, 1, s);
     });
   }
 

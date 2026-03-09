@@ -59,6 +59,8 @@ function boot() {
     let lastWantedDecay = 0;
     let lastChaos = 0;
 
+    const fxBursts = [];
+
     const tick = () => {
       requestAnimationFrame(tick);
       const dt = Math.min(0.035, clock.getDelta());
@@ -84,6 +86,17 @@ function boot() {
         if (roll === 0) npcs.chaosFight();
         if (roll === 1) police.triggerRaid(pos);
         if (roll === 2) vehicles.spawnVehicle(pos.x + (Math.random() - 0.5) * 25, pos.z + (Math.random() - 0.5) * 25, false);
+      }
+
+      for (let i = fxBursts.length - 1; i >= 0; i--) {
+        const fx = fxBursts[i];
+        fx.ttl -= dt;
+        fx.mesh.scale.addScalar(dt * 6);
+        fx.mesh.material.opacity = Math.max(0, fx.ttl * 5);
+        if (fx.ttl <= 0) {
+          engine.scene.remove(fx.mesh);
+          fxBursts.splice(i, 1);
+        }
       }
 
       clampInside(pos, cfg.worldSize / 2 - 8);
@@ -128,7 +141,19 @@ function boot() {
     window.addEventListener('keydown', (e) => {
       keys[e.code] = true;
       if (e.code === 'KeyE') vehicles.tryEnterOrExit(player.mesh.position);
-      if (e.code === 'Space') npcs.attackNearby(player.inVehicle ? player.inVehicle.mesh.position : player.mesh.position);
+      if (e.code === 'Space') {
+        const atkPos = player.inVehicle ? player.inVehicle.mesh.position : player.mesh.position;
+        const hit = npcs.attackNearby(atkPos);
+        if (hit) {
+          const flash = new THREE.Mesh(
+            new THREE.SphereGeometry(0.9, 8, 8),
+            new THREE.MeshBasicMaterial({ color: 0xff7c67, transparent: true, opacity: 0.9 })
+          );
+          flash.position.set(atkPos.x, 2.5, atkPos.z);
+          engine.scene.add(flash);
+          fxBursts.push({ mesh: flash, ttl: 0.18 });
+        }
+      }
       if (e.code === 'Escape') {
         paused = !paused;
         document.getElementById('pauseOverlay')?.classList.toggle('hidden', !paused);
