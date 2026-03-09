@@ -1,52 +1,52 @@
+import * as THREE from 'https://unpkg.com/three@0.161.0/build/three.module.js';
+
 export class PlayerSystem {
-  constructor(scene, cfg) {
+  constructor(scene) {
     this.scene = scene;
-    this.cfg = cfg;
     this.health = 100;
     this.cash = 0;
     this.wanted = 0;
     this.inVehicle = null;
+    this.speed = 22;
+    this.sprint = 34;
+    this.velocity = new THREE.Vector3();
   }
 
   create(spawn) {
-    const g = this.scene.add.graphics();
-    g.fillStyle(0x000000, 0.35).fillEllipse(10, 14, 14, 6);
-    g.fillStyle(0x3be6ff, 1).fillRoundedRect(4, 2, 12, 14, 3);
-    g.fillStyle(0x0b1d30, 0.6).fillRect(7, 4, 6, 4);
-    g.fillStyle(0xb7f6ff, 1).fillRect(8, 10, 4, 4);
-    g.generateTexture('playerTex', 20, 20);
-    g.destroy();
-
-    this.sprite = this.scene.physics.add.sprite(spawn.x, spawn.y, 'playerTex');
-    this.sprite.setScale(1.05);
-    this.sprite.setCollideWorldBounds(true);
-    this.sprite.setDepth(8);
-
-    this.cursors = this.scene.input.keyboard.addKeys({
-      up: 'W', down: 'S', left: 'A', right: 'D', sprint: 'SHIFT', enter: 'E', attack: 'SPACE', pause: 'ESC'
-    });
+    const mat = new THREE.MeshStandardMaterial({ color: 0x32d9ff, emissive: 0x0a3f4d, emissiveIntensity: 0.5 });
+    this.mesh = new THREE.Mesh(new THREE.CapsuleGeometry(1.2, 2.4, 4, 8), mat);
+    this.mesh.position.set(spawn.x, 2.2, spawn.z);
+    this.mesh.castShadow = true;
+    this.scene.add(this.mesh);
   }
 
-  update() {
+  update(input, dt) {
     if (this.inVehicle) {
-      this.sprite.setPosition(this.inVehicle.x, this.inVehicle.y);
-      this.sprite.setVisible(false);
+      this.mesh.visible = false;
+      this.mesh.position.copy(this.inVehicle.mesh.position);
       return;
     }
+    this.mesh.visible = true;
 
-    this.sprite.setVisible(true);
-    const speed = this.cursors.sprint.isDown ? this.cfg.playerSprintSpeed : this.cfg.playerSpeed;
-    let vx = 0, vy = 0;
-    if (this.cursors.left.isDown) vx = -speed;
-    else if (this.cursors.right.isDown) vx = speed;
-    if (this.cursors.up.isDown) vy = -speed;
-    else if (this.cursors.down.isDown) vy = speed;
+    const target = new THREE.Vector3();
+    if (input.KeyW) target.z -= 1;
+    if (input.KeyS) target.z += 1;
+    if (input.KeyA) target.x -= 1;
+    if (input.KeyD) target.x += 1;
 
-    this.sprite.body.setVelocity(vx, vy);
-    this.sprite.body.velocity.normalize().scale(speed);
+    if (target.lengthSq() > 0) {
+      target.normalize();
+      const s = input.ShiftLeft ? this.sprint : this.speed;
+      this.velocity.lerp(target.multiplyScalar(s), 0.2);
+      this.mesh.rotation.y = Math.atan2(this.velocity.x, this.velocity.z);
+    } else {
+      this.velocity.multiplyScalar(0.84);
+    }
+
+    this.mesh.position.addScaledVector(this.velocity, dt);
   }
 
   addCash(v) { this.cash += v; }
-  increaseWanted(v = 1) { this.wanted = Phaser.Math.Clamp(this.wanted + v, 0, 5); }
-  decayWanted() { if (this.wanted > 0) this.wanted = Math.max(0, this.wanted - 1); }
+  increaseWanted(v = 1) { this.wanted = Math.min(5, this.wanted + v); }
+  decayWanted() { this.wanted = Math.max(0, this.wanted - 1); }
 }

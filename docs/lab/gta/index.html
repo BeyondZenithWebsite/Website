@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Experimental Sandbox | BeyondZenith Lab</title>
-  <meta name="description" content="Compact GTA-style open-world sandbox experiment by BeyondZenith." />
+  <meta name="description" content="Compact GTA-inspired 3D sandbox experiment by BeyondZenith." />
   <link rel="canonical" href="https://www.beyondzenith.org/lab/gta/" />
   <link rel="stylesheet" href="./style.css" />
 </head>
@@ -13,20 +13,19 @@
     <header class="sandbox-head">
       <a href="/lab/" class="back">← Back to Lab</a>
       <h1>Experimental Sandbox</h1>
-      <p>Small GTA-inspired browser prototype: steal cars, trigger chaos, dodge police, finish missions.</p>
+      <p>3D GTA-inspired browser sandbox: steal cars, trigger chaos, evade police, run missions.</p>
       <button id="playBtn" class="play-btn">Play</button>
     </header>
 
     <section class="game-wrap">
-      <div id="gtaGame" class="game-canvas" aria-label="GTA-style sandbox game"></div>
+      <div id="gtaGame" class="game-canvas"></div>
       <div id="hud" class="hud"></div>
       <div id="pauseOverlay" class="pause-overlay hidden">Paused</div>
     </section>
 
-    <p class="hint">Controls: WASD move · Shift sprint · E enter/exit vehicle · Space attack · Esc pause · Ctrl+Alt+Z dev mode</p>
+    <p class="hint">WASD move · Shift sprint · E enter vehicle · Space attack · Esc pause · Ctrl+Alt+Z dev mode</p>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/phaser@3.87.0/dist/phaser.min.js"></script>
   <script type="module" src="./game.js"></script>
 </body>
 </html>

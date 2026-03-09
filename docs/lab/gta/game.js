@@ -1,3 +1,5 @@
+import * as THREE from 'https://unpkg.com/three@0.161.0/build/three.module.js';
+import { RendererEngine } from './engine/renderer.js';
 import { WorldGenerator } from './engine/world-generator.js';
 import { PlayerSystem } from './systems/player-system.js';
 import { VehicleSystem } from './systems/vehicle-system.js';
@@ -9,204 +11,138 @@ import { HUD } from './ui/hud.js';
 const cfg = {
   width: 1180,
   height: 680,
-  worldWidth: 2600,
-  worldHeight: 2600,
-  blockSize: 130,
-  roadWidth: 30,
-  playerSpeed: 160,
-  playerSprintSpeed: 245
+  worldSize: 560,
+  block: 28,
+  roadW: 10
 };
 
-class SandboxScene extends Phaser.Scene {
-  constructor() {
-    super('sandbox');
-    this.paused = false;
-    this.lastChaosEvent = 0;
-  }
+const keys = {};
+let paused = false;
+let devMode = false;
+let devPanel = null;
 
-  create() {
-    this.worldGen = new WorldGenerator(this, cfg);
-    this.worldGen.build();
-
-    const spawn = this.worldGen.randomRoadPoint();
-
-    this.player = new PlayerSystem(this, cfg);
-    this.player.create(spawn);
-
-    this.vehicles = new VehicleSystem(this, this.player, this.worldGen);
-    this.vehicles.create();
-
-    this.npcs = new NPCSystem(this, this.player, this.worldGen);
-    this.npcs.create();
-
-    this.police = new PoliceSystem(this, this.player, this.worldGen);
-    this.police.create();
-
-    this.missions = new MissionSystem(this, this.player, this.worldGen);
-    this.missions.create();
-
-    this.hud = new HUD(this.player, this.missions, cfg);
-
-    this.physics.add.overlap(this.player.sprite, this.police.cops, () => {
-      this.player.health -= 0.3 + this.player.wanted * 0.1;
-    });
-
-    this.physics.add.collider(this.vehicles.vehicles, this.vehicles.vehicles, (a, b) => {
-      const impact = Phaser.Math.Distance.Between(a.body.velocity.x, a.body.velocity.y, b.body.velocity.x, b.body.velocity.y);
-      if (impact > 120 && Math.random() < 0.45) {
-        this.player.increaseWanted(1);
-        this.player.health = Math.max(0, this.player.health - 2);
-      }
-      if (impact > 170) {
-        const spark = this.add.circle((a.x + b.x) / 2, (a.y + b.y) / 2, 5, 0xffb463, 0.9).setDepth(25);
-        this.tweens.add({ targets: spark, alpha: 0, scale: 4.5, duration: 300, onComplete: () => spark.destroy() });
-        this.cameras.main.shake(80, 0.0045);
-      }
-    });
-
-    this.input.keyboard.on('keydown-E', () => this.vehicles.tryEnterOrExit());
-    this.input.keyboard.on('keydown-SPACE', () => {
-      if (this.paused) return;
-      const hit = this.npcs.attackNearby();
-      if (hit) this.player.health = Math.max(this.player.health - 1, 0);
-    });
-
-    this.input.keyboard.on('keydown-ESC', () => {
-      this.paused = !this.paused;
-      document.getElementById('pauseOverlay')?.classList.toggle('hidden', !this.paused);
-    });
-
-    this.setupDevMode();
-
-    this.cameras.main.startFollow(this.player.sprite, true, 0.12, 0.12);
-    this.cameras.main.setZoom(1.42);
-    this.cameras.main.setRotation(-0.02);
-    this.cameras.main.setBounds(0, 0, cfg.worldWidth, cfg.worldHeight);
-
-    this.vignette = this.add.rectangle(cfg.worldWidth / 2, cfg.worldHeight / 2, cfg.worldWidth, cfg.worldHeight, 0x03070f, 0.12)
-      .setDepth(40)
-      .setScrollFactor(1);
-
-    this.neonSweep = this.add.rectangle(cfg.worldWidth * 0.2, cfg.worldHeight * 0.15, 420, 120, 0x4fd0ff, 0.05)
-      .setDepth(39)
-      .setScrollFactor(1)
-      .setRotation(-0.4);
-    this.tweens.add({ targets: this.neonSweep, x: cfg.worldWidth * 0.85, y: cfg.worldHeight * 0.75, alpha: 0.02, duration: 7000, yoyo: true, repeat: -1 });
-
-    this.time.addEvent({
-      delay: 14000,
-      loop: true,
-      callback: () => {
-        if (Math.random() < 0.45) this.triggerRandomChaos();
-      }
-    });
-
-    this.time.addEvent({ delay: 18000, loop: true, callback: () => this.player.decayWanted() });
-  }
-
-  setupDevMode() {
-    this.devMode = false;
-    this.input.keyboard.on('keydown', (ev) => {
-      if (ev.ctrlKey && ev.altKey && ev.code === 'KeyZ') {
-        this.devMode = !this.devMode;
-        this.toggleDevPanel(this.devMode);
-      }
-    });
-  }
-
-  toggleDevPanel(enabled) {
-    let panel = document.getElementById('devPanel');
-    if (!enabled) {
-      panel?.remove();
-      return;
-    }
-
-    if (panel) return;
-    panel = document.createElement('div');
-    panel.id = 'devPanel';
-    panel.className = 'dev-panel';
-    panel.innerHTML = `
-      <button data-act="vehicle">Spawn Vehicle</button>
-      <button data-act="police">Spawn Police</button>
-      <button data-act="chaos">Trigger Chaos</button>
-      <button data-act="teleport">Teleport Player</button>
-    `;
-
-    panel.addEventListener('click', (e) => {
-      const act = e.target.dataset.act;
-      const target = this.player.inVehicle || this.player.sprite;
-      if (act === 'vehicle') this.vehicles.spawnVehicle(target.x + 30, target.y + 30);
-      if (act === 'police') this.police.spawnNear(target.x, target.y);
-      if (act === 'chaos') this.triggerRandomChaos(true);
-      if (act === 'teleport') {
-        const p = this.worldGen.randomRoadPoint();
-        target.setPosition(p.x, p.y);
-      }
-    });
-
-    document.querySelector('.game-wrap')?.appendChild(panel);
-  }
-
-  triggerRandomChaos(force = false) {
-    const now = this.time.now;
-    if (!force && now < this.lastChaosEvent + 5000) return;
-    this.lastChaosEvent = now;
-
-    const roll = Phaser.Math.Between(1, 3);
-    if (roll === 1) this.npcs.chaosFight();
-    if (roll === 2) {
-      this.police.triggerRaid();
-      this.player.increaseWanted(1);
-    }
-    if (roll === 3) {
-      const p = this.worldGen.randomRoadPoint();
-      this.vehicles.spawnVehicle(p.x, p.y).setVelocity(Phaser.Math.Between(-160, 160), Phaser.Math.Between(-160, 160));
-    }
-  }
-
-  update() {
-    if (this.paused) return;
-
-    this.player.update();
-    this.vehicles.update(this.player.cursors);
-    this.npcs.update(this.time.now);
-    this.police.update(this.time.now);
-    this.missions.update();
-
-    if (this.player.health <= 0) {
-      this.player.health = 100;
-      this.player.wanted = 0;
-      const p = this.worldGen.randomRoadPoint();
-      this.player.sprite.setPosition(p.x, p.y);
-      this.player.inVehicle = null;
-    }
-
-    this.hud.render();
-  }
+function clampInside(v, max) {
+  v.x = Math.max(-max, Math.min(max, v.x));
+  v.z = Math.max(-max, Math.min(max, v.z));
 }
 
 function boot() {
   const mount = document.getElementById('gtaGame');
-  if (!mount) return;
-
   const playBtn = document.getElementById('playBtn');
-  const launch = () => {
-    if (window.__bzGtaStarted) return;
-    window.__bzGtaStarted = true;
+  if (!mount || !playBtn) return;
 
-    new Phaser.Game({
-      type: Phaser.AUTO,
-      width: cfg.width,
-      height: cfg.height,
-      parent: 'gtaGame',
-      backgroundColor: '#101826',
-      physics: { default: 'arcade', arcade: { debug: false } },
-      scene: [SandboxScene]
+  playBtn.addEventListener('click', () => {
+    if (window.__bzGta3d) return;
+    window.__bzGta3d = true;
+    playBtn.remove();
+
+    const engine = new RendererEngine(mount, cfg);
+    const world = new WorldGenerator(engine.scene, cfg);
+    world.build();
+
+    const player = new PlayerSystem(engine.scene);
+    player.create(world.randomSpawn());
+
+    const vehicles = new VehicleSystem(engine.scene, player, world);
+    vehicles.create();
+
+    const npcs = new NPCSystem(engine.scene, player, world);
+    npcs.create();
+
+    const police = new PoliceSystem(engine.scene, player, world);
+    const missions = new MissionSystem(engine.scene, player, world);
+    missions.newMission();
+
+    const hud = new HUD(player, missions);
+
+    const clock = new THREE.Clock();
+    let lastWantedDecay = 0;
+    let lastChaos = 0;
+
+    const tick = () => {
+      requestAnimationFrame(tick);
+      const dt = Math.min(0.035, clock.getDelta());
+      const now = performance.now();
+      if (paused) return engine.render();
+
+      player.update(keys, dt);
+      const pos = player.inVehicle ? player.inVehicle.mesh.position : player.mesh.position;
+
+      vehicles.update(keys, dt);
+      npcs.update(dt, now);
+      police.update(dt, now);
+      missions.update(dt, now);
+
+      if (now - lastWantedDecay > 18000) {
+        lastWantedDecay = now;
+        player.decayWanted();
+      }
+
+      if (now - lastChaos > 13000) {
+        lastChaos = now;
+        const roll = Math.floor(Math.random() * 3);
+        if (roll === 0) npcs.chaosFight();
+        if (roll === 1) police.triggerRaid(pos);
+        if (roll === 2) vehicles.spawnVehicle(pos.x + (Math.random() - 0.5) * 25, pos.z + (Math.random() - 0.5) * 25, false);
+      }
+
+      clampInside(pos, cfg.worldSize / 2 - 8);
+      if (player.health <= 0) {
+        player.health = 100;
+        player.wanted = 0;
+        const s = world.randomSpawn();
+        if (player.inVehicle) player.inVehicle = null;
+        player.mesh.position.set(s.x, 2.2, s.z);
+      }
+
+      engine.follow(player.inVehicle ? player.inVehicle.mesh : player.mesh);
+      hud.render();
+      engine.render();
+    };
+
+    function toggleDevPanel(on) {
+      if (!on) return devPanel?.remove();
+      if (devPanel) return;
+      devPanel = document.createElement('div');
+      devPanel.className = 'dev-panel';
+      devPanel.innerHTML = `
+        <button data-act="vehicle">Spawn Vehicle</button>
+        <button data-act="police">Spawn Police</button>
+        <button data-act="chaos">Trigger Chaos</button>
+        <button data-act="teleport">Teleport Player</button>
+      `;
+      devPanel.addEventListener('click', (e) => {
+        const act = e.target.dataset.act;
+        const p = player.inVehicle ? player.inVehicle.mesh.position : player.mesh.position;
+        if (act === 'vehicle') vehicles.spawnVehicle(p.x + 10, p.z + 6, false);
+        if (act === 'police') police.spawnNear(p);
+        if (act === 'chaos') npcs.chaosFight();
+        if (act === 'teleport') {
+          const s = world.randomSpawn();
+          (player.inVehicle ? player.inVehicle.mesh.position : player.mesh.position).set(s.x, player.inVehicle ? 0 : 2.2, s.z);
+        }
+      });
+      document.querySelector('.game-wrap')?.appendChild(devPanel);
+    }
+
+    window.addEventListener('keydown', (e) => {
+      keys[e.code] = true;
+      if (e.code === 'KeyE') vehicles.tryEnterOrExit(player.mesh.position);
+      if (e.code === 'Space') npcs.attackNearby(player.inVehicle ? player.inVehicle.mesh.position : player.mesh.position);
+      if (e.code === 'Escape') {
+        paused = !paused;
+        document.getElementById('pauseOverlay')?.classList.toggle('hidden', !paused);
+      }
+      if (e.ctrlKey && e.altKey && e.code === 'KeyZ') {
+        devMode = !devMode;
+        toggleDevPanel(devMode);
+      }
     });
-    playBtn?.remove();
-  };
 
-  playBtn?.addEventListener('click', launch);
+    window.addEventListener('keyup', (e) => { keys[e.code] = false; });
+
+    tick();
+  });
 }
 
 boot();

@@ -1,54 +1,51 @@
+import * as THREE from 'https://unpkg.com/three@0.161.0/build/three.module.js';
+
 export class PoliceSystem {
   constructor(scene, player, world) {
     this.scene = scene;
     this.player = player;
     this.world = world;
-    this.cops = null;
+    this.cops = [];
     this.lastSpawn = 0;
   }
 
-  create() {
-    const g = this.scene.add.graphics();
-    g.fillStyle(0x000000, 0.25).fillEllipse(8, 14, 10, 4);
-    g.fillStyle(0x5aa1ff, 1).fillCircle(8, 6, 4);
-    g.fillStyle(0x27457a, 1).fillRoundedRect(4, 9, 8, 7, 2);
-    g.fillStyle(0xff4862, 0.9).fillRect(5, 9, 2, 2);
-    g.fillStyle(0x63c0ff, 0.9).fillRect(9, 9, 2, 2);
-    g.generateTexture('copTex', 16, 18);
-    g.destroy();
-    this.cops = this.scene.physics.add.group();
+  spawnNear(targetPos) {
+    const p = targetPos.clone();
+    p.x += (Math.random() - 0.5) * 80;
+    p.z += (Math.random() - 0.5) * 80;
+
+    const mesh = new THREE.Mesh(
+      new THREE.BoxGeometry(4.6, 1.7, 8.6),
+      new THREE.MeshStandardMaterial({ color: 0x2f5bff, emissive: 0x101a44, emissiveIntensity: 0.6 })
+    );
+    mesh.position.set(p.x, 1.7, p.z);
+    mesh.castShadow = true;
+    this.scene.add(mesh);
+    this.cops.push({ mesh, vel: new THREE.Vector3() });
   }
 
-  update(now) {
-    const wanted = this.player.wanted;
-    const target = this.player.inVehicle || this.player.sprite;
-
-    if (wanted > 0 && now > this.lastSpawn + 4000 && this.cops.countActive(true) < wanted * 3) {
+  update(dt, now) {
+    const target = this.player.inVehicle ? this.player.inVehicle.mesh.position : this.player.mesh.position;
+    if (this.player.wanted > 0 && now - this.lastSpawn > 3200 && this.cops.length < this.player.wanted * 3) {
       this.lastSpawn = now;
-      this.spawnNear(target.x, target.y);
+      this.spawnNear(target);
     }
 
-    this.cops.children.iterate((cop) => {
-      if (!cop.active) return;
-      const angle = Phaser.Math.Angle.Between(cop.x, cop.y, target.x, target.y);
-      const speed = 95 + wanted * 35;
-      cop.setVelocity(Math.cos(angle) * speed, Math.sin(angle) * speed);
-      cop.rotation = angle;
-      cop.setTint(((now >> 7) % 2 === 0) ? 0xff8aa0 : 0x7ec3ff);
+    this.cops.forEach((c, i) => {
+      const dir = target.clone().sub(c.mesh.position).setY(0);
+      if (dir.lengthSq() > 0) dir.normalize();
+      c.vel.lerp(dir.multiplyScalar(14 + this.player.wanted * 4), 0.14);
+      c.mesh.position.addScaledVector(c.vel, dt);
+      c.mesh.rotation.y = Math.atan2(c.vel.x, c.vel.z);
+      c.mesh.material.emissive.setHex(((now >> 7) % 2 === 0) ? 0x3a1020 : 0x10293f);
+
+      if (c.mesh.position.distanceTo(target) < 5.5) this.player.health -= 12 * dt;
+      if (i > 18) c.mesh.visible = false;
     });
   }
 
-  spawnNear(x, y) {
-    const offset = Phaser.Math.Between(180, 300);
-    const cop = this.cops.create(x + Phaser.Math.Between(-offset, offset), y + Phaser.Math.Between(-offset, offset), 'copTex');
-    cop.setDepth(9);
-    cop.setCollideWorldBounds(true);
-    return cop;
-  }
-
-  triggerRaid() {
-    const target = this.player.inVehicle || this.player.sprite;
-    for (let i = 0; i < 3; i++) this.spawnNear(target.x, target.y);
+  triggerRaid(targetPos) {
+    for (let i = 0; i < 3; i++) this.spawnNear(targetPos);
     this.player.increaseWanted(1);
   }
 }

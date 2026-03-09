@@ -1,3 +1,5 @@
+import * as THREE from 'https://unpkg.com/three@0.161.0/build/three.module.js';
+
 export class MissionSystem {
   constructor(scene, player, world) {
     this.scene = scene;
@@ -7,47 +9,47 @@ export class MissionSystem {
     this.marker = null;
   }
 
-  create() {
-    const g = this.scene.add.graphics();
-    g.fillStyle(0x34ff9b, 1).fillCircle(8, 8, 8);
-    g.generateTexture('missionMarker', 16, 16);
-    g.destroy();
-    this.newMission();
-  }
-
   newMission() {
     const types = ['steal_car', 'escape_police', 'deliver_vehicle', 'collect_cash'];
-    const type = Phaser.Utils.Array.GetRandom(types);
+    const type = types[Math.floor(Math.random() * types.length)];
+    const p = this.world.randomSpawn();
 
-    this.current = { type, done: false, reward: Phaser.Math.Between(120, 280), label: '' };
-    const p = this.world.randomRoadPoint();
-    if (this.marker) this.marker.destroy();
-    this.marker = this.scene.add.image(p.x, p.y, 'missionMarker').setDepth(5);
-    this.scene.tweens.add({ targets: this.marker, scale: 1.35, alpha: 0.45, duration: 700, yoyo: true, repeat: -1 });
+    if (this.marker) this.scene.remove(this.marker);
+    this.marker = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.8, 0.8, 0.3, 20),
+      new THREE.MeshStandardMaterial({ color: 0x31ff9b, emissive: 0x0b5e37, emissiveIntensity: 0.8 })
+    );
+    this.marker.position.set(p.x, 0.35, p.z);
+    this.scene.add(this.marker);
 
-    if (type === 'steal_car') this.current.label = 'Mission: Steal any parked car';
-    if (type === 'escape_police') this.current.label = 'Mission: Lose all wanted stars';
-    if (type === 'deliver_vehicle') this.current.label = 'Mission: Bring a stolen car to green marker';
-    if (type === 'collect_cash') this.current.label = 'Mission: Collect $250 from chaos';
+    const label = {
+      steal_car: 'Mission: Steal any parked car',
+      escape_police: 'Mission: Lose all wanted stars',
+      deliver_vehicle: 'Mission: Deliver stolen car to marker',
+      collect_cash: 'Mission: Collect $250 from chaos'
+    }[type];
+
+    this.current = { type, label, reward: 120 + Math.floor(Math.random() * 180) };
   }
 
-  update() {
-    if (!this.current || this.current.done) return;
+  update(dt, t) {
+    if (!this.current) this.newMission();
+    if (this.marker) {
+      this.marker.position.y = 0.35 + Math.sin(t * 0.004) * 0.12;
+      this.marker.rotation.y += dt * 1.1;
+    }
 
     const p = this.player;
+    if (!this.current) return;
     if (this.current.type === 'steal_car' && p.inVehicle) this.complete();
     if (this.current.type === 'escape_police' && p.wanted === 0) this.complete();
     if (this.current.type === 'collect_cash' && p.cash >= 250) this.complete();
-
-    if (this.current.type === 'deliver_vehicle' && p.inVehicle) {
-      const d = Phaser.Math.Distance.Between(p.inVehicle.x, p.inVehicle.y, this.marker.x, this.marker.y);
-      if (d < 28) this.complete();
-    }
+    if (this.current.type === 'deliver_vehicle' && p.inVehicle && this.marker && p.inVehicle.mesh.position.distanceTo(this.marker.position) < 7) this.complete();
   }
 
   complete() {
-    this.current.done = true;
     this.player.addCash(this.current.reward);
-    this.scene.time.delayedCall(900, () => this.newMission());
+    this.current = null;
+    setTimeout(() => this.newMission(), 900);
   }
 }
