@@ -8,6 +8,7 @@ export class WorldGenerator {
     this.parks = [];
     this.roadNodes = [];
     this.props = [];
+    this.blockers = [];
   }
 
   build() {
@@ -78,6 +79,7 @@ export class WorldGenerator {
             park.receiveShadow = true;
             this.scene.add(park);
             this.parks.push({ x, z });
+            this.blockers.push({ x, z, w: block * 0.78, d: block * 0.78, type: 'park' });
 
             for (let i = 0; i < 3; i++) {
               const tree = new THREE.Mesh(
@@ -101,6 +103,7 @@ export class WorldGenerator {
             b.castShadow = true;
             b.receiveShadow = true;
             this.scene.add(b);
+            this.blockers.push({ x: b.position.x, z: b.position.z, w, d, type: 'building' });
           }
         }
       }
@@ -151,5 +154,23 @@ export class WorldGenerator {
       if (d < bestD) { bestD = d; best = n; }
     }
     return best || this.randomRoadNode();
+  }
+
+  resolveCollision(pos, radius = 2) {
+    let collided = false;
+    for (const b of this.blockers) {
+      const hw = b.w / 2 + radius;
+      const hd = b.d / 2 + radius;
+      const dx = pos.x - b.x;
+      const dz = pos.z - b.z;
+      if (Math.abs(dx) < hw && Math.abs(dz) < hd) {
+        collided = true;
+        const px = hw - Math.abs(dx);
+        const pz = hd - Math.abs(dz);
+        if (px < pz) pos.x += dx >= 0 ? px : -px;
+        else pos.z += dz >= 0 ? pz : -pz;
+      }
+    }
+    return collided;
   }
 }

@@ -53,7 +53,7 @@ function boot() {
     const missions = new MissionSystem(engine.scene, player, world);
     missions.newMission();
 
-    const hud = new HUD(player, missions);
+    const hud = new HUD(player, missions, cfg);
 
     const clock = new THREE.Clock();
     let lastWantedDecay = 0;
@@ -61,6 +61,20 @@ function boot() {
 
     const fxBursts = [];
     const projectiles = [];
+    const pickups = [];
+    let shotCooldown = 0;
+
+    const pickupGeo = new THREE.BoxGeometry(1.2, 1.2, 1.2);
+    const healthMat = new THREE.MeshBasicMaterial({ color: 0x52ff8f });
+    const armorMat = new THREE.MeshBasicMaterial({ color: 0x59b6ff });
+    for (let i = 0; i < 14; i++) {
+      const s = world.randomRoadNode();
+      const type = Math.random() < 0.6 ? 'health' : 'armor';
+      const mesh = new THREE.Mesh(pickupGeo, type === 'health' ? healthMat : armorMat);
+      mesh.position.set(s.x + (Math.random() - 0.5) * 6, 1, s.z + (Math.random() - 0.5) * 6);
+      engine.scene.add(mesh);
+      pickups.push({ mesh, type, active: true });
+    }
 
     const tick = () => {
       requestAnimationFrame(tick);
@@ -68,9 +82,17 @@ function boot() {
       const now = performance.now();
       if (paused) return engine.render(now);
 
+      shotCooldown = Math.max(0, shotCooldown - dt);
       player.update(keys, dt);
       const pos = player.inVehicle ? player.inVehicle.mesh.position : player.mesh.position;
       const facing = player.inVehicle ? player.inVehicle.mesh.rotation.y : player.mesh.rotation.y;
+
+      // hard collisions vs world blockers
+      const collided = world.resolveCollision(pos, player.inVehicle ? 3.2 : 1.8);
+      if (collided && player.inVehicle) {
+        player.inVehicle.vel.multiplyScalar(0.82);
+        player.health = Math.max(0, player.health - 4 * dt);
+      }
 
       vehicles.update(keys, dt);
       npcs.update(dt, now);
@@ -187,6 +209,17 @@ function boot() {
         }
       }
 
+      for (const p of pickups) {
+        if (!p.active) continue;
+        p.mesh.rotation.y += dt * 1.6;
+        if (p.mesh.position.distanceTo(pos) < 3.2) {
+          p.active = false;
+          p.mesh.visible = false;
+          if (p.type === 'health') player.health = Math.min(100, player.health + 28);
+          else player.health = Math.min(100, player.health + 14);
+        }
+      }
+
       clampInside(pos, cfg.worldSize / 2 - 8);
       if (player.health <= 0) {
         player.health = 100;
@@ -197,7 +230,12 @@ function boot() {
       }
 
       engine.follow(player.inVehicle ? player.inVehicle.mesh : player.mesh);
-      hud.render();
+      hud.render({
+        player: { x: pos.x, z: pos.z },
+        cops: police.cops.map((c) => ({ x: c.mesh.position.x, z: c.mesh.position.z })),
+        vehicles: vehicles.vehicles.map((v) => ({ x: v.mesh.position.x, z: v.mesh.position.z })),
+        mission: missions.marker ? { x: missions.marker.position.x, z: missions.marker.position.z } : null
+      });
       engine.render(now);
     };
 
@@ -230,6 +268,9 @@ function boot() {
       keys[e.code] = true;
       if (e.code === 'KeyE') vehicles.tryEnterOrExit(player.mesh.position);
       if (e.code === 'Space') {
+        if (shotCooldown > 0) return;
+        shotCooldown = 0.14;
+
         const atkPos = player.inVehicle ? player.inVehicle.mesh.position : player.mesh.position;
         const hit = npcs.attackNearby(atkPos);
 
@@ -248,8 +289,13 @@ function boot() {
         );
         bullet.position.copy(muzzle.position);
         engine.scene.add(bullet);
-        const dir = new THREE.Vector3(Math.sin(facingNow), 0, Math.cos(facingNow)).normalize();
+        const spread = (Math.random() - 0.5) * 0.11;
+        const dir = new THREE.Vector3(Math.sin(facingNow + spread), 0, Math.cos(facingNow + spread)).normalize();
         projectiles.push({ mesh: bullet, vel: dir.multiplyScalar(95), ttl: 0.9 });
+
+        // recoil kick
+        if (player.inVehicle) player.inVehicle.vel.addScaledVector(dir, -1.4);
+        else player.mesh.position.addScaledVector(dir, -0.24);
 
         if (hit) {
           const flash = new THREE.Mesh(

@@ -143,6 +143,9 @@ export class VehicleSystem {
       }
 
       v.mesh.position.addScaledVector(v.vel, dt);
+      if (this.world.resolveCollision(v.mesh.position, 3.2)) {
+        v.vel.multiplyScalar(-0.28);
+      }
       v.vel.multiplyScalar(0.972);
 
       const spin = v.vel.length() * dt * 0.9;
