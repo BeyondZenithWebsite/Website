@@ -60,6 +60,7 @@ function boot() {
     let lastChaos = 0;
 
     const fxBursts = [];
+    const projectiles = [];
 
     const tick = () => {
       requestAnimationFrame(tick);
@@ -69,11 +70,67 @@ function boot() {
 
       player.update(keys, dt);
       const pos = player.inVehicle ? player.inVehicle.mesh.position : player.mesh.position;
+      const facing = player.inVehicle ? player.inVehicle.mesh.rotation.y : player.mesh.rotation.y;
 
       vehicles.update(keys, dt);
       npcs.update(dt, now);
       police.update(dt, now);
       missions.update(dt, now);
+
+      // projectile simulation + impacts
+      for (let i = projectiles.length - 1; i >= 0; i--) {
+        const pr = projectiles[i];
+        pr.ttl -= dt;
+        pr.mesh.position.addScaledVector(pr.vel, dt);
+
+        let hit = false;
+
+        for (const n of npcs.npcs) {
+          if (!n.alive) continue;
+          if (n.mesh.position.distanceTo(pr.mesh.position) < 2.2) {
+            n.alive = false;
+            n.mesh.visible = false;
+            player.addCash(25);
+            player.increaseWanted(1);
+            hit = true;
+            const decal = new THREE.Mesh(
+              new THREE.CircleGeometry(0.7, 10),
+              new THREE.MeshBasicMaterial({ color: 0x2b0f12, transparent: true, opacity: 0.65 })
+            );
+            decal.rotation.x = -Math.PI / 2;
+            decal.position.set(pr.mesh.position.x, 0.07, pr.mesh.position.z);
+            engine.scene.add(decal);
+            setTimeout(() => engine.scene.remove(decal), 5000);
+            break;
+          }
+        }
+
+        if (!hit) {
+          for (const c of police.cops) {
+            if (c.mesh.position.distanceTo(pr.mesh.position) < 2.8) {
+              c.vel.multiplyScalar(0.3);
+              c.mesh.material.emissive.setHex(0x5c0f0f);
+              hit = true;
+              player.increaseWanted(1);
+              break;
+            }
+          }
+        }
+
+        if (pr.ttl <= 0 || hit) {
+          engine.scene.remove(pr.mesh);
+          projectiles.splice(i, 1);
+          if (hit) {
+            const spark = new THREE.Mesh(
+              new THREE.SphereGeometry(0.5, 8, 8),
+              new THREE.MeshBasicMaterial({ color: 0xffcc80, transparent: true, opacity: 0.8 })
+            );
+            spark.position.copy(pr.mesh.position);
+            engine.scene.add(spark);
+            fxBursts.push({ mesh: spark, ttl: 0.14 });
+          }
+        }
+      }
 
       const impactPos = player.inVehicle ? player.inVehicle.mesh.position : null;
       if (impactPos) {
@@ -175,6 +232,25 @@ function boot() {
       if (e.code === 'Space') {
         const atkPos = player.inVehicle ? player.inVehicle.mesh.position : player.mesh.position;
         const hit = npcs.attackNearby(atkPos);
+
+        const facingNow = player.inVehicle ? player.inVehicle.mesh.rotation.y : player.mesh.rotation.y;
+        const muzzle = new THREE.Mesh(
+          new THREE.SphereGeometry(0.55, 8, 8),
+          new THREE.MeshBasicMaterial({ color: 0xffb766, transparent: true, opacity: 0.95 })
+        );
+        muzzle.position.set(atkPos.x + Math.sin(facingNow) * 2.2, 2.2, atkPos.z + Math.cos(facingNow) * 2.2);
+        engine.scene.add(muzzle);
+        fxBursts.push({ mesh: muzzle, ttl: 0.08 });
+
+        const bullet = new THREE.Mesh(
+          new THREE.SphereGeometry(0.22, 6, 6),
+          new THREE.MeshBasicMaterial({ color: 0xfff2cf })
+        );
+        bullet.position.copy(muzzle.position);
+        engine.scene.add(bullet);
+        const dir = new THREE.Vector3(Math.sin(facingNow), 0, Math.cos(facingNow)).normalize();
+        projectiles.push({ mesh: bullet, vel: dir.multiplyScalar(95), ttl: 0.9 });
+
         if (hit) {
           const flash = new THREE.Mesh(
             new THREE.SphereGeometry(0.9, 8, 8),
