@@ -6,7 +6,9 @@ export class PoliceSystem {
     this.player = player;
     this.world = world;
     this.cops = [];
+    this.roadblocks = [];
     this.lastSpawn = 0;
+    this.lastRoadblock = 0;
   }
 
   spawnNear(targetPos) {
@@ -31,6 +33,11 @@ export class PoliceSystem {
       this.spawnNear(target);
     }
 
+    if (this.player.wanted >= 3 && now - this.lastRoadblock > 12000 && this.roadblocks.length < 3) {
+      this.lastRoadblock = now;
+      this.spawnRoadblock(target);
+    }
+
     this.cops.forEach((c, i) => {
       const toTarget = target.clone().sub(c.mesh.position).setY(0);
       const tangent = new THREE.Vector3(-toTarget.z, 0, toTarget.x).normalize();
@@ -44,6 +51,33 @@ export class PoliceSystem {
       if (c.mesh.position.distanceTo(target) < 5.5) this.player.health -= 12 * dt;
       if (i > 18) c.mesh.visible = false;
     });
+
+    this.roadblocks.forEach((rb) => {
+      if (!rb.active) return;
+      rb.ttl -= dt;
+      if (rb.ttl <= 0) {
+        rb.active = false;
+        rb.mesh.visible = false;
+        return;
+      }
+      const d = rb.mesh.position.distanceTo(target);
+      if (d < 6.5) {
+        this.player.health -= 28 * dt;
+        this.player.increaseWanted(1);
+      }
+    });
+  }
+
+  spawnRoadblock(targetPos) {
+    const n = this.world.nearestRoadNode(targetPos);
+    const mesh = new THREE.Mesh(
+      new THREE.BoxGeometry(10, 1.5, 1.8),
+      new THREE.MeshStandardMaterial({ color: 0x8a9099, emissive: 0x2f333a, emissiveIntensity: 0.5 })
+    );
+    mesh.position.set(n.x + (Math.random() - 0.5) * 8, 1.2, n.z + (Math.random() - 0.5) * 8);
+    mesh.rotation.y = Math.random() > 0.5 ? 0 : Math.PI / 2;
+    this.scene.add(mesh);
+    this.roadblocks.push({ mesh, ttl: 12, active: true });
   }
 
   triggerRaid(targetPos) {

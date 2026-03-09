@@ -53,7 +53,16 @@ export class VehicleSystem {
     g.position.set(x, 0, z);
     this.scene.add(g);
 
-    const v = { mesh: g, vel: new THREE.Vector3(), locked, driver: null, wheels, steer: 0 };
+    const v = {
+      mesh: g,
+      vel: new THREE.Vector3(),
+      locked,
+      driver: null,
+      wheels,
+      steer: 0,
+      aiTarget: this.world.randomRoadNode(),
+      aiCooldown: 0
+    };
     this.vehicles.push(v);
     return v;
   }
@@ -116,10 +125,21 @@ export class VehicleSystem {
         }
       }
 
-      if (this.player.inVehicle !== v && Math.random() < 0.006) {
-        const heading = new THREE.Vector3(Math.sin(v.mesh.rotation.y), 0, Math.cos(v.mesh.rotation.y));
-        v.vel.addScaledVector(heading, 0.6);
-        v.mesh.rotation.y += (Math.random() - 0.5) * 0.16;
+      if (this.player.inVehicle !== v) {
+        v.aiCooldown -= dt;
+        if (!v.aiTarget || v.mesh.position.distanceTo(new THREE.Vector3(v.aiTarget.x, 0, v.aiTarget.z)) < 6 || v.aiCooldown <= 0) {
+          v.aiTarget = this.world.randomRoadNode();
+          v.aiCooldown = 1.2 + Math.random() * 2;
+        }
+
+        const to = new THREE.Vector3(v.aiTarget.x - v.mesh.position.x, 0, v.aiTarget.z - v.mesh.position.z);
+        if (to.lengthSq() > 0.1) {
+          const desiredYaw = Math.atan2(to.x, to.z);
+          const yawDiff = Math.atan2(Math.sin(desiredYaw - v.mesh.rotation.y), Math.cos(desiredYaw - v.mesh.rotation.y));
+          v.mesh.rotation.y += THREE.MathUtils.clamp(yawDiff, -0.05, 0.05);
+          const heading = new THREE.Vector3(Math.sin(v.mesh.rotation.y), 0, Math.cos(v.mesh.rotation.y));
+          v.vel.addScaledVector(heading, 0.95);
+        }
       }
 
       v.mesh.position.addScaledVector(v.vel, dt);

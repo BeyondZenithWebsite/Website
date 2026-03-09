@@ -6,6 +6,8 @@ export class WorldGenerator {
     this.cfg = cfg;
     this.spawnPoints = [];
     this.parks = [];
+    this.roadNodes = [];
+    this.props = [];
   }
 
   build() {
@@ -37,6 +39,7 @@ export class WorldGenerator {
           r.receiveShadow = true;
           this.scene.add(r);
           if ((gx + gz) % 3 === 0) this.spawnPoints.push({ x, z });
+          this.roadNodes.push({ x, z, gx, gz });
 
           // lane marks
           if (Math.random() < 0.7) {
@@ -55,6 +58,17 @@ export class WorldGenerator {
           this.scene.add(curb1);
           const curb2 = curb1.clone(); curb2.position.z = z + block / 2 - 0.2; this.scene.add(curb2);
         } else {
+          if (Math.random() < 0.12) {
+            const prop = new THREE.Mesh(
+              new THREE.BoxGeometry(1.6, 1.6, 1.6),
+              new THREE.MeshStandardMaterial({ color: 0xd59652, roughness: 0.9 })
+            );
+            prop.position.set(x + (Math.random() - 0.5) * 10, 0.9, z + (Math.random() - 0.5) * 10);
+            prop.castShadow = true;
+            this.scene.add(prop);
+            this.props.push({ mesh: prop, hp: 2, alive: true });
+          }
+
           if (Math.random() < 0.22) {
             const park = new THREE.Mesh(
               new THREE.BoxGeometry(block * 0.78, 0.3, block * 0.78),
@@ -121,5 +135,21 @@ export class WorldGenerator {
 
   randomSpawn() {
     return this.spawnPoints[Math.floor(Math.random() * this.spawnPoints.length)] || { x: 0, z: 0 };
+  }
+
+  randomRoadNode() {
+    return this.roadNodes[Math.floor(Math.random() * this.roadNodes.length)] || { x: 0, z: 0, gx: 0, gz: 0 };
+  }
+
+  nearestRoadNode(pos) {
+    let best = null;
+    let bestD = Infinity;
+    for (const n of this.roadNodes) {
+      const dx = n.x - pos.x;
+      const dz = n.z - pos.z;
+      const d = dx * dx + dz * dz;
+      if (d < bestD) { bestD = d; best = n; }
+    }
+    return best || this.randomRoadNode();
   }
 }

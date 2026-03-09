@@ -75,6 +75,37 @@ function boot() {
       police.update(dt, now);
       missions.update(dt, now);
 
+      const impactPos = player.inVehicle ? player.inVehicle.mesh.position : null;
+      if (impactPos) {
+        for (const p of world.props) {
+          if (!p.alive) continue;
+          const d = p.mesh.position.distanceTo(impactPos);
+          if (d < 3.8 && player.inVehicle.vel.length() > 10) {
+            p.hp -= dt * 14;
+            if (p.hp <= 0) {
+              p.alive = false;
+              p.mesh.visible = false;
+              player.addCash(20);
+              const boom = new THREE.Mesh(
+                new THREE.SphereGeometry(1.2, 10, 10),
+                new THREE.MeshBasicMaterial({ color: 0xffb05d, transparent: true, opacity: 0.85 })
+              );
+              boom.position.copy(p.mesh.position).setY(1.2);
+              engine.scene.add(boom);
+              fxBursts.push({ mesh: boom, ttl: 0.28 });
+
+              // chain reaction
+              for (const q of world.props) {
+                if (!q.alive || q === p) continue;
+                if (q.mesh.position.distanceTo(p.mesh.position) < 6.5 && Math.random() < 0.45) {
+                  q.hp -= 1.4;
+                }
+              }
+            }
+          }
+        }
+      }
+
       if (now - lastWantedDecay > 18000) {
         lastWantedDecay = now;
         player.decayWanted();
