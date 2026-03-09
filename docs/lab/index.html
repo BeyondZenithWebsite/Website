@@ -33,12 +33,32 @@
         <a class="open" href="/lab/sidecraft/">Open experiment →</a>
       </article>
 
-      <article class="exp-card" aria-disabled="true">
-        <span class="tag">queued</span>
-        <h2>Ops Simulator</h2>
-        <p>Prototype slot reserved for delivery-risk simulation sandbox.</p>
+      <article class="exp-card">
+        <span class="tag">experiment_003</span>
+        <h2>Experimental Sandbox</h2>
+        <p>Compact GTA-style city chaos prototype with missions, wanted levels, vehicles, and police chases.</p>
+        <a class="open" href="/lab/gta/">Open experiment →</a>
       </article>
     </section>
+
+    <section class="exp-card sandbox-preview">
+      <span class="tag">live_embed</span>
+      <h2>Experimental Sandbox</h2>
+      <p>Play directly in Lab. Procedural city, emergent chaos events, and developer mode built in.</p>
+      <button id="sandboxLaunch" class="btn-lab">Play in-page</button>
+      <div id="sandboxEmbed" class="sandbox-embed" hidden>
+        <iframe src="/lab/gta/" title="Experimental Sandbox game" loading="lazy"></iframe>
+      </div>
+    </section>
   </main>
+
+  <script>
+    const launch = document.getElementById('sandboxLaunch');
+    const embed = document.getElementById('sandboxEmbed');
+    launch?.addEventListener('click', () => {
+      embed.hidden = false;
+      launch.remove();
+    });
+  </script>
 </body>
 </html>
