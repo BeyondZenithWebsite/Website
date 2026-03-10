@@ -1,9 +1,8 @@
 import { prisma } from '../config/db';
-import { MockStoryProvider } from '../providers/storyProvider';
-import { MockTTSProvider } from '../providers/ttsProvider';
+import { getStoryProvider, getTTSProvider } from '../providers/factory';
 
-const storyProvider = new MockStoryProvider();
-const ttsProvider = new MockTTSProvider();
+const storyProvider = getStoryProvider();
+const ttsProvider = getTTSProvider();
 
 export async function generateStoryForPoi(poiId: string) {
   const poi = await prisma.poi.findUnique({ where: { id: poiId } });

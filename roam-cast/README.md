@@ -49,6 +49,22 @@ Defaults run in mock mode (no paid APIs needed):
 - Cloud audio object storage (mock local URLs used)
 - Full moderation/verification workflow for generated stories
 
+## Deploy
+This repo is deploy-ready but not auto-deployed from this environment.
+
+### Suggested deploy targets
+- API: Render/Fly.io/Railway (Node + Postgres + Redis)
+- Web: Vercel (Next.js)
+- Mobile: Expo EAS build + TestFlight/Play internal track
+
+### Minimal production env
+- `DATABASE_URL`
+- `REDIS_URL`
+- `JWT_SECRET`
+- `STORY_PROVIDER` (`mock`|`openai`)
+- `TTS_PROVIDER` (`mock`|`openai`)
+- `OPENAI_API_KEY` (if using openai providers)
+
 ## Phase 2 suggestions
 - Offline queue/sync, richer recommendation engine, multilingual packs
 - Better background geofencing + battery-aware throttling
