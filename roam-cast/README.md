@@ -14,14 +14,18 @@ Location-aware audio storytelling MVP for Melbourne CBD.
 - `apps/mobile` — mobile app with roaming mode + map + audio story playback
 - `packages/types` — shared TS types/contracts
 
-## Quick start
+## Quick start (free, local-first)
 1. `cd roam-cast`
-2. `cp apps/api/.env.example apps/api/.env`
-3. `docker compose -f apps/api/docker-compose.yml up -d`
-4. `npm install`
-5. `npm run db:migrate`
-6. `npm run db:seed`
-7. Run apps:
+2. `./run-local.sh`
+3. In a second terminal: `npm run dev:mobile`
+
+Manual equivalent:
+1. `cp apps/api/.env.example apps/api/.env`
+2. `docker compose -f apps/api/docker-compose.yml up -d`
+3. `npm install`
+4. `npm run db:dev --workspace @roamcast/api`
+5. `npm run db:seed --workspace @roamcast/api`
+6. Run apps:
    - API: `npm run dev:api`
    - Web: `npm run dev:web`
    - Mobile: `npm run dev:mobile`
@@ -32,6 +36,16 @@ See `apps/api/.env.example`.
 Defaults run in mock mode (no paid APIs needed):
 - `STORY_PROVIDER=mock`
 - `TTS_PROVIDER=mock`
+
+## Mobile API URL (important)
+- iOS/Android simulator can use `http://localhost:4000`
+- Physical phone must use your Mac mini LAN IP.
+
+Example:
+```bash
+cd apps/mobile
+EXPO_PUBLIC_API_URL=http://192.168.1.20:4000 npm run start
+```
 
 ## Implemented
 - JWT demo auth and profile/preferences

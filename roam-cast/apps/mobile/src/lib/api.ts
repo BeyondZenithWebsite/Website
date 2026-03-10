@@ -1,4 +1,4 @@
-const API = 'http://localhost:4000';
+const API = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:4000';
 let token = '';
 export const setToken = (t: string) => (token = t);
 export async function api(path: string, init?: RequestInit) {
