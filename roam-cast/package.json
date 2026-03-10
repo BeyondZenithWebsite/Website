@@ -1,0 +1,19 @@
+{
+  "name": "roam-cast",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm --workspace @roamcast/api run dev",
+    "dev:web": "npm --workspace @roamcast/web run dev",
+    "dev:mobile": "npm --workspace @roamcast/mobile run start",
+    "build": "npm run -ws build",
+    "lint": "npm run -ws lint",
+    "test": "npm --workspace @roamcast/api run test",
+    "db:migrate": "npm --workspace @roamcast/api run db:migrate",
+    "db:seed": "npm --workspace @roamcast/api run db:seed"
+  }
+}

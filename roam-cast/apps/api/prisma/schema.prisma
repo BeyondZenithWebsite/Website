@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  history
+  architecture
+  culture
+  crime
+  famous_people
+  art
+  hidden_gems
+  food
+  pop_culture
+}
+
+enum InteractionAction {
+  prompted
+  accepted
+  dismissed
+  played
+  completed
+  skipped
+  expanded
+  favourited
+}
+
+model User {
+  id               String            @id @default(cuid())
+  email            String            @unique
+  passwordHash     String?
+  city             String            @default("Melbourne")
+  preferences      UserPreference[]
+  interactions     UserInteraction[]
+  roamingSessions  RoamingSession[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+}
+
+model UserPreference {
+  id        String   @id @default(cuid())
+  userId    String
+  category  Category
+  enabled   Boolean  @default(true)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, category])
+}
+
+model Poi {
+  id               String            @id @default(cuid())
+  slug             String            @unique
+  name             String
+  latitude         Float
+  longitude        Float
+  geom             Unsupported("geography(Point,4326)")?
+  address          String?
+  suburb           String?
+  city             String
+  country          String            @default("Australia")
+  category         Category
+  shortSummary     String
+  shortStory       String?
+  longStory        String?
+  transcript       String?
+  audioUrl         String?
+  sourceType       String?
+  sourceUrl        String?
+  confidenceScore  Float             @default(0.8)
+  interestScore    Float             @default(0.5)
+  tags             String[]
+  heroImageUrl     String?
+  isActive         Boolean           @default(true)
+  interactions     UserInteraction[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+}
+
+model UserInteraction {
+  id          String            @id @default(cuid())
+  userId      String
+  poiId       String
+  action      InteractionAction
+  sessionId   String?
+  metadata    Json?
+  createdAt   DateTime          @default(now())
+  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  poi         Poi               @relation(fields: [poiId], references: [id], onDelete: Cascade)
+
+  @@index([userId, poiId, createdAt])
+}
+
+model RoamingSession {
+  id                String   @id @default(cuid())
+  userId            String
+  active            Boolean  @default(true)
+  paused            Boolean  @default(false)
+  lastPromptAt      DateTime?
+  recentPoiIds      String[]
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

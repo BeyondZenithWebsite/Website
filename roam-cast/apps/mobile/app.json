@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "Roam Cast",
+    "slug": "roam-cast",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "ios": { "supportsTablet": true },
+    "android": {
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"]
+    }
+  }
+}
