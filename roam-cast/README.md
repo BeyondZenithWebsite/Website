@@ -50,12 +50,35 @@ Defaults run in mock mode (no paid APIs needed):
 - Full moderation/verification workflow for generated stories
 
 ## Deploy
-This repo is deploy-ready but not auto-deployed from this environment.
+This repo now includes deploy config for:
+- API on Render (`render.yaml` + `apps/api/Dockerfile`)
+- Web on Vercel (`apps/web/vercel.json`)
 
-### Suggested deploy targets
-- API: Render/Fly.io/Railway (Node + Postgres + Redis)
-- Web: Vercel (Next.js)
-- Mobile: Expo EAS build + TestFlight/Play internal track
+### 1) Deploy API (Render)
+1. Create Postgres and Redis in Render.
+2. New Blueprint deploy from this repo root (`render.yaml`).
+3. Set env vars:
+   - `DATABASE_URL` (Render Postgres internal URL)
+   - `REDIS_URL` (Render Redis internal URL)
+   - `JWT_SECRET` (auto-generated or custom)
+   - `STORY_PROVIDER=mock` and `TTS_PROVIDER=mock` for no-cost MVP mode
+4. Deploy service.
+5. Run DB setup once in Render shell:
+   - `npm run db:dev --workspace @roamcast/api` (or `db:migrate` with generated migration)
+   - `npm run db:seed --workspace @roamcast/api`
+
+### 2) Deploy Web (Vercel)
+1. Import this repo in Vercel.
+2. Root directory: `roam-cast`
+3. Framework: Next.js
+4. Set env var:
+   - `NEXT_PUBLIC_API_URL=https://<your-render-api-domain>`
+5. Deploy.
+
+### 3) Mobile (Expo)
+- Keep MVP mobile in local/internal distribution first:
+  - `npm run dev:mobile`
+- For hosted QA builds, configure EAS and point API base URL to deployed API domain.
 
 ### Minimal production env
 - `DATABASE_URL`

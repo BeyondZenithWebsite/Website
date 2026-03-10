@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: roam-cast-api
+    env: docker
+    dockerfilePath: ./apps/api/Dockerfile
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 4000
+      - key: STORY_PROVIDER
+        value: mock
+      - key: TTS_PROVIDER
+        value: mock
+      - key: WEB_ORIGIN
+        value: https://roam-cast-web.vercel.app
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+
