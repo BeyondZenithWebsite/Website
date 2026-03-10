@@ -840,11 +840,26 @@ h1 { font-size: clamp(2.35rem, 5vw, 3.8rem); }
 }
 .hero-grid-overlay { opacity: .45; }
 
-.ops-diagram { margin-top: .9rem; padding-top: .6rem; border-top: 1px solid var(--line); }
-.ops-diagram svg { width: 100%; height: auto; }
-.ops-diagram path, .ops-diagram circle { stroke: #2f5bff; fill: #dfe8ff; opacity: .85; }
-.ops-diagram path { fill: none; stroke-dasharray: 120; stroke-dashoffset: 120; animation: opsFlow 3.2s ease-in-out infinite; }
-@keyframes opsFlow { 0%,20%{stroke-dashoffset:120;} 60%,100%{stroke-dashoffset:0;} }
+.hero-visual {
+  margin: .95rem 0 0;
+  padding-top: .85rem;
+  border-top: 1px solid var(--line);
+}
+
+.hero-visual img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #cfddff;
+  box-shadow: 0 14px 30px rgba(33, 70, 216, 0.18);
+  background: #fff;
+}
+
+.hero-visual figcaption {
+  margin-top: .55rem;
+  font-size: .84rem;
+  color: var(--muted);
+}
 
 .card { border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
 .card:hover { box-shadow: 0 18px 40px rgba(0,0,0,0.14); transform: translateY(-6px); }
@@ -882,7 +897,6 @@ h1 { font-size: clamp(2.35rem, 5vw, 3.8rem); }
 .toc li a { text-decoration: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .ops-diagram path { animation: none !important; stroke-dashoffset: 0; }
   .floating-cta { transition: none !important; }
 }
 

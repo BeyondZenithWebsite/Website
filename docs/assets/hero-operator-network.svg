@@ -1,0 +1,68 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BeyondZenith delivery operating system visual">
+  <defs>
+    <linearGradient id="bg" x1="220" y1="90" x2="1330" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EAF1FF"/>
+      <stop offset="1" stop-color="#F7FAFF"/>
+    </linearGradient>
+    <linearGradient id="line" x1="352" y1="240" x2="1270" y2="628" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5E84FF"/>
+      <stop offset="1" stop-color="#2146D8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1160 160) rotate(130) scale(520 520)">
+      <stop stop-color="#AFC4FF" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#AFC4FF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="0" y="0" width="1600" height="900" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" rx="36" fill="url(#bg)"/>
+  <circle cx="1160" cy="160" r="420" fill="url(#glow)"/>
+
+  <g opacity="0.5">
+    <path d="M0 744H1600" stroke="#C8D8FF"/>
+    <path d="M0 654H1600" stroke="#C8D8FF"/>
+    <path d="M0 564H1600" stroke="#C8D8FF"/>
+    <path d="M0 474H1600" stroke="#C8D8FF"/>
+    <path d="M0 384H1600" stroke="#C8D8FF"/>
+    <path d="M0 294H1600" stroke="#C8D8FF"/>
+  </g>
+
+  <g stroke="url(#line)" stroke-width="5" stroke-linecap="round" opacity="0.9">
+    <path d="M230 640L490 510"/>
+    <path d="M490 510L760 588"/>
+    <path d="M760 588L1055 430"/>
+    <path d="M1055 430L1340 300"/>
+    <path d="M760 588L760 340" opacity="0.6"/>
+    <path d="M490 510L490 290" opacity="0.45"/>
+  </g>
+
+  <g fill="#2F5BFF">
+    <circle cx="230" cy="640" r="16"/>
+    <circle cx="490" cy="510" r="19"/>
+    <circle cx="760" cy="588" r="22"/>
+    <circle cx="1055" cy="430" r="18"/>
+    <circle cx="1340" cy="300" r="16"/>
+  </g>
+
+  <g fill="#2146D8" opacity="0.2" filter="url(#soft)">
+    <circle cx="230" cy="640" r="42"/>
+    <circle cx="490" cy="510" r="48"/>
+    <circle cx="760" cy="588" r="54"/>
+    <circle cx="1055" cy="430" r="46"/>
+    <circle cx="1340" cy="300" r="40"/>
+  </g>
+
+  <g font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" fill="#1C2D6B">
+    <text x="196" y="702" font-size="32" font-weight="600">Baseline</text>
+    <text x="425" y="568" font-size="32" font-weight="600">Stabilise</text>
+    <text x="700" y="650" font-size="32" font-weight="700">Govern</text>
+    <text x="1008" y="492" font-size="32" font-weight="600">Accelerate</text>
+    <text x="1275" y="360" font-size="32" font-weight="700">Scale</text>
+  </g>
+
+  <rect x="104" y="108" width="492" height="150" rx="20" fill="#FFFFFF" stroke="#D2E0FF"/>
+  <text x="142" y="172" fill="#1B2A66" font-size="36" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="700">Delivery Operating System</text>
+  <text x="142" y="214" fill="#3850A8" font-size="26" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="500">Architecture + cadence + accountability</text>
+</svg>
