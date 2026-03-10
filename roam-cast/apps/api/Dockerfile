@@ -11,4 +11,4 @@ COPY . .
 RUN npm run --workspace @roamcast/api build
 
 EXPOSE 4000
-CMD ["npm","run","--workspace","@roamcast/api","start"]
+CMD ["sh","apps/api/start-render.sh"]
