@@ -869,3 +869,20 @@ h1 { font-size: clamp(2.35rem, 5vw, 3.8rem); }
   .ops-diagram path { animation: none !important; stroke-dashoffset: 0; }
   .floating-cta { transition: none !important; }
 }
+
+.article-hero {
+  margin: 1rem 0 1.25rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 28px rgba(16, 24, 40, 0.12);
+  background: #fff;
+}
+
+.article-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
