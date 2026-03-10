@@ -8,6 +8,7 @@
   --line: #d9e2f2;
   --accent: #2f5bff;
   --accent-strong: #2146d8;
+  --accent-soft: #dbe6ff;
   --max: 1100px;
 }
 
@@ -19,7 +20,10 @@ body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.65;
   color: var(--text);
-  background: radial-gradient(1200px 600px at 75% -10%, #dce6ff 0%, transparent 55%), var(--bg);
+  background:
+    radial-gradient(1200px 700px at 80% -20%, #dce6ff 0%, transparent 58%),
+    radial-gradient(1000px 600px at -10% 20%, #e9f0ff 0%, transparent 60%),
+    var(--bg);
 }
 
 .container {
@@ -27,7 +31,7 @@ body {
   margin-inline: auto;
 }
 
-.section { padding: 4.5rem 0; }
+.section { padding: clamp(3.75rem, 6vw, 5.5rem) 0; }
 .section-muted { background: linear-gradient(180deg, #eff4ff 0%, #eaf1ff 100%); }
 
 .site-header {
@@ -155,10 +159,10 @@ p { max-width: 72ch; }
 .hero-card,
 .card {
   border: 1px solid var(--line);
-  background: var(--panel);
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
   border-radius: 16px;
   padding: 1.25rem;
-  box-shadow: 0 8px 26px rgba(16, 24, 40, 0.05);
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.07);
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
@@ -231,20 +235,32 @@ p { max-width: 72ch; }
   font-weight: 700;
   text-decoration: none;
   border: 1px solid transparent;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: #fff;
+  box-shadow: 0 10px 22px rgba(47, 91, 255, 0.28);
 }
 
 .btn-primary:hover,
-.btn-primary:focus { background: var(--accent-strong); }
+.btn-primary:focus {
+  background: linear-gradient(135deg, var(--accent-strong) 0%, #1c3fc4 100%);
+  transform: translateY(-1px);
+}
 
 .btn-secondary {
   border-color: var(--line);
   color: var(--text);
   background: var(--panel-2);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background: #eef3ff;
+  border-color: #c8d8ff;
+  transform: translateY(-1px);
 }
 
 a { color: var(--accent-strong); }
