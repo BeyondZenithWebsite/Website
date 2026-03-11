@@ -197,6 +197,17 @@ p { max-width: 72ch; }
 
 .card p { margin: 0; color: var(--muted); }
 
+.section-art {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #d5e1ff;
+  margin: 0 0 .8rem;
+  background: #fff;
+}
+
 .process-list {
   margin: 0;
   padding-left: 1.1rem;

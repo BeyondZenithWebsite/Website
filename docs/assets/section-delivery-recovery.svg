@@ -1,0 +1,14 @@
+<svg width="1200" height="680" viewBox="0 0 1200 680" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Delivery recovery visual">
+  <rect width="1200" height="680" rx="24" fill="#F2F6FF"/>
+  <path d="M80 520H1120" stroke="#C8D7FF" stroke-width="2"/>
+  <rect x="120" y="420" width="140" height="100" rx="12" fill="#DCE7FF"/>
+  <rect x="300" y="360" width="140" height="160" rx="12" fill="#BFD2FF"/>
+  <rect x="480" y="300" width="140" height="220" rx="12" fill="#9AB8FF"/>
+  <rect x="660" y="245" width="140" height="275" rx="12" fill="#6F95FF"/>
+  <rect x="840" y="175" width="140" height="345" rx="12" fill="#2F5BFF"/>
+  <path d="M120 250C220 230 330 250 430 220C530 190 640 130 740 150C840 170 930 120 1080 80" stroke="#1F46D8" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="120" cy="250" r="11" fill="#1F46D8"/>
+  <circle cx="430" cy="220" r="11" fill="#1F46D8"/>
+  <circle cx="740" cy="150" r="11" fill="#1F46D8"/>
+  <circle cx="1080" cy="80" r="11" fill="#1F46D8"/>
+</svg>
