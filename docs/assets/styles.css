@@ -1380,3 +1380,55 @@ main.section .infographic {
     min-width: 15rem;
   }
 }
+
+/* Visual sprint: navigation + long-form scanability refinements */
+@media (max-width: 680px) {
+  .nav {
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav li {
+    scroll-snap-align: start;
+  }
+}
+
+main.section .toc li {
+  break-inside: avoid;
+}
+
+main.section .toc li a {
+  align-items: flex-start;
+  padding-top: .52rem;
+  padding-bottom: .52rem;
+}
+
+@media (min-width: 980px) {
+  main.section .toc ul {
+    columns: 2;
+    column-gap: .75rem;
+  }
+
+  main.section .toc li {
+    margin-bottom: .38rem;
+  }
+}
+
+main.section .container > section:target {
+  border-left: 3px solid #b9cbff;
+  padding-left: .8rem;
+}
+
+.article-hero img,
+.infographic {
+  box-shadow: 0 12px 28px rgba(16, 24, 40, 0.12);
+}
+
+.home-v2 .note,
+.home-v2 .article-meta {
+  color: #c8d6ef;
+}
