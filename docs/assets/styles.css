@@ -1475,3 +1475,48 @@ main.section .note {
     padding-bottom: max(7.2rem, calc(6.2rem + env(safe-area-inset-bottom)));
   }
 }
+
+/* Visual sprint: cross-template visual hierarchy + interaction clarity */
+main.section .cta-row {
+  align-items: stretch;
+}
+
+main.section .cta-row .btn-primary {
+  box-shadow: 0 12px 26px rgba(33, 70, 216, 0.24);
+}
+
+main.section .cta-row .btn-primary:hover,
+main.section .cta-row .btn-primary:focus-visible {
+  box-shadow: 0 15px 30px rgba(33, 70, 216, 0.32);
+}
+
+main.section .cta-row .btn-secondary {
+  color: #0f2f8f;
+}
+
+main.section a:not(.btn):not(.brand):not(.floating-cta) {
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.15em;
+}
+
+main.section a:not(.btn):not(.brand):not(.floating-cta):hover,
+main.section a:not(.btn):not(.brand):not(.floating-cta):focus-visible {
+  text-decoration-thickness: 2px;
+}
+
+.article-hero,
+.infographic,
+.section-art {
+  border-color: #c5d6ff;
+}
+
+.article-hero img,
+.infographic,
+.section-art {
+  box-shadow: 0 14px 32px rgba(16, 24, 40, 0.14);
+}
+
+.floating-cta:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 3px;
+}
