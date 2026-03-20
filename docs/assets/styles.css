@@ -582,6 +582,11 @@ summary:focus-visible {
 
   .nav a { font-size: 0.86rem; white-space: nowrap; }
 
+  .cta-row .btn {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
   .floating-cta {
     left: 1rem;
     right: 1rem;
