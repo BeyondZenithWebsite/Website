@@ -1130,6 +1130,15 @@ details ul {
   color: #d4e2ff;
 }
 
+.home-v2 .hero .cta-row .btn-primary {
+  box-shadow: 0 16px 30px rgba(75, 130, 237, 0.4);
+}
+
+.home-v2 .hero .cta-row .btn-secondary {
+  background: rgba(12, 23, 46, 0.72);
+  border-color: rgba(130, 170, 245, 0.3);
+}
+
 .home-v2 .section-muted {
   background: linear-gradient(180deg, rgba(10, 18, 38, 0.72) 0%, rgba(7, 14, 30, 0.58) 100%);
 }
@@ -1294,6 +1303,39 @@ main.section h2 {
     overflow: auto;
     scrollbar-gutter: stable;
   }
+}
+
+/* Visual sprint: TOC scanability + long-form rhythm */
+.toc ul {
+  counter-reset: toc-item;
+}
+
+.toc li a::before {
+  counter-increment: toc-item;
+  content: counter(toc-item, decimal-leading-zero);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.1rem;
+  height: 1.65rem;
+  margin-right: .55rem;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 800;
+  color: #3555bf;
+  background: #e8efff;
+  border: 1px solid #cbd9ff;
+  letter-spacing: .02em;
+}
+
+main.section h2 + p,
+main.section h3 + p {
+  margin-top: .5rem;
+}
+
+main.section p + ul,
+main.section p + ol {
+  margin-top: .45rem;
 }
 
 .article-hero,
