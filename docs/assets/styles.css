@@ -920,7 +920,48 @@ h1 { font-size: clamp(2.35rem, 5vw, 3.8rem); }
 .floating-cta.is-hidden { opacity: 0; transform: translateY(10px); pointer-events:none; }
 
 .toc ul { margin: 0; padding-left: 1rem; display:grid; gap:.35rem; }
-.toc li a { text-decoration: none; }
+.toc li a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: .2rem .1rem;
+}
+
+/* UX pass: improve readability + touch targets on service/insight pages */
+main.section .container {
+  max-width: 78ch;
+}
+
+main.section .container > section,
+main.section .container > nav {
+  scroll-margin-top: 5.5rem;
+}
+
+main.section p,
+main.section li {
+  line-height: 1.72;
+}
+
+.btn,
+.floating-cta {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+details summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding-right: .35rem;
+}
+
+details p,
+details ul {
+  margin-left: .1rem;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .floating-cta { transition: none !important; }
