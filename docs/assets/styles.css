@@ -1347,3 +1347,36 @@ main.section p + ol {
 .cta-row .btn-primary {
   min-width: 12.5rem;
 }
+
+/* Visual sprint: tighter CTA hierarchy + mobile comfort */
+main.section .cta-row {
+  margin-top: 1.05rem;
+  gap: 0.8rem;
+}
+
+main.section .cta-row .btn {
+  min-height: 48px;
+  padding: 0.76rem 1.05rem;
+}
+
+main.section .cta-row .btn-secondary {
+  background: #f4f7ff;
+  border-color: #c7d6ff;
+}
+
+main.section .cta-row .btn-secondary:hover,
+main.section .cta-row .btn-secondary:focus-visible {
+  background: #eaf1ff;
+  border-color: #afc3ff;
+}
+
+main.section .article-hero,
+main.section .infographic {
+  border-radius: 14px;
+}
+
+@media (min-width: 920px) {
+  main.section .cta-row .btn-primary {
+    min-width: 15rem;
+  }
+}
