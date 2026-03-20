@@ -102,4 +102,12 @@
   <p class="note">Related: <a href="../delivery-recovery.html">Delivery Recovery Framework</a> · <a href="../case-studies/delivery-recovery-30-90.html">Delivery recovery case study</a> · <a href="../insights/fractional-cto-vs-full-time.html">Fractional CTO vs full-time CTO</a></p>
 </div></main>
 <a class="floating-cta" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer" aria-label="Book strategy call">Book Strategy Call</a>
+
+<script>
+  document.querySelectorAll('[data-track]').forEach(el => {
+    el.addEventListener('click', () => {
+      if (window.gtag) gtag('event', el.dataset.track);
+    });
+  });
+</script>
 </body></html>
