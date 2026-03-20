@@ -14,14 +14,19 @@
 <meta name="twitter:description" content="A practical GEO playbook for consultants to increase citation in ChatGPT and Perplexity."/>
 <meta name="twitter:image" content="https://www.beyondzenith.org/assets/hero-geo-for-consulting-firms.svg"/>
 <link rel="stylesheet" href="../assets/styles.css?v=20260311e"/>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-EN8SF9CL6M');
+    const loadAnalytics = () => {
+      const s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M';
+      s.async = true;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-EN8SF9CL6M');
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(loadAnalytics, { timeout: 2500 });
+    else window.addEventListener('load', loadAnalytics, { once: true });
   </script>
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
@@ -78,11 +83,11 @@
   <p>Get a practical GEO + SEO action plan tied to pipeline outcomes, not vanity traffic.</p>
   <div class="cta-row">
     <a class="btn btn-primary" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
-    <a class="btn btn-secondary" href="../services/fractional-cto-consulting.html">See Fractional CTO service</a>
+    <a class="btn btn-secondary" data-track="fractional_cto_service_click" href="../services/fractional-cto-consulting.html">See Fractional CTO service</a>
   </div>
 </section>
 <aside class="author-box"><strong>About BeyondZenith</strong><p>BeyondZenith helps growth-stage teams improve technical decision quality, delivery predictability, and practical AI adoption.</p></aside>
-<section class="lead-magnet"><h3>Practical next step</h3><p>If this topic reflects your current bottleneck, choose the next diagnostic action below.</p><div class="cta-row"><a class="btn btn-secondary" href="../roi-calculator.html">Run the Delivery ROI Calculator</a><a class="btn btn-secondary" href="../cto-delivery-scorecard.html">Review the CTO Delivery Scorecard</a><a class="btn btn-secondary" href="../delivery-recovery-playbook.html">Download Delivery Recovery Guide</a></div></section></div></main>
+<section class="lead-magnet"><h3>Practical next step</h3><p>If this topic reflects your current bottleneck, choose the next diagnostic action below.</p><div class="cta-row"><a class="btn btn-secondary" data-track="roi_calculator_click" href="../roi-calculator.html">Run the Delivery ROI Calculator</a><a class="btn btn-secondary" data-track="cto_scorecard_click" href="../cto-delivery-scorecard.html">Review the CTO Delivery Scorecard</a><a class="btn btn-secondary" data-track="delivery_playbook_click" href="../delivery-recovery-playbook.html">Download Delivery Recovery Guide</a></div></section></div></main>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"GEO Playbook: How to Rank in AI Answers","description":"A practical GEO playbook for consultants: how to make your content appear in ChatGPT, Perplexity, and AI answer engines.","author":{"@type":"Organization","name":"BeyondZenith"},"publisher":{"@type":"Organization","name":"BeyondZenith"},"datePublished":"2026-03-01","dateModified":"2026-03-20","mainEntityOfPage":"https://www.beyondzenith.org/insights/geo-for-consulting-firms.html"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is GEO different from SEO?","acceptedAnswer":{"@type":"Answer","text":"Yes. SEO helps ranking in search results; GEO helps retrieval and citation inside AI-generated answers."}},{"@type":"Question","name":"What should we implement first?","acceptedAnswer":{"@type":"Answer","text":"FAQ blocks, schema, stronger internal linking, and pages that answer high-intent buyer questions directly."}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BeyondZenith","url":"https://www.beyondzenith.org/","logo":"https://www.beyondzenith.org/assets/logo-beyondzenith.png","email":"hello@beyondzenith.org"}</script>
