@@ -966,6 +966,27 @@ main.section li {
   line-height: 1.72;
 }
 
+main.section ul,
+main.section ol {
+  padding-left: 1.25rem;
+}
+
+main.section li + li {
+  margin-top: 0.38rem;
+}
+
+main.section li::marker {
+  color: #5875cf;
+}
+
+@media (min-width: 1024px) {
+  main.section .toc {
+    position: sticky;
+    top: 5.4rem;
+    z-index: 3;
+  }
+}
+
 .btn,
 .floating-cta {
   min-height: 44px;
