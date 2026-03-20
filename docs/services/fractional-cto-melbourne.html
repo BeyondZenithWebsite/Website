@@ -13,6 +13,20 @@
   <meta property="og:image" content="https://www.beyondzenith.org/assets/logo-beyondzenith.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="../assets/styles.css?v=20260311e" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    const loadAnalytics = () => {
+      const s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M';
+      s.async = true;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-EN8SF9CL6M');
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(loadAnalytics, { timeout: 2500 });
+    else window.addEventListener('load', loadAnalytics, { once: true });
+  </script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Fractional CTO Melbourne","provider":{"@type":"Organization","name":"BeyondZenith"},"areaServed":"Melbourne, Australia","serviceType":"fractional CTO services","url":"https://www.beyondzenith.org/services/fractional-cto-melbourne.html"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How quickly can a fractional CTO engagement start?","acceptedAnswer":{"@type":"Answer","text":"Most Melbourne engagements start with a strategy call and scoped first sprint, then kickoff within 1–2 weeks depending on urgency and calendar fit."}},{"@type":"Question","name":"Do you work with existing engineering leaders?","acceptedAnswer":{"@type":"Answer","text":"Yes. The model is designed to support current CTOs, Heads of Engineering, and technical founders by reducing decision latency and improving execution cadence."}},{"@type":"Question","name":"What outcomes should we expect in the first 90 days?","acceptedAnswer":{"@type":"Answer","text":"Typical outcomes include delivery risk visibility, tighter architecture decisions, and improved release predictability with clearer accountability."}}]}</script>
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
@@ -29,9 +43,9 @@
     <h2>Get a 30–90 day delivery recovery plan in one call</h2>
     <p>If deadlines are slipping, start with a focused strategy session. You leave with a concrete priority map: delivery risks, architecture bottlenecks, and the first intervention sequence.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
-      <a class="btn btn-secondary" href="../roi-calculator.html">Estimate delivery ROI</a>
-      <a class="btn btn-secondary" href="../case-studies/delivery-recovery-30-90.html">See 45-day case result</a>
+      <a class="btn btn-primary" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
+      <a class="btn btn-secondary" data-track="roi_calculator_click" href="../roi-calculator.html">Estimate delivery ROI</a>
+      <a class="btn btn-secondary" data-track="case_study_click" href="../case-studies/delivery-recovery-30-90.html">See 45-day case result</a>
     </div>
   </section>
 

@@ -16,6 +16,20 @@
   <meta name="twitter:description" content="Root causes, benchmarks, and a practical recovery checklist for engineering leaders." />
   <meta name="twitter:image" content="https://www.beyondzenith.org/assets/header-why-delivery-timelines-slip.svg" />
   <link rel="stylesheet" href="../assets/styles.css?v=20260320b" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    const loadAnalytics = () => {
+      const s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M';
+      s.async = true;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-EN8SF9CL6M');
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(loadAnalytics, { timeout: 2500 });
+    else window.addEventListener('load', loadAnalytics, { once: true });
+  </script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Why Engineering Teams Miss Deadlines","author":{"@type":"Organization","name":"BeyondZenith"},"publisher":{"@type":"Organization","name":"BeyondZenith"},"mainEntityOfPage":"https://www.beyondzenith.org/insights/why-engineering-teams-miss-deadlines.html"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What should we measure first when deadlines keep slipping?","acceptedAnswer":{"@type":"Answer","text":"Start with blocked-time ratio, replan frequency, and decision latency. These three signals expose where delivery flow is breaking."}},{"@type":"Question","name":"How quickly can teams recover delivery predictability?","acceptedAnswer":{"@type":"Answer","text":"Most teams see early directional improvements in 2–4 weeks, with meaningful stability in a 30–90 day recovery window when ownership is clear."}},{"@type":"Question","name":"Should we add more process when deadlines are missed?","acceptedAnswer":{"@type":"Answer","text":"Usually no. Add clarity before process: define ownership, remove technical bottlenecks, and reduce batch size before introducing more rituals."}}]}</script>
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
@@ -114,9 +128,9 @@
         <h3>If this matches your current situation</h3>
         <p>Start with a practical diagnostic, then choose the smallest intervention set that restores predictability.</p>
         <div class="cta-row">
-          <a class="btn btn-secondary" href="../delivery-recovery.html">View Delivery Recovery Framework</a>
-          <a class="btn btn-secondary" href="../cto-delivery-scorecard.html">Use CTO Delivery Scorecard</a>
-          <a class="btn btn-primary" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
+          <a class="btn btn-secondary" data-track="delivery_recovery_click" href="../delivery-recovery.html">View Delivery Recovery Framework</a>
+          <a class="btn btn-secondary" data-track="scorecard_click" href="../cto-delivery-scorecard.html">Use CTO Delivery Scorecard</a>
+          <a class="btn btn-primary" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
         </div>
       </section>
 
