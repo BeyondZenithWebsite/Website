@@ -20,7 +20,7 @@ body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.65;
   color: var(--text);
-  padding-bottom: 5.5rem;
+  padding-bottom: max(6.4rem, calc(5.5rem + env(safe-area-inset-bottom)));
   background:
     radial-gradient(1200px 700px at 80% -20%, #dce6ff 0%, transparent 58%),
     radial-gradient(1000px 600px at -10% 20%, #e9f0ff 0%, transparent 60%),
@@ -81,10 +81,10 @@ body {
   text-decoration: none;
   font-size: 0.92rem;
   font-weight: 600;
-  padding: 0.35rem 0.55rem;
+  padding: 0.45rem 0.62rem;
   border-radius: 999px;
   position: relative;
-  min-height: 40px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
 }
