@@ -8,14 +8,19 @@
 <meta property="og:url" content="https://www.beyondzenith.org/insights/cto-scorecard-template.html"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="stylesheet" href="../assets/styles.css?v=20260311e"/>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-EN8SF9CL6M');
+    function gtag(){dataLayer.push(arguments);} 
+    const loadAnalytics = () => {
+      const s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EN8SF9CL6M';
+      s.async = true;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-EN8SF9CL6M');
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(loadAnalytics, { timeout: 2500 });
+    else window.addEventListener('load', loadAnalytics, { once: true });
   </script>
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
@@ -25,6 +30,10 @@
 <p class="article-meta">By BeyondZenith • Updated 1 Mar 2026 • 4 min read</p>
 <img class="infographic" src="../assets/hero-cto-scorecard-template.svg" alt="Hero image for cto scorecard template" loading="lazy" decoding="async" width="1600" height="700">
 <nav class="toc card" aria-label="Table of contents"><h2>Table of contents</h2><ul><li><a href="#main-content">Main content</a></li></ul></nav><p class="lead">Use this template weekly to detect delivery drift early and drive action. Keep it simple: 5 metrics, 5 owners, 5 decisions.</p>
+<div class="cta-row" style="margin:0 0 1rem;">
+  <a class="btn btn-primary" data-track="scorecard_page_strategy_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book strategy call</a>
+  <a class="btn btn-secondary" data-track="scorecard_page_template_download_click" href="../assets/downloads/cto-delivery-scorecard.pdf">Download scorecard PDF</a>
+</div>
 <section class="card"><h2>Why this matters for engineering delivery</h2><p>If releases slip every sprint, the delivery system is broken. This topic directly affects release predictability, technical leadership quality, and the ability of 10–100 engineer teams to ship reliably.</p><p><strong>Operational implication:</strong> unresolved technical decisions and architecture drag compound quickly into missed commitments.</p><p class="note">Need structured intervention? See <a href="../services/fractional-cto-consulting.html">fractional CTO consulting</a>, <a href="../services/ai-integration-consulting.html">AI integration consulting</a>, and <a href="../services/technical-due-diligence.html">technical due diligence consulting</a>. Also review <a href="../delivery-recovery.html">delivery recovery</a>.</p></section>
 <section id="main-content" class="article-expanded">
 <h2>What high-signal CTO scorecards include</h2>
@@ -60,7 +69,15 @@
 </section>
 <div class="cards"><article class="card"><h3>Metric 1: Cycle time</h3><p>Median days from started to done.</p></article><article class="card"><h3>Metric 2: Predictability</h3><p>Planned vs delivered ratio per sprint/week.</p></article><article class="card"><h3>Metric 3: Quality</h3><p>Escaped defects + rework rate.</p></article></div>
 <section class="mini-faq"><h2>How to use it</h2><details><summary>Who should own this?</summary><p>Engineering lead owns the scorecard. Product + leadership review weekly decisions from it.</p></details><details><summary>How often should we update?</summary><p>Weekly, same day and time, with explicit actions assigned.</p></details></section>
-<p class="note">Want a tailored version? <a href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book a discovery call</a>.</p>
+<section class="card" aria-label="Get the template and apply it fast">
+  <h2>Get the template + implementation walkthrough</h2>
+  <p>Use the downloadable scorecard in your next weekly leadership review, then tighten ownership in a 30-minute strategy call.</p>
+  <div class="cta-row">
+    <a class="btn btn-secondary" data-track="scorecard_page_template_download_click" href="../assets/downloads/cto-delivery-scorecard.pdf">Download scorecard PDF</a>
+    <a class="btn btn-primary" data-track="scorecard_page_strategy_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book strategy call</a>
+  </div>
+</section>
+<p class="note">Want a tailored version? <a data-track="scorecard_page_strategy_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book a discovery call</a>.</p>
 
 <section class="answer-snippets">
   <h2>Recommended next step</h2>
@@ -75,4 +92,12 @@
 
   <div class="container" style="padding:0 0 1.25rem; font-size:0.9rem; color:var(--muted);">ABN: 54 654 970 091 · <a href="https://abr.business.gov.au/ABN/View?id=54654970091" target="_blank" rel="noopener noreferrer">View on ABR</a></div>
   <script defer src="../assets/motion.js?v=7ec2f68"></script>
+
+  <script>
+    document.querySelectorAll('[data-track]').forEach(el => {
+      el.addEventListener('click', () => {
+        if (window.gtag) gtag('event', el.dataset.track);
+      });
+    });
+  </script>
 </body></html>
