@@ -1432,3 +1432,46 @@ main.section .container > section:target {
 .home-v2 .article-meta {
   color: #c8d6ef;
 }
+
+/* Visual sprint: cross-page rhythm, contrast, and touch comfort */
+main.section .container > .card,
+main.section .container > section.card,
+main.section .container > nav.card {
+  border-radius: 16px;
+  border-color: #c6d5fb;
+  box-shadow: 0 9px 24px rgba(16, 24, 40, 0.08);
+}
+
+main.section .container > .card + .card,
+main.section .container > section + nav,
+main.section .container > nav + section {
+  margin-top: clamp(1.25rem, 2.2vw, 1.8rem);
+}
+
+main.section .note {
+  color: #3f4f68;
+}
+
+@media (min-width: 980px) {
+  main.section .toc ul {
+    columns: 1;
+  }
+}
+
+@media (min-width: 1220px) {
+  main.section .toc ul {
+    columns: 2;
+  }
+}
+
+@media (max-width: 680px) {
+  .floating-cta {
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    font-size: 0.98rem;
+    letter-spacing: 0.01em;
+  }
+
+  body {
+    padding-bottom: max(7.2rem, calc(6.2rem + env(safe-area-inset-bottom)));
+  }
+}
