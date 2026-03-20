@@ -1251,6 +1251,30 @@ h1 {
   box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 8px 24px rgba(16, 24, 40, 0.05);
 }
 
+main.section .container {
+  max-width: 72ch;
+}
+
+main.section h2,
+main.section h3 {
+  text-wrap: balance;
+}
+
+main.section section:not(.card) p + p,
+main.section .card p + p {
+  margin-top: .85rem;
+}
+
+main.section .toc {
+  border-width: 1.5px;
+  box-shadow: 0 8px 22px rgba(16, 24, 40, 0.08);
+}
+
+main.section .toc li a {
+  font-weight: 600;
+  line-height: 1.35;
+}
+
 main.section .container > section + section {
   margin-top: clamp(1.55rem, 2.6vw, 2.15rem);
 }
