@@ -1245,3 +1245,39 @@ h1 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+/* Overnight UX pass: long-form readability + CTA hierarchy */
+.site-header {
+  box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 8px 24px rgba(16, 24, 40, 0.05);
+}
+
+main.section .container > section + section {
+  margin-top: clamp(1.55rem, 2.6vw, 2.15rem);
+}
+
+main.section h2 {
+  scroll-margin-top: 6.2rem;
+}
+
+.toc {
+  border-color: #c8d7ff;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+}
+
+@media (min-width: 1024px) {
+  .toc {
+    max-height: calc(100vh - 7.2rem);
+    overflow: auto;
+    scrollbar-gutter: stable;
+  }
+}
+
+.article-hero,
+.infographic {
+  border: 1px solid #ccdaff;
+  box-shadow: 0 10px 26px rgba(16, 24, 40, 0.1);
+}
+
+.cta-row .btn-primary {
+  min-width: 12.5rem;
+}
