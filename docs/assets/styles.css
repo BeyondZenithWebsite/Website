@@ -929,14 +929,26 @@ h1 { font-size: clamp(2.35rem, 5vw, 3.8rem); }
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  width: 100%;
   min-height: 2.75rem;
-  padding: .2rem .4rem;
-  border-radius: 8px;
+  padding: .35rem .55rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
 }
 
 .toc li a:hover,
 .toc li a:focus-visible {
   background: #eaf0ff;
+  border-color: #cfddff;
+  transform: translateX(2px);
+}
+
+main.section .container > section:target,
+main.section .container > nav:target {
+  scroll-margin-top: 6rem;
+  background: linear-gradient(180deg, rgba(234, 240, 255, 0.42), rgba(234, 240, 255, 0));
+  border-radius: 12px;
 }
 
 /* UX pass: improve readability + touch targets on service/insight pages */
