@@ -59,9 +59,9 @@
     </section>
 
     <div class="cta-row" style="margin-top:1rem;">
-      <a class="btn btn-primary" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
-      <a class="btn btn-secondary" href="../case-studies/delivery-recovery-30-90.html">See delivery recovery case studies</a>
-      <a class="btn btn-secondary" href="../index.html#pricing">View pricing bands</a>
+      <a class="btn btn-primary" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer">Book Strategy Call</a>
+      <a class="btn btn-secondary" data-track="case_study_click" href="../case-studies/delivery-recovery-30-90.html">See delivery recovery case studies</a>
+      <a class="btn btn-secondary" data-track="pricing_click" href="../index.html#pricing">View pricing bands</a>
     </div>
   </div>
 <section class="section section-muted"><div class="container">
@@ -77,8 +77,15 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BeyondZenith","url":"https://www.beyondzenith.org/","logo":"https://www.beyondzenith.org/assets/logo-beyondzenith.png","email":"hello@beyondzenith.org"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"BeyondZenith","url":"https://www.beyondzenith.org/"}</script>
 
-  <a class="floating-cta" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer" aria-label="Book strategy call">Book Strategy Call</a>
+  <a class="floating-cta" data-track="book_call_click" href="https://calendar.app.google/mU9KbzGJ7LMYyo6N6" target="_blank" rel="noopener noreferrer" aria-label="Book strategy call">Book Strategy Call</a>
 
   <div class="container" style="padding:0 0 1.25rem; font-size:0.9rem; color:var(--muted);">ABN: 54 654 970 091 · <a href="https://abr.business.gov.au/ABN/View?id=54654970091" target="_blank" rel="noopener noreferrer">View on ABR</a></div>
+  <script>
+    document.querySelectorAll('[data-track]').forEach(el => {
+      el.addEventListener('click', () => {
+        if (window.gtag) gtag('event', el.dataset.track);
+      });
+    });
+  </script>
   <script defer src="../assets/motion.js?v=7ec2f68"></script>
 </body></html>
