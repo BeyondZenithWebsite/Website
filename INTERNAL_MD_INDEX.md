@@ -38,4 +38,4 @@ Updating behavior docs, debugging contradictory instructions, or onboarding new 
 - Keep each file scoped to one job; avoid cross-file duplication.
 - If two files say similar things, keep the stronger rule in one file and cross-link from the other.
 - Add “Purpose / Applies when / Interaction with other docs” in control docs.
-- Last hygiene pass: 2026-03-20.
+- Last hygiene pass: 2026-03-22.

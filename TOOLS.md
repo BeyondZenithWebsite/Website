@@ -26,6 +26,7 @@ Using local tools, browser control, messaging, automation, or host-specific work
 
 ### Shell/runtime quirks
 - `rg` (ripgrep) may be unavailable on this host; use `grep`, `find`, and `awk/sed` fallbacks by default.
+- `python` may be unavailable in PATH; prefer `node` one-liners for local text parsing/patch helpers.
 - Exact-text edit operations can fail on minified/single-line HTML; use a resilient flow: locate unique anchor first, then patch.
 
 ## Maintenance rule

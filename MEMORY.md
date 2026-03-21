@@ -37,13 +37,19 @@
 - OpenClaw web client (local): `http://127.0.0.1:18789/` (same as `http://localhost:18789/`).
 - Available tool classes in this session include file ops, shell, web fetch/search, browser automation, messaging, memory tools, sessions/subagents, and node/canvas controls (subject to runtime policy/tool availability).
 
-## Recent Execution Snapshot (2026-03-20)
+## Recent Execution Snapshot (2026-03-22)
+- Completed daily BeyondZenith audit sprint across homepage, one service page, and one insight page.
+- Shipped structured-data enhancement on `docs/services/fractional-cto-consulting.html`: added `BreadcrumbList` JSON-LD to strengthen crawl/context signals.
+- Pushed to `main` with commit: `222b40f`.
+- Stabilized daily GSC cron reliability by narrowing scope and increasing job timeout budget; next run completed successfully.
+
+## Previous Snapshot (2026-03-20)
 - Completed daily BeyondZenith audit sprint across homepage, one service page, and one insight page.
 - Shipped SEO/GEO enhancement on `docs/insights/geo-for-consulting-firms.html`: added `FAQPage` JSON-LD and synced freshness signals (`article:modified_time`, visible updated date, `BlogPosting.dateModified`).
 - Pushed to `main` with commit: `c299bd4`.
 - Operating lesson captured: explicitly report non-blocking tool failures with impact + recovery in user updates.
 
-## Previous Snapshot (2026-03-06)
+## Earlier Snapshot (2026-03-06)
 - Published new insight page: `docs/insights/dedicated-software-development-team-australia.html`.
 - Updated discovery paths: added page to `docs/insights/index.html` and `docs/sitemap.xml`.
 - Pushed to `main` with commit: `e55fb91`.
