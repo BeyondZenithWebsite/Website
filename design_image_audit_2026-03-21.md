@@ -57,6 +57,10 @@ Completed in Wave 2 ✅
 - Add subtle depth layer (shadow + border + noise texture) for all `.insight-*-data.svg` containers
 - Unify heading-caption spacing around infographic modules
 
+## Infographic Wave shipped
+- Rebuilt `docs/assets/infographic-delivery.svg` with premium dark theme, stronger card hierarchy, cleaner step flow, and metric chips.
+- Rebuilt `docs/assets/infographic-ai-roi.svg` with consistent 4-level ladder styling, stronger contrast hierarchy, and cleaner progression cues.
+
 ## Logo recommendation
 - Keep current logo during active site iteration.
 - Create **Logo v2 micro-refresh** as a separate controlled task:
