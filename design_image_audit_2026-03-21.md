@@ -39,10 +39,17 @@
 - Most `insights-hero/*.jpg` not yet replaced in this pass remain acceptable but should be unified in one style batch.
 
 ## Replace next (priority queue)
+Completed in Wave 2 ✅
 1. `docs/assets/insights-hero/engineering-metrics-that-matter.jpg`
 2. `docs/assets/insights-hero/why-delivery-timelines-slip.jpg`
 3. `docs/assets/insights-hero/cloud-cost-optimization-playbook.jpg`
 4. `docs/assets/insights-hero/geo-for-consulting-firms.jpg`
+
+## Wave 2 replacements shipped
+- `docs/assets/insights-hero/engineering-metrics-that-matter.jpg`
+- `docs/assets/insights-hero/why-delivery-timelines-slip.jpg`
+- `docs/assets/insights-hero/cloud-cost-optimization-playbook.jpg`
+- `docs/assets/insights-hero/geo-for-consulting-firms.jpg`
 
 ## Infographic/UI visual improvements required (next wave)
 - Standardize infographic stroke weight and corner radii
