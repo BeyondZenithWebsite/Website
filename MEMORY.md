@@ -24,6 +24,19 @@
 - Primary traffic/geography focus: Melbourne and broader Australia.
 - Brand direction: modern, cutting-edge technology image with clear business-result orientation.
 
+## Whitefox Business Context (captured 2026-03-23)
+- Whitefox primary domain: `https://www.whitefox.cloud`.
+- User context: Anastas states he runs Whitefox (in addition to BeyondZenith) and wants Whitefox website context remembered.
+- Whitefox positioning from full sitemap crawl (64 URLs, 62 reachable): software development + consulting with strong emphasis on:
+  - AI software development and AI platform engineering
+  - Fractional CTO services (AU-wide + city pages for Melbourne/Sydney/Brisbane)
+  - API development/integration services
+  - FHIR interoperability/health data integration
+  - IT staff augmentation
+- Industry focus pages: FinTech, Healthcare, Logistics.
+- Proof assets: extensive projects/case studies and article library (heavy coverage in AI + FHIR + healthcare data interoperability topics).
+- Supporting property: `https://fhir.whitefox.cloud` (FHIR AU test server).
+
 ## Credibility Inputs
 - User reports they achieved ~2x year-on-year revenue growth as Technical Director at Whitefox.
 - User reports they doubled company size and supported global growth at Whitefox.
