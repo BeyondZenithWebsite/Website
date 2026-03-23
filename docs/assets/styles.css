@@ -1559,3 +1559,22 @@ iframe {
     top: -170px;
   }
 }
+
+/* 2026-03-23 desktop layout fix: stop long-form pages from looking "mobile-sized" on large screens */
+@media (min-width: 1100px) {
+  main.section .container {
+    max-width: min(1200px, calc(100vw - 4rem));
+  }
+
+  main.section .container > .card,
+  main.section .container > section,
+  main.section .container > nav {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1440px) {
+  main.section .container {
+    max-width: min(1320px, calc(100vw - 6rem));
+  }
+}
