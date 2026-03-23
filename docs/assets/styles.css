@@ -1520,3 +1520,42 @@ main.section a:not(.btn):not(.brand):not(.floating-cta):focus-visible {
   outline: 3px solid rgba(255, 255, 255, 0.7);
   outline-offset: 3px;
 }
+
+/* 2026-03-23 responsive hardening + UX simplification */
+.floating-cta {
+  display: none !important;
+}
+
+img,
+svg,
+video,
+iframe {
+  max-width: 100%;
+}
+
+@media (max-width: 680px) {
+  .nav-wrap {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav {
+    max-width: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    gap: 0.45rem;
+  }
+
+  .nav a {
+    min-height: 40px;
+    padding: 0.38rem 0.56rem;
+  }
+
+  .hero::after {
+    width: 340px;
+    height: 340px;
+    right: -120px;
+    top: -170px;
+  }
+}
