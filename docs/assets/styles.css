@@ -1578,3 +1578,11 @@ iframe {
     max-width: min(1320px, calc(100vw - 6rem));
   }
 }
+
+/* 2026-03-23 consistency fix: no sticky TOC, one global nav behavior */
+main.section .toc {
+  position: static !important;
+  top: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
